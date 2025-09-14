@@ -28,3 +28,17 @@ def get_user_from_token(authorization: str):
     if not user:
         raise ValueError("Token noto‘g‘ri")
     return user
+
+
+def get_user_by_token(token: str):
+    try:
+        res = supabase.auth.get_user(token)
+        user = getattr(res, "user", None) or (getattr(res, "data", {}) or {}).get("user")
+        if not user:
+            print("[AUTH] get_user_by_token: user = None")
+            return None
+        print("[AUTH] token user_id =", getattr(user, "id", None))
+        return user
+    except Exception as e:
+        print("[AUTH] get_user_by_token error:", e)
+        return None

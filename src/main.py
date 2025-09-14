@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from src.routers.auth import router as auth_router
 from src.routers.telegram import router as telegram_router
+from starlette.staticfiles import StaticFiles
+from pathlib import Path
 
 app = FastAPI()
 
@@ -19,5 +21,12 @@ app.add_middleware(
 # /start_login, /verify_code, /verify_password,
 # /me/telegrams (GET/DELETE), /me/telegrams/{index} (DELETE),
 # /admin/users/{user_id}/telegrams/{index} (DELETE)
+
+MEDIA_ROOT = Path("media")
+(MEDIA_ROOT / "avatars").mkdir(parents=True, exist_ok=True)
+
+# /media/... orqali statik fayllarni berish
+app.mount("/media", StaticFiles(directory=str(MEDIA_ROOT)), name="media")
+
 app.include_router(auth_router)
 app.include_router(telegram_router)

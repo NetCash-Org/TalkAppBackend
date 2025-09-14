@@ -1,12 +1,16 @@
 import asyncio
-from fastapi import APIRouter, HTTPException, Header, Path
+from fastapi import APIRouter, HTTPException, Header, Query, Path
 from pyrogram.errors import SessionPasswordNeeded, PhoneCodeInvalid, PhoneNumberInvalid
 from src.models.user import StartLoginIn, VerifyCodeIn, VerifyPasswordIn
 from src.services.telegram_service import (
     login_states, build_client, list_user_telegram_profiles,
-    logout_one, logout_all
+    logout_one, logout_all, ensure_user_avatar_downloaded, list_private_chats_minimal
 )
-from src.services.supabase_service import get_user_from_token
+from src.services.supabase_service import get_user_from_token, get_user_by_token
+from src.config import supabase
+from typing import Optional
+
+
 
 router = APIRouter()
 
@@ -205,3 +209,35 @@ async def me_logout_all_telegrams(authorization: str = Header(..., alias="Author
         return {"ok": True, "results": results}
     except ValueError as e:
         raise HTTPException(400, str(e))
+
+
+
+
+
+
+# ---- shaxsiy chatlar ro‘yxati ----
+@router.get("/me/private_chats/{user_id}/{session_index}")
+async def list_private_chats_full_by_path(
+    user_id: str = Path(...),
+    session_index: int = Path(...),
+    authorization: str = Header(..., alias="Authorization"),
+    dialog_limit: int = Query(10, ge=1, le=100),
+):
+    if not authorization.lower().startswith("bearer "):
+        raise HTTPException(400, "Bearer token kerak")
+
+    token = authorization.split(" ", 1)[1].strip()
+    user = get_user_by_token(token)
+    if not user or not getattr(user, "id", None):
+        raise HTTPException(401, "Token noto‘g‘ri")
+
+    token_uid = str(getattr(user, "id"))
+    if token_uid != user_id:
+        raise HTTPException(403, "Path user_id token egasiga mos emas")
+
+    items = await list_private_chats_minimal(
+        user_id=user_id,
+        account_index=session_index,
+        limit=dialog_limit
+    )
+    return {"ok": True, "count": len(items), "items": items}
