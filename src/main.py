@@ -33,8 +33,3 @@ app.mount("/media", StaticFiles(directory=str(MEDIA_ROOT)), name="media")
 app.include_router(auth_router)
 app.include_router(telegram_router)
 
-
-
-#main run 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8002)
