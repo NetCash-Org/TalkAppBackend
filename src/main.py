@@ -4,6 +4,8 @@ from src.routers.auth import router as auth_router
 from src.routers.telegram import router as telegram_router
 from starlette.staticfiles import StaticFiles
 from pathlib import Path
+import uvicorn
+
 
 app = FastAPI()
 
@@ -30,3 +32,9 @@ app.mount("/media", StaticFiles(directory=str(MEDIA_ROOT)), name="media")
 
 app.include_router(auth_router)
 app.include_router(telegram_router)
+
+
+
+#main run 
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8002)
