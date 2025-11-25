@@ -1,191 +1,215 @@
-from pathlib import Path
+# 🚀 TalkApp Backend
 
-# README.md content
-readme_content = """# 🚀 TalkAppBackend
+Telegram integratsiyasi va foydalanuvchi boshqaruvi uchun yaratilgan zamonaviy backend platformasi.
+FastAPI, Pyrogram va Supabase texnologiyalari asosida qurilgan bo'lib, foydalanuvchilarga Telegram akkauntlarini ulash, chatlarni boshqarish va autentifikatsiya imkoniyatlarini taqdim etadi.
 
-Telegram akkauntlari orqali **xususiy chatlar** va **dialog ma’lumotlari**ni boshqarish uchun yaratilgan kuchli backend.  
-Loyiha FastAPI, Pyrogram va Supabase texnologiyalari asosida qurilgan bo‘lib, sizga **Telegram akkauntlaringizni ulash, chatlarni olish, foydalanuvchi avatarlarini serverga yuklab saqlash** imkonini beradi.  
+## ✨ Asosiy xususiyatlar
 
----
-
-## ✨ Asosiy imkoniyatlar
-
-- 🔑 **Supabase autentifikatsiyasi** orqali xavfsiz token asosida login.  
-- 💬 **Shaxsiy chatlar ro‘yxati**: fullname, username, online/offline status, oxirgi faollik.  
-- 🖼 **Foydalanuvchi avatarlarini serverda saqlash** va `/media/avatars/...` orqali URL sifatida ko‘rsatish.  
-- 📜 **Minimal va to‘liq chat metadatalar**ni olish imkoniyati.  
-- 📂 **Ko‘p akkauntli qo‘llab-quvvatlash** (1 foydalanuvchi bir nechta Telegram sessiya ulashi mumkin).  
-- 🌐 **Deploy-ready**: Railway yoki Heroku’da ishlashga tayyor konfiguratsiya (`Procfile`, `run.sh`).  
-
----
+- 🔐 **Supabase autentifikatsiyasi** - Xavfsiz token asosida login va foydalanuvchi boshqaruvi
+- 📱 **Telegram integratsiyasi** - Ko'p akkauntli Telegram sessiyalarini boshqarish
+- 👥 **Admin panel** - Foydalanuvchilarni va ularning Telegram akkauntlarini boshqarish
+- 🖼️ **Media boshqaruvi** - Avatar va media fayllarini serverda saqlash
+- 📊 **Monitoring** - Tizim holatini real vaqtda kuzatish
+- 🌐 **Deploy-ready** - Railway, Heroku va boshqa platformalarda ishga tushirishga tayyor
 
 ## 🛠 Texnologiyalar
 
-- [**FastAPI**](https://fastapi.tiangolo.com) — backend framework  
-- [**Pyrogram**](https://docs.pyrogram.org/) — Telegram API bilan ishlash  
-- [**Supabase**](https://supabase.com/) — autentifikatsiya va foydalanuvchi ma’lumotlarini boshqarish  
-- [**Uvicorn**](https://www.uvicorn.org/) — ASGI server  
-- [**Railway**](https://railway.app/) — deploy uchun  
-
----
+- [**FastAPI**](https://fastapi.tiangolo.com) - Backend framework
+- [**Pyrogram**](https://docs.pyrogram.org/) - Telegram API bilan ishlash
+- [**Supabase**](https://supabase.com/) - Database va autentifikatsiya
+- [**Uvicorn**](https://www.uvicorn.org/) - ASGI server
+- [**Chart.js**](https://www.chartjs.org/) - Monitoring uchun grafiklar
 
 ## 📂 Loyihaning strukturasi
 
 ```
-.
+TalkAppBackend/
 ├── src/
-│   ├── main.py              # FastAPI asosiy entrypoint
-│   ├── routers/telegram.py  # Telegram API endpointlari
-│   ├── services/            # Telegram va Supabase xizmatlari
-│   ├── models/              # Model va helper fayllar
-│   └── config.py            # API_ID, API_HASH, Supabase sozlamalari
-├── sessions/                # Telegram sessiya fayllari
-├── media/avatars/           # Foydalanuvchi profil suratlari
-├── requirements.txt         # Python kutubxonalari
-├── run.sh                   # Serverni lokal ishga tushirish skripti
-└── Procfile                 # Railway deploy konfiguratsiyasi
+│   ├── main.py                 # FastAPI asosiy fayl
+│   ├── config.py               # Konfiguratsiya va sozlamalar
+│   ├── routers/
+│   │   ├── auth.py            # Autentifikatsiya endpointlari
+│   │   └── telegram.py        # Telegram integratsiyasi
+│   ├── services/
+│   │   ├── telegram_service.py # Telegram xizmatlari
+│   │   ├── supabase_service.py # Supabase yordamchi funksiyalar
+│   │   └── json_utils.py      # JSON yordamchi funksiyalar
+│   └── models/
+│       └── user.py            # Pydantic modellar
+├── migrations/                 # Database migratsiyalari
+├── sessions/                   # Telegram sessiya fayllari
+├── media/                      # Yuklangan fayllar
+├── requirements.txt            # Python paketlari
+├── run.sh & run.bat           # Ishga tushirish skriptlari
+├── Procfile                    # Railway deploy konfiguratsiyasi
+└── README.md                   # Ushbu fayl
 ```
 
----
+## ⚡ O'rnatish va ishga tushirish
 
-## ⚡️ O‘rnatish
+### 1. Reponi klonlash
+```bash
+git clone <repository-url>
+cd TalkAppBackend
+```
 
-1. Reponi klonlash:
-   ```bash
-   git clone https://github.com/NetCash-Org/TalkAppBackend
-   cd TalkAppBackend
-   ```
+### 2. Virtual environment yaratish
+```bash
+python -m venv .venv
+# Windows
+.venv\Scripts\activate
+# Linux/Mac
+source .venv/bin/activate
+```
 
-2. Virtual environment yaratish:
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
+### 3. Paketlarni o'rnatish
+```bash
+pip install -r requirements.txt
+```
 
-3. Kerakli paketlarni o‘rnatish:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 4. Environment variables
+`.env` fayl yarating va quyidagi o'zgaruvchilarni to'ldiring:
+```env
+API_ID=your_telegram_api_id
+API_HASH=your_telegram_api_hash
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_KEY=your_supabase_service_key
+```
 
-4. `.env` fayl yarating va quyidagilarni to‘ldiring:
-   ```env
-   API_ID=your_telegram_api_id
-   API_HASH=your_telegram_api_hash
-   SUPABASE_URL=your_supabase_url
-   SUPABASE_KEY=your_supabase_service_key
-   ```
+### 5. Serverni ishga tushirish
+```bash
+# Development mode
+python -m uvicorn src.main:app --reload
 
-5. Lokal serverni ishga tushirish:
-   ```bash
-   bash run.sh
-   ```
-   Server `http://127.0.0.1:8000` da ishlaydi.
+# yoki run.sh dan foydalanish
+bash run.sh
+```
 
----
+Server `http://127.0.0.1:8000` da ishlaydi.
 
-## 🔑 Autentifikatsiya
+## 🔑 API Endpointlari
 
-Barcha endpointlar **Bearer token** orqali chaqiriladi.  
-Tokenni Supabase orqali olasiz va headerga qo‘shasiz:
+### Autentifikatsiya
 
+#### Login
 ```http
+POST /auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password"
+}
+```
+
+#### Joriy foydalanuvchi ma'lumotlari
+```http
+GET /auth/me
 Authorization: Bearer <token>
 ```
 
----
+### Admin endpointlar
 
-## 📡 API Endpointlari
+#### Barcha foydalanuvchilarni ko'rish
+```http
+GET /admin/users
+Authorization: Bearer <admin-token>
+```
 
-### 1. Shaxsiy chatlar ro‘yxati
+#### Foydalanuvchi yaratish
+```http
+POST /admin/users
+Authorization: Bearer <admin-token>
+Content-Type: application/json
+
+{
+  "email": "newuser@example.com",
+  "password": "password123"
+}
+```
+
+#### Foydalanuvchilarni Telegram akkauntlari bilan ko'rish
+```http
+GET /admin/users-with-telegrams
+Authorization: Bearer <admin-token>
+```
+
+### Telegram integratsiyasi
+
+#### Login boshlash
+```http
+POST /start_login
+Content-Type: application/json
+
+{
+  "phone_number": "+998901234567",
+  "user_id": "supabase-user-id"
+}
+```
+
+#### Kodni tasdiqlash
+```http
+POST /verify_code
+Content-Type: application/json
+
+{
+  "phone_number": "+998901234567",
+  "user_id": "supabase-user-id",
+  "code": "12345"
+}
+```
+
+#### Shaxsiy chatlar ro'yxati
 ```http
 GET /me/private_chats/{user_id}/{session_index}?dialog_limit=10
+Authorization: Bearer <token>
 ```
 
-**Parametrlar**:
-- `user_id` — Supabase foydalanuvchi ID  
-- `session_index` — Telegram sessiya raqami  
-- `dialog_limit` — nechta chat qaytarilishi (default: 10)  
+## 📊 Monitoring
 
-**Natija**:
-```json
-{
-  "ok": true,
-  "count": 2,
-  "items": [
-    {
-      "id": 1844592233,
-      "full_name": "Dilshodjon Haydarov",
-      "username": "torex_dev",
-      "last_seen": "2025-09-15T12:30:00",
-      "is_online": true,
-      "photo_url": "/media/avatars/409fc386/1/1844592233_big.jpg"
-    }
-  ]
-}
+Server ishga tushganda `/` sahifasida tizim monitoringi mavjud:
+- CPU va RAM foydalanish
+- Disk holati
+- Tarmoq trafigi
+- Real vaqt loglari
+
+## 🚀 Deploy
+
+### Railway
+1. GitHub repositoriyasini Railway'ga ulang
+2. Environment variables ni qo'shing
+3. Deploy boshlang
+
+### Heroku
+```bash
+heroku create your-app-name
+heroku config:set API_ID=your_api_id API_HASH=your_api_hash SUPABASE_URL=your_url SUPABASE_ANON_KEY=your_key SUPABASE_SERVICE_KEY=your_service_key
+git push heroku main
 ```
 
----
+## 🔧 Konfiguratsiya
 
-### 2. Chat avatarini saqlash
-```http
-POST /me/private_chats/avatar/{user_id}/{session}/{chat_id}?size=big
-```
+### Environment Variables
+- `API_ID` - Telegram API ID
+- `API_HASH` - Telegram API Hash
+- `SUPABASE_URL` - Supabase project URL
+- `SUPABASE_ANON_KEY` - Supabase anon key
+- `SUPABASE_SERVICE_KEY` - Supabase service key
+- `PORT` - Server port (Railway/Heroku uchun)
 
-**Parametrlar**:
-- `user_id` — Supabase foydalanuvchi ID  
-- `session` — Telegram sessiya raqami  
-- `chat_id` — Telegram chat ID  
-- `size` — `big` yoki `small` (default: big)  
+## 📝 Logs
 
-**Natija**:
-```json
-{
-  "ok": true,
-  "photo_url": "/media/avatars/409fc386/1/1844592233_big.jpg"
-}
-```
+Loglar `app.log` faylida saqlanadi va `/logs` endpoint orqali ko'rish mumkin.
 
----
+## 🤝 Hissa qo'shish
 
-## 🚀 Deploy (Railway)
+1. Fork qiling
+2. Feature branch yarating (`git checkout -b feature/amazing-feature`)
+3. O'zgarishlarni commit qiling (`git commit -m 'Add amazing feature'`)
+4. Push qiling (`git push origin feature/amazing-feature`)
+5. Pull Request yarating
 
-1. Repo GitHub’da bo‘lishi kerak.  
-2. Railway’da yangi Service → GitHub repo ulash.  
-3. **Procfile** va **run.sh** repo ildizida turgan bo‘lishi kerak.  
+## 📄 Litsenziya
 
-   - `Procfile`:
-     ```
-     web: uvicorn src.main:app --host 0.0.0.0 --port ${PORT} --proxy-headers
-     ```
-
-   - `run.sh`:
-     ```bash
-     #!/bin/bash
-     uvicorn src.main:app --host 0.0.0.0 --port ${PORT:-8000} --reload
-     ```
-
-4. Settings → Variables bo‘limida `.env` dagi kalitlarni qo‘shing.  
-5. Deploy boshlanganidan keyin `https://talkapp.up.railway.app/healthz` orqali tekshiring.  
-
----
-
-## ❤️ Hissa qo‘shish
-
-Loyiha **open-source**. PR va issue’lar xush kelibsiz.  
-Qo‘shmoqchi bo‘lsangiz quyidagi branch flow’dan foydalaning:  
-
-- `main` → Production  
-- `dev` → Development  
-
----
-
-## 📜 Litsenziya
-
-MIT License. Erkin foydalanish mumkin.  
-"""
-
-# Save README.md
-path = Path("README.md")
-path.write_text(readme_content, encoding="utf-8")
-
-path.absolute()
+Bu loyiha MIT litsenziyasi ostida tarqatiladi.

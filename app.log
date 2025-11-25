@@ -1,0 +1,1259 @@
+2025-11-25 19:18:40,681 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 19:18:40,681 INFO: CORS middleware qo'shildi
+2025-11-25 19:18:40,682 INFO: Statik fayllar /media ga ulandi
+2025-11-25 19:18:40,690 INFO: Auth router qo'shildi
+2025-11-25 19:18:40,710 INFO: Telegram router qo'shildi
+2025-11-25 19:18:45,357 INFO: Root sahifaga so'rov keldi
+2025-11-25 19:18:45,420 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:18:52,657 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"
+2025-11-25 19:18:59,938 INFO: Root sahifaga so'rov keldi
+2025-11-25 19:18:59,957 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:19:01,882 INFO: Root sahifaga so'rov keldi
+2025-11-25 19:19:01,935 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:19:04,322 INFO: Root sahifaga so'rov keldi
+2025-11-25 19:19:04,379 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:19:10,077 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"
+2025-11-25 19:19:17,474 INFO: Root sahifaga so'rov keldi
+2025-11-25 19:19:17,537 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:19:48,005 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:20:18,310 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:20:48,000 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:21:18,307 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:23:26,588 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 19:23:26,588 INFO: CORS middleware qo'shildi
+2025-11-25 19:23:26,589 INFO: Statik fayllar /media ga ulandi
+2025-11-25 19:23:26,598 INFO: Auth router qo'shildi
+2025-11-25 19:23:26,604 INFO: Telegram router qo'shildi
+2025-11-25 19:23:26,815 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:23:32,693 INFO: Root sahifaga so'rov keldi
+2025-11-25 19:23:32,713 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:23:58,141 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"
+2025-11-25 19:24:02,587 INFO: Root sahifaga so'rov keldi
+2025-11-25 19:24:02,645 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:24:17,211 INFO: Root sahifaga so'rov keldi
+2025-11-25 19:24:17,276 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:24:48,003 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:25:17,544 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:25:29,523 INFO: Root sahifaga so'rov keldi
+2025-11-25 19:25:29,579 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:25:59,578 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:26:30,308 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:27:00,008 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:27:30,298 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:27:59,999 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:28:30,310 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:29:00,009 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:30:01,306 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:31:02,304 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:32:03,311 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:33:04,308 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:34:05,301 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:35:06,307 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:36:07,304 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:37:08,308 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:38:09,311 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:39:10,303 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:40:11,309 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:41:12,311 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:42:13,314 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:43:14,323 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:44:15,312 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:45:16,301 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:46:17,304 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:47:18,305 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:48:19,302 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:49:20,300 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:50:21,312 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:51:22,311 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:52:23,313 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:53:24,308 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:54:25,316 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:55:26,311 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:56:26,007 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:57:26,304 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:58:26,000 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 19:59:26,321 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:00:26,008 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:01:26,302 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:02:26,008 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:03:26,319 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:04:25,995 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:05:26,302 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:06:26,007 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:07:26,302 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:08:26,005 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:09:26,317 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:10:26,005 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:11:26,312 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:12:26,001 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:13:26,320 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:14:26,006 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:15:26,307 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:16:26,009 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:17:26,314 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:18:26,009 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:19:26,312 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:20:25,999 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:21:26,311 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:22:26,008 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:23:26,326 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:24:26,006 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:25:26,300 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:26:26,006 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:27:26,310 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:28:26,006 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:29:26,315 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:30:25,999 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:31:26,315 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:32:26,000 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:33:26,329 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:34:25,999 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:35:26,309 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:36:26,001 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:37:26,314 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:38:26,002 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:39:26,323 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:40:26,000 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:41:26,311 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:42:25,999 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:43:26,305 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:44:26,013 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:45:26,305 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:46:26,010 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:47:26,316 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:48:25,996 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:49:26,310 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:50:25,998 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:51:26,303 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:52:26,002 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:53:26,310 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:54:25,998 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:55:26,309 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:56:25,999 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:57:26,310 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:58:25,998 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 20:59:26,307 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:00:25,995 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:01:26,311 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:02:25,996 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:03:26,309 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:04:26,001 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:05:26,302 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:06:26,002 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:07:26,309 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:08:26,003 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:09:26,309 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:10:26,001 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:11:26,305 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:12:26,008 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:13:26,307 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:14:25,994 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:15:26,314 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:16:26,001 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:17:26,308 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:18:25,999 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:19:26,311 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:20:25,999 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:21:26,310 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:22:25,997 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:23:26,311 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:24:25,998 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:25:26,314 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:26:26,010 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:27:26,314 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:28:25,994 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:29:26,300 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:30:26,001 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:31:26,303 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:32:25,994 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:33:26,306 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:34:25,999 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:35:26,321 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:36:25,997 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:37:26,310 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:38:26,005 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:39:26,314 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:40:26,005 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:40:31,333 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:40:59,571 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:41:29,891 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:41:59,573 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:42:29,890 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:42:59,571 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:43:29,895 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:43:59,579 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:44:29,887 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:44:59,570 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:45:29,883 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:45:59,576 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:46:29,892 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:46:59,579 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:47:29,889 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:47:59,576 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:48:29,882 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:48:59,572 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:49:29,879 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:49:59,579 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:50:29,892 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:50:59,579 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:51:29,887 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:51:59,576 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:52:29,889 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:52:59,577 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:53:29,888 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:53:59,572 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:54:29,886 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:54:59,578 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:55:29,906 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:55:59,581 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:56:29,883 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:56:59,574 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:57:29,882 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:57:59,578 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:58:29,889 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:58:59,584 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:59:29,891 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 21:59:59,571 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:00:29,888 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:00:59,574 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:01:29,880 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:01:59,579 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:02:29,890 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:02:59,571 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:03:29,883 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:03:59,580 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:04:29,881 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:04:59,580 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:05:29,888 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:05:59,582 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:06:29,892 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:06:59,572 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:07:29,893 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:07:59,573 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:08:29,878 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:08:59,575 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:09:29,888 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:09:59,572 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:10:29,880 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:10:59,582 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:11:29,890 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:11:59,577 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:12:29,890 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:12:59,573 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:13:29,887 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:13:59,569 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:14:29,876 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:14:59,571 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:15:29,874 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:15:59,589 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:16:29,883 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:16:59,573 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:17:29,886 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:17:59,571 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:18:29,872 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:18:59,562 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:19:29,872 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:19:59,564 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:20:29,868 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:20:59,566 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:21:29,873 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:21:59,565 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:22:29,872 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:22:59,553 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:23:29,862 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:23:31,235 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:23:31,288 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:24:01,975 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:24:32,364 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:25:01,271 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:25:31,572 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:26:01,277 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:26:09,662 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:26:09,662 INFO: CORS middleware qo'shildi
+2025-11-25 22:26:09,663 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:26:09,672 INFO: Auth router qo'shildi
+2025-11-25 22:26:09,691 INFO: Telegram router qo'shildi
+2025-11-25 22:26:15,434 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:26:15,479 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:26:26,941 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:26:27,002 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:26:41,318 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:26:41,377 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:27:11,970 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:27:41,646 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:28:11,345 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:28:30,001 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:28:30,002 INFO: CORS middleware qo'shildi
+2025-11-25 22:28:30,003 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:28:30,013 INFO: Auth router qo'shildi
+2025-11-25 22:28:30,019 INFO: Telegram router qo'shildi
+2025-11-25 22:28:41,651 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:29:11,335 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:29:41,655 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:30:11,342 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:30:41,642 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:31:11,334 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:31:41,643 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:31:47,727 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:31:47,777 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:32:17,750 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:32:48,059 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:33:17,746 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:33:32,474 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"
+2025-11-25 22:33:48,067 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:34:17,963 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:34:57,922 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:34:57,923 INFO: CORS middleware qo'shildi
+2025-11-25 22:34:57,923 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:34:57,932 INFO: Auth router qo'shildi
+2025-11-25 22:34:57,938 INFO: Telegram router qo'shildi
+2025-11-25 22:35:02,242 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:35:02,298 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:35:12,620 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"
+2025-11-25 22:35:32,264 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:36:03,293 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:36:32,969 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:40:25,380 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:40:25,380 INFO: CORS middleware qo'shildi
+2025-11-25 22:40:25,382 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:40:25,390 INFO: Auth router qo'shildi
+2025-11-25 22:40:25,396 INFO: Telegram router qo'shildi
+2025-11-25 22:40:26,268 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:40:32,264 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:40:33,055 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:41:43,472 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:41:43,473 INFO: CORS middleware qo'shildi
+2025-11-25 22:41:43,473 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:41:43,482 INFO: Auth router qo'shildi
+2025-11-25 22:41:43,487 INFO: Telegram router qo'shildi
+2025-11-25 22:41:47,835 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:44:38,779 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:44:38,779 INFO: CORS middleware qo'shildi
+2025-11-25 22:44:38,780 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:44:38,821 INFO: Auth router qo'shildi
+2025-11-25 22:44:38,898 INFO: Telegram router qo'shildi
+2025-11-25 22:45:26,129 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:46:31,546 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:46:31,547 INFO: CORS middleware qo'shildi
+2025-11-25 22:46:31,548 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:46:31,557 INFO: Auth router qo'shildi
+2025-11-25 22:46:31,564 INFO: Telegram router qo'shildi
+2025-11-25 22:46:59,952 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:48:27,818 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:48:27,819 INFO: CORS middleware qo'shildi
+2025-11-25 22:48:27,819 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:48:27,827 INFO: Auth router qo'shildi
+2025-11-25 22:48:27,834 INFO: Telegram router qo'shildi
+2025-11-25 22:48:58,380 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:48:58,445 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:49:29,262 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:49:58,951 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:50:29,273 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:50:58,950 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:51:30,418 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:51:30,419 INFO: CORS middleware qo'shildi
+2025-11-25 22:51:30,420 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:51:30,428 INFO: Auth router qo'shildi
+2025-11-25 22:51:30,434 INFO: Telegram router qo'shildi
+2025-11-25 22:51:30,555 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 22:51:40,158 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:51:40,158 INFO: CORS middleware qo'shildi
+2025-11-25 22:51:40,159 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:51:40,168 INFO: Auth router qo'shildi
+2025-11-25 22:51:40,173 INFO: Telegram router qo'shildi
+2025-11-25 22:51:44,054 INFO: System stats endpointiga so'rov keldi
+2025-11-25 22:51:50,314 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:52:05,813 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:52:05,813 INFO: CORS middleware qo'shildi
+2025-11-25 22:52:05,815 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:52:05,822 INFO: Auth router qo'shildi
+2025-11-25 22:52:05,828 INFO: Telegram router qo'shildi
+2025-11-25 22:52:10,237 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:53:06,249 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:53:12,880 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:53:16,937 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:53:23,749 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:53:34,205 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:53:49,241 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:53:58,291 INFO: System stats endpointiga so'rov keldi
+2025-11-25 22:55:25,604 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:55:25,605 INFO: CORS middleware qo'shildi
+2025-11-25 22:55:25,606 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:55:25,614 INFO: Auth router qo'shildi
+2025-11-25 22:55:25,620 INFO: Telegram router qo'shildi
+2025-11-25 22:55:29,365 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:55:50,878 INFO: System stats endpointiga so'rov keldi
+2025-11-25 22:55:52,369 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:55:55,242 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:56:37,965 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:56:37,965 INFO: CORS middleware qo'shildi
+2025-11-25 22:56:37,966 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:56:37,974 INFO: Auth router qo'shildi
+2025-11-25 22:56:37,980 INFO: Telegram router qo'shildi
+2025-11-25 22:56:54,935 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:56:54,936 INFO: CORS middleware qo'shildi
+2025-11-25 22:56:54,937 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:56:54,947 INFO: Auth router qo'shildi
+2025-11-25 22:56:54,953 INFO: Telegram router qo'shildi
+2025-11-25 22:56:58,687 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:56:59,874 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:57:41,480 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:57:45,930 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:57:58,704 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:58:12,592 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:58:12,593 INFO: CORS middleware qo'shildi
+2025-11-25 22:58:12,594 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:58:12,604 INFO: Auth router qo'shildi
+2025-11-25 22:58:12,609 INFO: Telegram router qo'shildi
+2025-11-25 22:58:20,985 INFO: Root sahifaga so'rov keldi
+2025-11-25 22:59:17,660 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 22:59:17,660 INFO: CORS middleware qo'shildi
+2025-11-25 22:59:17,662 INFO: Statik fayllar /media ga ulandi
+2025-11-25 22:59:17,681 INFO: Auth router qo'shildi
+2025-11-25 22:59:17,686 INFO: Telegram router qo'shildi
+2025-11-25 22:59:21,183 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:00:45,582 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:00:45,582 INFO: CORS middleware qo'shildi
+2025-11-25 23:00:45,583 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:00:45,591 INFO: Auth router qo'shildi
+2025-11-25 23:00:45,596 INFO: Telegram router qo'shildi
+2025-11-25 23:00:48,249 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:00:48,376 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:00:48,465 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:00:53,477 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:00:58,489 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:03,447 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:08,492 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:13,509 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:18,341 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:01:18,512 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:24,257 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:28,768 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:33,501 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:34,521 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:01:38,306 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:01:38,306 INFO: CORS middleware qo'shildi
+2025-11-25 23:01:38,307 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:01:38,316 INFO: Auth router qo'shildi
+2025-11-25 23:01:38,321 INFO: Telegram router qo'shildi
+2025-11-25 23:01:38,323 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:01:38,380 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:01:38,442 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:43,449 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:48,484 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:50,566 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:01:50,647 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:01:50,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:01:55,944 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:00,728 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:05,940 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:10,949 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:15,942 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:20,949 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:02:20,950 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:25,952 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:30,950 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:35,939 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:40,952 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:45,936 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:50,945 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:02:50,948 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:02:56,365 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:00,947 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:11,189 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:12,210 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:03:12,293 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:03:12,341 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:17,945 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:22,944 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:27,948 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:32,939 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:37,946 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:42,945 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:03:42,947 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:47,944 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:52,942 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:03:58,251 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:04:02,938 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:04:07,942 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:04:12,944 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:04:12,946 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:04:26,245 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:04:42,942 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:05:13,250 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:05:25,941 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:05:43,255 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:06:12,939 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:06:26,258 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:07:25,946 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:07:26,964 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:07:50,844 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:07:50,844 INFO: CORS middleware qo'shildi
+2025-11-25 23:07:50,845 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:07:50,853 INFO: Auth router qo'shildi
+2025-11-25 23:07:50,859 INFO: Telegram router qo'shildi
+2025-11-25 23:07:53,824 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:07:54,850 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:07:54,907 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:07:55,067 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:07:55,169 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:00,184 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:05,189 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:10,230 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:15,266 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:20,309 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:25,247 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:08:25,432 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:30,777 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:35,317 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:38,321 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:08:38,356 INFO: CORS middleware qo'shildi
+2025-11-25 23:08:38,375 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:08:38,460 INFO: Auth router qo'shildi
+2025-11-25 23:08:38,498 INFO: Telegram router qo'shildi
+2025-11-25 23:08:40,717 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:45,387 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:50,415 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:08:55,238 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:08:55,355 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:00,299 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:05,937 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:10,936 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:15,934 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:20,944 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:25,944 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:09:25,946 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:30,929 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:35,936 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:40,937 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:45,941 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:47,099 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:09:47,099 INFO: CORS middleware qo'shildi
+2025-11-25 23:09:47,100 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:09:47,108 INFO: Auth router qo'shildi
+2025-11-25 23:09:47,114 INFO: Telegram router qo'shildi
+2025-11-25 23:09:50,220 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:51,238 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:09:51,410 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:09:51,448 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:09:56,522 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:00,598 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:18:00,599 INFO: CORS middleware qo'shildi
+2025-11-25 23:18:00,600 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:18:00,611 INFO: Auth router qo'shildi
+2025-11-25 23:18:00,624 INFO: Telegram router qo'shildi
+2025-11-25 23:18:03,929 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:18:04,550 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:18:04,705 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:09,706 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:14,707 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:19,714 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:24,721 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:29,713 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:34,703 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:18:34,707 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:39,711 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:44,720 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:49,707 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:54,715 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:18:59,712 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:19:04,552 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:19:04,709 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:19:09,719 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:19:14,711 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:19:19,714 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:19:24,715 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:22:10,740 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:22:10,741 INFO: CORS middleware qo'shildi
+2025-11-25 23:22:10,742 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:22:10,751 INFO: Auth router qo'shildi
+2025-11-25 23:22:10,783 INFO: Telegram router qo'shildi
+2025-11-25 23:22:15,709 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:22:15,781 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:22:15,894 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:22:20,895 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:22:25,901 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:22:30,909 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:22:35,906 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:22:40,907 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:22:45,784 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:22:45,908 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:22:50,899 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:22:55,896 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:00,906 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:05,904 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:10,907 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:16,707 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:23:16,709 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:21,704 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:26,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:31,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:36,705 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:41,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:46,702 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:23:46,704 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:51,701 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:23:56,703 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:24:01,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:24:06,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:24:11,691 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:24:16,694 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:24:35,695 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:24:46,699 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:25:16,705 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:25:35,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:26:35,695 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:26:36,709 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:27:35,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:27:36,714 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:28:35,702 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:28:36,716 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:29:35,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:29:36,709 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:30:35,699 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:30:35,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:31:35,691 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:31:36,707 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:32:35,698 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:32:36,714 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:33:35,702 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:33:36,716 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:34:35,690 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:34:36,707 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:35:35,693 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:35:36,709 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:35:49,455 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:35:50,472 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:35:50,893 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:35:51,909 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:35:51,974 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:35:52,037 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:35:57,317 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:02,040 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:03,575 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:36:03,609 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:36:03,644 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:08,656 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:13,647 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:18,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:23,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:28,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:33,698 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:36:33,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:38,701 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:43,704 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:48,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:53,695 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:36:58,698 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:37:03,707 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:37:03,712 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:37:08,702 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:37:13,704 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:37:18,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:37:23,701 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:37:28,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:37:33,620 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:37:33,662 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:37:38,648 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:37:58,509 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:37:58,510 INFO: CORS middleware qo'shildi
+2025-11-25 23:37:58,511 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:37:58,521 INFO: Auth router qo'shildi
+2025-11-25 23:37:58,527 INFO: Telegram router qo'shildi
+2025-11-25 23:37:58,724 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:37:58,774 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:37:58,873 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:03,877 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:08,876 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:13,877 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:18,880 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:23,876 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:28,782 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:38:28,876 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:33,881 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:38,874 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:44,702 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:49,702 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:54,689 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:38:58,775 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:38:58,879 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:03,876 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:08,878 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:13,878 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:18,882 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:24,695 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:29,694 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:39:29,698 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:34,697 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:39,697 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:44,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:49,695 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:54,708 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:39:59,698 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:39:59,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:04,698 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:08,877 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:19,144 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:40:19,145 INFO: CORS middleware qo'shildi
+2025-11-25 23:40:19,146 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:40:19,154 INFO: Auth router qo'shildi
+2025-11-25 23:40:19,159 INFO: Telegram router qo'shildi
+2025-11-25 23:40:19,203 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:21,334 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:40:21,398 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:40:21,411 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:26,412 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:31,413 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:36,412 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:41,412 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:46,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:51,696 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:40:51,698 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:40:56,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:01,690 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:06,691 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:11,691 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:16,692 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:21,698 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:41:21,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:26,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:31,691 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:36,709 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:41,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:47,932 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:51,368 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:41:51,414 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:41:56,412 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:01,412 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:06,419 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:16,065 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:42:16,065 INFO: CORS middleware qo'shildi
+2025-11-25 23:42:16,066 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:42:16,075 INFO: Auth router qo'shildi
+2025-11-25 23:42:16,081 INFO: Telegram router qo'shildi
+2025-11-25 23:42:16,703 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:19,904 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:42:19,986 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:42:20,075 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:24,980 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:29,987 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:34,994 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:39,986 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:44,989 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:49,950 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:42:49,986 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:54,989 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:42:59,993 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:43:04,989 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:43:41,619 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:43:41,620 INFO: CORS middleware qo'shildi
+2025-11-25 23:43:41,622 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:43:41,630 INFO: Auth router qo'shildi
+2025-11-25 23:43:41,637 INFO: Telegram router qo'shildi
+2025-11-25 23:43:41,792 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:43:44,989 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:43:48,149 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:43:48,230 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:43:48,290 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:43:53,240 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:43:58,235 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:03,692 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:08,693 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:13,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:18,698 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:44:18,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:23,692 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:28,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:33,710 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:38,690 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:48,250 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:44:48,251 INFO: CORS middleware qo'shildi
+2025-11-25 23:44:48,252 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:44:48,260 INFO: Auth router qo'shildi
+2025-11-25 23:44:48,266 INFO: Telegram router qo'shildi
+2025-11-25 23:44:48,705 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:44:48,707 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:51,517 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:44:51,611 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:44:51,631 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:44:56,598 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:45:01,690 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:45:06,693 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:45:11,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:45:16,693 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:45:21,699 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:45:21,701 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:45:26,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:45:31,692 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:45:36,603 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:45:41,702 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:46:58,663 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:46:58,664 INFO: CORS middleware qo'shildi
+2025-11-25 23:46:58,666 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:46:58,674 INFO: Auth router qo'shildi
+2025-11-25 23:46:58,741 INFO: Telegram router qo'shildi
+2025-11-25 23:47:03,703 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:05,126 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:47:05,184 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:47:05,221 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:10,194 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:15,195 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:20,692 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:25,701 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:30,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:35,691 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:47:35,693 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:40,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:45,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:50,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:47:55,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:00,199 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:05,165 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:48:05,211 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:10,201 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:15,198 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:20,691 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:25,710 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:30,702 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:35,692 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:48:35,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:40,693 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:45,692 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:48:50,698 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:02,116 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:49:02,116 INFO: CORS middleware qo'shildi
+2025-11-25 23:49:02,118 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:49:02,158 INFO: Auth router qo'shildi
+2025-11-25 23:49:02,175 INFO: Telegram router qo'shildi
+2025-11-25 23:49:02,218 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:05,698 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:49:05,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:10,564 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:11,908 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:49:11,970 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:49:12,041 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:16,974 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:22,707 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:27,691 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:30,052 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:49:30,135 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:49:30,140 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:38,913 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:49:38,913 INFO: CORS middleware qo'shildi
+2025-11-25 23:49:38,914 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:49:38,923 INFO: Auth router qo'shildi
+2025-11-25 23:49:38,932 INFO: Telegram router qo'shildi
+2025-11-25 23:49:40,129 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:45,129 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:50,132 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:49:55,140 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:00,087 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:50:00,130 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:05,138 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:10,129 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:15,128 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:20,135 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:25,131 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:30,085 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:50:30,127 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:35,126 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:40,130 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:45,133 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:50,134 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:50:55,137 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:00,695 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:51:00,697 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:05,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:10,698 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:15,691 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:20,693 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:25,702 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:30,692 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:51:30,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:35,706 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:40,704 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:45,695 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:50,698 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:51:55,701 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:52:00,692 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:52:30,696 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:52:35,522 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:52:37,307 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:52:37,394 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:52:37,433 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:52:42,392 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:52:47,389 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:52:52,397 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:52:57,389 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:02,393 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:07,704 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:53:07,706 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:14,598 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:53:14,598 INFO: CORS middleware qo'shildi
+2025-11-25 23:53:14,599 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:53:14,608 INFO: Auth router qo'shildi
+2025-11-25 23:53:14,614 INFO: Telegram router qo'shildi
+2025-11-25 23:53:17,386 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:18,404 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:53:18,483 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:53:18,511 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:23,490 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:28,493 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:33,496 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:38,497 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:43,499 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:48,448 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:53:48,489 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:53,496 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:53:58,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:03,697 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:08,697 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:13,688 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:18,699 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:54:18,702 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:23,704 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:28,692 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:33,691 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:38,689 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:43,703 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:48,692 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:54:48,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:54:53,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:55:18,689 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:55:35,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:55:48,693 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:56:18,693 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:56:30,283 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:56:31,540 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:56:31,656 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:56:31,659 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:56:40,633 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:56:40,633 INFO: CORS middleware qo'shildi
+2025-11-25 23:56:40,634 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:56:40,643 INFO: Auth router qo'shildi
+2025-11-25 23:56:40,649 INFO: Telegram router qo'shildi
+2025-11-25 23:56:41,703 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:56:46,498 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:56:46,569 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:56:46,575 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:56:51,570 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:56:56,577 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:01,688 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:06,700 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:11,572 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:16,529 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:57:16,576 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:21,697 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:26,576 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:31,571 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:36,585 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:41,577 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:46,529 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:57:46,578 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:51,575 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:57:56,573 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:01,571 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:06,746 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:11,706 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:16,702 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:58:16,704 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:21,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:26,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:31,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:36,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:41,702 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:52,497 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-25 23:58:52,497 INFO: CORS middleware qo'shildi
+2025-11-25 23:58:52,498 INFO: Statik fayllar /media ga ulandi
+2025-11-25 23:58:52,507 INFO: Auth router qo'shildi
+2025-11-25 23:58:52,513 INFO: Telegram router qo'shildi
+2025-11-25 23:58:52,707 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:56,576 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:58:57,592 INFO: Root sahifaga so'rov keldi
+2025-11-25 23:58:57,690 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:58:57,693 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:02,684 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:08,696 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:12,687 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:17,699 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:23,698 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:27,689 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:59:27,691 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:33,693 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:38,685 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:42,695 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:48,697 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:53,694 INFO: System stats endpointiga so'rov keldi
+2025-11-25 23:59:57,693 INFO: Loglar endpointiga so'rov keldi
+2025-11-25 23:59:58,696 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:00:03,718 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:00:08,686 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:00:12,687 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:00:22,301 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:00:22,301 INFO: CORS middleware qo'shildi
+2025-11-26 00:00:22,303 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:00:22,311 INFO: Auth router qo'shildi
+2025-11-26 00:00:22,318 INFO: Telegram router qo'shildi
+2025-11-26 00:00:23,690 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:00:25,950 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:00:26,239 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:00:26,245 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:00:31,695 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:00:36,690 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:00:41,695 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:00:46,686 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:00:51,691 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:04:12,481 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:04:12,481 INFO: CORS middleware qo'shildi
+2025-11-26 00:04:12,483 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:04:12,494 INFO: Auth router qo'shildi
+2025-11-26 00:04:12,527 INFO: Telegram router qo'shildi
+2025-11-26 00:04:12,576 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:04:14,811 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:04:14,877 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:04:14,884 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:04:20,690 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:04:25,690 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:04:30,697 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:04:35,695 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:04:40,687 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:04:45,698 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:04:45,700 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:04:50,686 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:04:55,687 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:05:00,693 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:05:05,695 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:05:10,684 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:05:50,772 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:05:50,773 INFO: CORS middleware qo'shildi
+2025-11-26 00:05:50,774 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:05:50,784 INFO: Auth router qo'shildi
+2025-11-26 00:05:50,790 INFO: Telegram router qo'shildi
+2025-11-26 00:05:50,937 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:05:55,698 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:00,704 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:04,896 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:05,911 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:06:06,038 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:06:06,044 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:10,991 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:15,994 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:20,990 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:25,997 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:31,690 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:35,950 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:06:35,993 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:41,690 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:46,693 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:51,696 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:06:56,690 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:07:01,699 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:07:05,954 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:07:06,020 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:07:10,990 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:07:15,993 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:07:20,996 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:07:25,993 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:07:30,995 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:07:35,963 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:07:35,999 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:07:41,688 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:08:29,513 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:08:29,514 INFO: CORS middleware qo'shildi
+2025-11-26 00:08:29,515 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:08:29,525 INFO: Auth router qo'shildi
+2025-11-26 00:08:29,531 INFO: Telegram router qo'shildi
+2025-11-26 00:08:31,234 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:08:32,277 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:08:32,342 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:08:32,388 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:08:37,364 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:08:42,377 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:08:47,362 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:08:52,695 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:08:57,697 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:02,686 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:09:02,688 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:07,695 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:12,692 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:17,692 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:22,699 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:27,695 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:32,324 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:09:32,362 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:37,372 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:42,691 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:47,697 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:52,684 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:09:57,376 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:10:02,315 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:10:02,362 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:10:07,371 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:10:12,364 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:10:17,367 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:10:22,369 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:10:27,686 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:10:32,691 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:10:32,693 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:10:37,698 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:10:42,685 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:12:28,737 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:12:28,737 INFO: CORS middleware qo'shildi
+2025-11-26 00:12:28,739 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:12:28,747 INFO: Auth router qo'shildi
+2025-11-26 00:12:28,752 INFO: Telegram router qo'shildi
+2025-11-26 00:12:29,005 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:12:32,316 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:12:32,369 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:12:33,385 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:12:33,498 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:12:33,501 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:12:38,477 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:12:43,690 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:12:48,698 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:12:53,698 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:03,669 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:13:03,670 INFO: CORS middleware qo'shildi
+2025-11-26 00:13:03,671 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:13:03,685 INFO: Auth router qo'shildi
+2025-11-26 00:13:03,691 INFO: Telegram router qo'shildi
+2025-11-26 00:13:03,958 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:13:03,962 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:05,509 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:13:05,634 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:13:05,646 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:10,614 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:15,617 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:20,621 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:25,619 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:30,613 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:35,554 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:13:35,614 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:40,612 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:45,610 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:50,701 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:13:55,687 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:14:00,691 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:14:05,688 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:14:05,691 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:14:10,688 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:14:15,691 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:14:20,698 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:14:25,687 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:14:30,695 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:14:35,693 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:14:35,696 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:14:40,698 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:14:45,685 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:02,523 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:05,547 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:15:05,625 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:18,234 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:15:18,235 INFO: CORS middleware qo'shildi
+2025-11-26 00:15:18,236 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:15:18,246 INFO: Auth router qo'shildi
+2025-11-26 00:15:18,252 INFO: Telegram router qo'shildi
+2025-11-26 00:15:20,611 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:21,628 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:15:21,694 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:15:21,706 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:26,710 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:31,719 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:36,708 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:42,687 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:47,691 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:51,686 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:15:52,697 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:15:56,706 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:01,721 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:06,710 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:12,698 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:17,692 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:21,667 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:16:21,711 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:26,716 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:31,709 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:36,718 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:42,695 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:47,698 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:16:51,691 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:16:52,689 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:17:34,040 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:17:34,041 INFO: CORS middleware qo'shildi
+2025-11-26 00:17:34,042 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:17:34,053 INFO: Auth router qo'shildi
+2025-11-26 00:17:34,086 INFO: Telegram router qo'shildi
+2025-11-26 00:17:34,501 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:17:36,717 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:17:41,464 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:17:41,537 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:17:41,552 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:17:46,558 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:17:51,554 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:17:56,562 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:18:01,559 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:18:06,568 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:18:11,518 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:18:11,556 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:18:16,557 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:18:21,689 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:18:26,694 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:18:31,550 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:18:36,549 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:18:41,508 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:18:41,554 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:18:46,561 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:21:18,441 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:21:18,441 INFO: CORS middleware qo'shildi
+2025-11-26 00:21:18,442 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:21:18,450 INFO: Auth router qo'shildi
+2025-11-26 00:21:18,457 INFO: Telegram router qo'shildi
+2025-11-26 00:21:21,720 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:22:50,331 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:22:50,331 INFO: CORS middleware qo'shildi
+2025-11-26 00:22:50,332 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:22:50,341 INFO: Auth router qo'shildi
+2025-11-26 00:22:50,346 INFO: Telegram router qo'shildi
+2025-11-26 00:22:53,176 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:22:53,228 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:22:53,311 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:22:58,324 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:01,335 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:23:01,402 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:23:01,406 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:06,406 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:07,421 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:23:07,506 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:23:07,512 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:12,520 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:17,522 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:22,522 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:23,623 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:23:23,688 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:23:23,700 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:28,702 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:31,462 INFO: Root sahifaga so'rov keldi
+2025-11-26 00:23:31,526 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:23:31,532 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:36,535 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:41,687 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:46,691 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:51,685 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:23:56,698 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:24:01,686 INFO: Loglar endpointiga so'rov keldi
+2025-11-26 00:24:01,688 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:24:06,699 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:24:11,694 INFO: System stats endpointiga so'rov keldi
+2025-11-26 00:24:33,843 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:24:33,844 INFO: CORS middleware qo'shildi
+2025-11-26 00:24:33,845 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:24:33,854 INFO: Auth router qo'shildi
+2025-11-26 00:24:33,869 INFO: Telegram router qo'shildi
+2025-11-26 00:27:59,069 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:27:59,069 INFO: CORS middleware qo'shildi
+2025-11-26 00:27:59,103 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:27:59,118 INFO: Auth router qo'shildi
+2025-11-26 00:27:59,138 INFO: Telegram router qo'shildi
+2025-11-26 00:28:50,040 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"
+2025-11-26 00:29:01,612 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"
+2025-11-26 00:29:39,723 INFO: HTTP Request: POST https://kqgjxxnnhcdcvpkkpvwi.supabase.co/rest/v1/rpc/get_users_safe "HTTP/2 404 Not Found"

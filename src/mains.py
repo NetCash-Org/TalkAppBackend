@@ -1,7 +1,9 @@
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Optional, Any
 from src.models.user import LoginIn, LoginOut, SetPlanIn, SupabaseUserRaw, UserAdmin, UserCreate, UserOut, UserSafe, UserUpdate, StartLoginIn, VerifyCodeIn, VerifyPasswordIn
 from fastapi import FastAPI, HTTPException, Path, Header, APIRouter
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from src.config import API_ID, API_HASH, SESS_ROOT, PENDING_FILE, supabase, supabase_service
 import json
@@ -81,12 +83,59 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# --- ROOT PAGE: Minimalistik chiroyli sahifa ---
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    return """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TalkApp Backend</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                padding: 0;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                text-align: center;
+            }
+            .container {
+                max-width: 600px;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 3em;
+                margin-bottom: 20px;
+            }
+            p {
+                font-size: 1.2em;
+                opacity: 0.9;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome to TalkApp</h1>
+            <p>Your backend is running smoothly.</p>
+        </div>
+    </body>
+    </html>
+    """
+
+
 # --- SOG'LIK: Supabase'ga ulanishni tekshirish ---
 @app.get("/check")
 async def check_connection():
     try:
-        # oddiy RPC chaqiruv bilan tekshirish
-        _ = supabase.rpc("get_users_safe").execute()
+        # Test connection by trying to list users (will check if admin access works)
+        _ = supabase_service.auth.admin.list_users()
         return {"message": "Supabase'ga ulanildi", "status": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Ulanish xatosi: {str(e)}")
@@ -96,8 +145,23 @@ async def check_connection():
 @app.get("/users", response_model=list[UserSafe])
 async def get_users():
     try:
-        resp = supabase.rpc("get_users_safe").execute()
-        return [UserSafe(**row) for row in resp.data or []]
+        resp = supabase_service.auth.admin.list_users()
+        users = []
+        for user in resp:
+            # Map admin user data to UserSafe model
+            user_data = {
+                "id": str(user.id),
+                "email": user.email,
+                "phone": getattr(user, 'phone', None),
+                "created_at": user.created_at,
+                "last_sign_in_at": getattr(user, 'last_sign_in_at', None),
+                "confirmed_at": getattr(user, 'email_confirmed_at', None),
+                "is_anonymous": getattr(user, 'is_anonymous', False),
+                "raw_app_meta_data": getattr(user, 'app_metadata', None) or getattr(user, 'raw_app_meta_data', None),
+                "raw_user_meta_data": getattr(user, 'user_metadata', None) or getattr(user, 'raw_user_meta_data', None),
+            }
+            users.append(UserSafe(**user_data))
+        return users
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -106,8 +170,48 @@ async def get_users():
 @app.get("/admin/users", response_model=list[UserAdmin])
 async def get_users_admin():
     try:
-        resp = supabase.rpc("get_users_admin").execute()
-        return [UserAdmin(**row) for row in resp.data or []]
+        resp = supabase_service.auth.admin.list_users()
+        users = []
+        for user in resp:
+            # Map full admin user data to UserAdmin model
+            user_data = {
+                "instance_id": getattr(user, 'instance_id', None),
+                "id": str(user.id),
+                "aud": getattr(user, 'aud', None),
+                "role": getattr(user, 'role', None),
+                "email": user.email,
+                "email_confirmed_at": getattr(user, 'email_confirmed_at', None),
+                "invited_at": getattr(user, 'invited_at', None),
+                "confirmation_token": getattr(user, 'confirmation_token', ''),
+                "confirmation_sent_at": getattr(user, 'confirmation_sent_at', None),
+                "recovery_token": getattr(user, 'recovery_token', ''),
+                "recovery_sent_at": getattr(user, 'recovery_sent_at', None),
+                "email_change_token_new": getattr(user, 'email_change_token_new', ''),
+                "email_change": getattr(user, 'email_change', ''),
+                "email_change_sent_at": getattr(user, 'email_change_sent_at', None),
+                "last_sign_in_at": getattr(user, 'last_sign_in_at', None),
+                "raw_app_meta_data": getattr(user, 'app_metadata', None) or getattr(user, 'raw_app_meta_data', None),
+                "raw_user_meta_data": getattr(user, 'user_metadata', None) or getattr(user, 'raw_user_meta_data', None),
+                "is_super_admin": getattr(user, 'is_super_admin', None),
+                "created_at": user.created_at,
+                "updated_at": getattr(user, 'updated_at', None),
+                "phone": getattr(user, 'phone', None),
+                "phone_confirmed_at": getattr(user, 'phone_confirmed_at', None),
+                "phone_change": getattr(user, 'phone_change', ''),
+                "phone_change_token": getattr(user, 'phone_change_token', ''),
+                "phone_change_sent_at": getattr(user, 'phone_change_sent_at', None),
+                "confirmed_at": getattr(user, 'confirmed_at', None),
+                "email_change_token_current": getattr(user, 'email_change_token_current', ''),
+                "email_change_confirm_status": getattr(user, 'email_change_confirm_status', 0),
+                "banned_until": getattr(user, 'banned_until', None),
+                "reauthentication_token": getattr(user, 'reauthentication_token', ''),
+                "reauthentication_sent_at": getattr(user, 'reauthentication_sent_at', None),
+                "is_sso_user": bool(getattr(user, 'is_sso_user', False)),
+                "deleted_at": getattr(user, 'deleted_at', None),
+                "is_anonymous": bool(getattr(user, 'is_anonymous', False)),
+            }
+            users.append(UserAdmin(**user_data))
+        return users
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
@@ -616,8 +720,14 @@ async def get_users_with_telegrams():
     Admin: barcha userlar va ularga bog'langan Telegram akkauntlar (profil ma'lumotlari bilan).
     """
     try:
-        resp = supabase.rpc("get_users_safe").execute()
-        users = resp.data or []
+        resp = supabase_service.auth.admin.list_users()
+        users = []
+        for user in resp:
+            users.append({
+                "id": str(user.id),
+                "email": user.email,
+                "phone": getattr(user, 'phone', None),
+            })
 
         results = []
         # Profil yig‘ish parallel bo‘lishi uchun coroutine tayyorlaymiz

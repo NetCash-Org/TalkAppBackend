@@ -1,0 +1,283 @@
+
+    <!DOCTYPE html>
+    <html lang="uz">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TalkApp Backend</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                padding: 20px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                min-height: 100vh;
+            }
+            .header {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .header h1 {
+                font-size: 3em;
+                margin-bottom: 10px;
+            }
+            .header p {
+                font-size: 1.2em;
+                opacity: 0.9;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .card {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                padding: 20px;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            .card h2 {
+                margin-top: 0;
+                font-size: 1.5em;
+            }
+            .card ul {
+                list-style: none;
+                padding: 0;
+            }
+            .card li {
+                margin-bottom: 10px;
+            }
+            .logs {
+                font-family: monospace;
+                background: rgba(0, 0, 0, 0.5);
+                padding: 10px;
+                border-radius: 5px;
+                max-height: 200px;
+                overflow-y: auto;
+                white-space: pre-wrap;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>TalkApp Backend</h1>
+            <p>Telegram Integratsiya Platformasi</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h2>Loyiha Tavsifi</h2>
+                <p>TalkApp Backend - bu Telegram akkauntlarini va foydalanuvchi autentifikatsiyasini boshqarish uchun FastAPI asosidagi backend xizmat. U foydalanuvchi boshqaruvi, Telegram sessiyalarini boshqarish va media saqlash uchun xavfsiz API endpointlarini taqdim etadi.</p>
+            </div>
+            <div class="card">
+                <h2>Asosiy Xususiyatlar</h2>
+                <ul>
+                    <li>Foydalanuvchi autentifikatsiyasi va avtorizatsiyasi</li>
+                    <li>Telegram akkauntlarini boshqarish</li>
+                    <li>Sessiya saqlash va xavfsizlik</li>
+                    <li>Media fayllarini boshqarish</li>
+                    <li>Admin panel API'lari</li>
+                    <li>CORS qo'llab-quvvatlash</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>API Endpointlari</h2>
+                <ul>
+                    <li><code>POST /auth/login</code> - Foydalanuvchi kirishi</li>
+                    <li><code>GET /auth/me</code> - Joriy foydalanuvchi ma'lumotlari</li>
+                    <li><code>POST /start_login</code> - Telegram kirish boshlanishi</li>
+                    <li><code>GET /users</code> - Foydalanuvchilarni ro'yxati</li>
+                    <li><code>GET /check</code> - Sog'liq tekshiruvi</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>Tizim Holati</h2>
+                <p>Holat: <span style="color: #4CAF50;">Ishlamoqda</span></p>
+                <p>Versiya: 1.0.0</p>
+                <p>Muhit: Ishlab chiqish</p>
+            </div>
+            <div class="card" style="grid-column: span 2;">
+                <h2>Tizim Monitoring</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div>
+                        <h3>CPU Foydalanish</h3>
+                        <canvas id="cpuChart" width="200" height="150"></canvas>
+                    </div>
+                    <div>
+                        <h3>RAM Foydalanish</h3>
+                        <canvas id="ramChart" width="200" height="150"></canvas>
+                    </div>
+                    <div>
+                        <h3>Disk Foydalanish</h3>
+                        <canvas id="diskChart" width="200" height="150"></canvas>
+                    </div>
+                    <div>
+                        <h3>Tarmoq Trafiki</h3>
+                        <canvas id="networkChart" width="200" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="grid-column: span 2;">
+                <h2>So'nggi Loglar</h2>
+                <div class="logs" id="logs">
+Loglar yuklanmoqda...
+                </div>
+            </div>
+        </div>
+        <script>
+            function colorizeLogLine(line) {
+                let color = 'white'; // default
+
+                if (line.includes('200')) {
+                    color = '#4CAF50'; // green for success
+                } else if (line.includes('404') || line.includes('500') || line.includes('ERROR')) {
+                    color = '#f44336'; // red for errors
+                } else if (line.includes('INFO')) {
+                    color = '#E0E0E0'; // light gray for info
+                } else if (line.includes('WARNING') || line.includes('WARN')) {
+                    color = '#FFB74D'; // light orange for warnings
+                } else if (line.includes('DEBUG')) {
+                    color = '#64B5F6'; // light blue for debug
+                } else if (line.includes('401') || line.includes('403')) {
+                    color = '#FF8A65'; // light deep orange for auth errors
+                }
+
+                return `<span style="color: ${color};">${line}</span>`;
+            }
+
+            async function fetchLogs() {
+                try {
+                    const response = await fetch('/logs');
+                    const data = await response.json();
+                    const logsDiv = document.getElementById('logs');
+                    const coloredLogs = data.logs.map(colorizeLogLine).join('<br>');
+                    logsDiv.innerHTML = coloredLogs;
+                } catch (error) {
+                    console.error('Loglarni yuklashda xatolik:', error);
+                    document.getElementById('logs').innerHTML = '<span style="color: #f44336;">Loglarni yuklashda xatolik yuz berdi</span>';
+                }
+            }
+
+            // Initial load
+            fetchLogs();
+
+            // Update logs every 30 seconds
+            setInterval(fetchLogs, 30000);
+
+            // System monitoring charts
+            let cpuChart, ramChart, diskChart, networkChart;
+
+            function createCharts() {
+                const chartOptions = {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        }
+                    }
+                };
+
+                cpuChart = new Chart(document.getElementById('cpuChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Foydalanilgan', 'Bo'sh'],
+                        datasets: [{
+                            data: [0, 100],
+                            backgroundColor: ['#FF6384', '#36A2EB']
+                        }]
+                    },
+                    options: chartOptions
+                });
+
+                ramChart = new Chart(document.getElementById('ramChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Foydalanilgan', 'Bo'sh'],
+                        datasets: [{
+                            data: [0, 100],
+                            backgroundColor: ['#FF9F40', '#FF6384']
+                        }]
+                    },
+                    options: chartOptions
+                });
+
+                diskChart = new Chart(document.getElementById('diskChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Foydalanilgan', 'Bo'sh'],
+                        datasets: [{
+                            data: [0, 100],
+                            backgroundColor: ['#4BC0C0', '#FF9F40']
+                        }]
+                    },
+                    options: chartOptions
+                });
+
+                networkChart = new Chart(document.getElementById('networkChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Yuborilgan (MB)', 'Qabul qilingan (MB)'],
+                        datasets: [{
+                            label: 'Tarmoq trafiki',
+                            data: [0, 0],
+                            backgroundColor: ['#9966FF', '#36A2EB']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+
+            async function fetchSystemStats() {
+                try {
+                    const response = await fetch('/system_stats');
+                    const data = await response.json();
+
+                    if (data.error) {
+                        console.error('System stats xatolik:', data.error);
+                        return;
+                    }
+
+                    // Update CPU chart
+                    cpuChart.data.datasets[0].data = [data.cpu_percent, 100 - data.cpu_percent];
+                    cpuChart.update();
+
+                    // Update RAM chart
+                    ramChart.data.datasets[0].data = [data.ram_percent, 100 - data.ram_percent];
+                    ramChart.update();
+
+                    // Update Disk chart
+                    diskChart.data.datasets[0].data = [data.disk_percent, 100 - data.disk_percent];
+                    diskChart.update();
+
+                    // Update Network chart
+                    networkChart.data.datasets[0].data = [data.network_sent, data.network_recv];
+                    networkChart.update();
+
+                } catch (error) {
+                    console.error('System stats yuklashda xatolik:', error);
+                }
+            }
+
+            // Initialize charts and fetch initial data
+            createCharts();
+            fetchSystemStats();
+
+            // Update system stats every 5 seconds
+            setInterval(fetchSystemStats, 5000);
+        </script>
+    </body>
+    </html>
+    

@@ -1,0 +1,401 @@
+{
+  "info": {
+    "name": "TalkApp Backend API",
+    "description": "API collection for TalkApp Backend - FastAPI application with Supabase auth and Telegram integration",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Check Connection",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/check",
+              "host": ["{{base_url}}"],
+              "path": ["check"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login with Email/Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/auth/me",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "me"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Users",
+      "item": [
+        {
+          "name": "Get Users (Safe)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Get Users (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/users",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "users"]
+            }
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"newuser@example.com\",\n  \"password\": \"password123\",\n  \"user_metadata\": {}\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/users",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "users"]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"updated@example.com\",\n  \"password\": \"newpassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "users", "{{user_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "users", "{{user_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Set Plan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"uuid-here\",\n  \"plan\": \"premium\",\n  \"accounts_limit\": 5,\n  \"features\": {\"ai_pro\": true},\n  \"current_period_end\": \"2025-12-31T23:59:59Z\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/set-plan",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "set-plan"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Telegram",
+      "item": [
+        {
+          "name": "Start Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"uuid-here\",\n  \"phone_number\": \"+998901234567\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/start_login",
+              "host": ["{{base_url}}"],
+              "path": ["start_login"]
+            }
+          }
+        },
+        {
+          "name": "Verify Code",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"uuid-here\",\n  \"phone_number\": \"+998901234567\",\n  \"code\": \"12345\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/verify_code",
+              "host": ["{{base_url}}"],
+              "path": ["verify_code"]
+            }
+          }
+        },
+        {
+          "name": "Verify Password (2FA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"uuid-here\",\n  \"phone_number\": \"+998901234567\",\n  \"password\": \"2fa_password\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/verify_password",
+              "host": ["{{base_url}}"],
+              "path": ["verify_password"]
+            }
+          }
+        },
+        {
+          "name": "Get Users with Telegrams (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/users-with-telegrams",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "users-with-telegrams"]
+            }
+          }
+        },
+        {
+          "name": "Get My Telegrams",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/me/telegrams",
+              "host": ["{{base_url}}"],
+              "path": ["me", "telegrams"]
+            }
+          }
+        },
+        {
+          "name": "Logout One Telegram (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/users/{{user_id}}/telegrams/{{index}}",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "users", "{{user_id}}", "telegrams", "{{index}}"]
+            }
+          }
+        },
+        {
+          "name": "Logout One Telegram (User)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/me/telegrams/{{index}}",
+              "host": ["{{base_url}}"],
+              "path": ["me", "telegrams", "{{index}}"]
+            }
+          }
+        },
+        {
+          "name": "Logout All Telegrams (User)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/me/telegrams",
+              "host": ["{{base_url}}"],
+              "path": ["me", "telegrams"]
+            }
+          }
+        },
+        {
+          "name": "List Private Chats",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/me/private_chats/{{user_id}}/{{session_index}}?dialog_limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["me", "private_chats", "{{user_id}}", "{{session_index}}"],
+              "query": [
+                {
+                  "key": "dialog_limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    },
+    {
+      "key": "admin_token",
+      "value": ""
+    },
+    {
+      "key": "user_id",
+      "value": ""
+    },
+    {
+      "key": "index",
+      "value": "1"
+    },
+    {
+      "key": "session_index",
+      "value": "1"
+    }
+  ]
+}

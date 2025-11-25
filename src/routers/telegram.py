@@ -144,10 +144,18 @@ async def verify_password(body: VerifyPasswordIn):
 # --- Admin: barcha userlar Telegramlari (profil bilan)
 @router.get("/admin/users-with-telegrams")
 async def get_users_with_telegrams():
-    from src.config import supabase
+    from src.config import supabase_service
     try:
-        resp = supabase.rpc("get_users_safe").execute()
-        users = resp.data or []
+        resp = supabase_service.auth.admin.list_users()
+        users = []
+        for user in resp:
+            # Map to safe user data
+            user_data = {
+                "id": str(user.id),
+                "email": user.email,
+                "phone": getattr(user, 'phone', None),
+            }
+            users.append(user_data)
 
         async def build_row(u: dict) -> dict:
             uid = u.get("id")
