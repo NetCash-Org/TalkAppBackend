@@ -1257,3 +1257,107 @@
 2025-11-26 00:28:50,040 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"
 2025-11-26 00:29:01,612 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"
 2025-11-26 00:29:39,723 INFO: HTTP Request: POST https://kqgjxxnnhcdcvpkkpvwi.supabase.co/rest/v1/rpc/get_users_safe "HTTP/2 404 Not Found"
+2025-11-26 00:31:24,014 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-26 00:31:24,014 INFO: CORS middleware qo'shildi
+2025-11-26 00:31:24,016 INFO: Statik fayllar /media ga ulandi
+2025-11-26 00:31:24,027 INFO: Auth router qo'shildi
+2025-11-26 00:31:24,082 INFO: Telegram router qo'shildi
+2025-11-26 00:31:41,397 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"
+2025-11-26 00:31:42,109 INFO: Connecting...
+2025-11-26 00:31:42,221 INFO: Connecting...
+2025-11-26 00:31:42,331 INFO: Connecting...
+2025-11-26 00:31:42,511 INFO: Start creating a new auth key on DC2
+2025-11-26 00:31:42,623 INFO: Connecting...
+2025-11-26 00:31:42,782 INFO: Start creating a new auth key on DC2
+2025-11-26 00:31:42,783 INFO: Connecting...
+2025-11-26 00:31:42,898 INFO: Connecting...
+2025-11-26 00:31:42,900 INFO: Connected! Production DC2 - IPv4
+2025-11-26 00:31:42,902 INFO: Connected! Production DC2 - IPv4
+2025-11-26 00:31:42,902 INFO: Connected! Production DC2 - IPv4
+2025-11-26 00:31:42,903 INFO: NetworkTask started
+2025-11-26 00:31:42,904 INFO: NetworkTask started
+2025-11-26 00:31:42,905 INFO: NetworkTask started
+2025-11-26 00:31:42,950 INFO: Connected! Production DC2 - IPv4
+2025-11-26 00:31:43,054 INFO: Connected! Production DC2 - IPv4
+2025-11-26 00:31:43,349 INFO: Connected! Production DC2 - IPv4
+2025-11-26 00:31:43,350 INFO: NetworkTask started
+2025-11-26 00:31:44,471 INFO: Session initialized: Layer 158
+2025-11-26 00:31:44,471 INFO: Device: CPython 3.13.7 - Pyrogram 2.0.106
+2025-11-26 00:31:44,471 INFO: System: Windows 10 (en)
+2025-11-26 00:31:44,471 INFO: Session started
+2025-11-26 00:31:44,482 INFO: PingTask started
+2025-11-26 00:31:44,576 INFO: Session initialized: Layer 158
+2025-11-26 00:31:44,576 INFO: Device: CPython 3.13.7 - Pyrogram 2.0.106
+2025-11-26 00:31:44,577 INFO: System: Windows 10 (en)
+2025-11-26 00:31:44,577 INFO: Session started
+2025-11-26 00:31:44,587 INFO: PingTask started
+2025-11-26 00:31:44,629 INFO: PingTask stopped
+2025-11-26 00:31:44,630 INFO: NetworkTask stopped
+2025-11-26 00:31:44,630 INFO: Disconnected
+2025-11-26 00:31:44,630 INFO: Session stopped
+2025-11-26 00:31:44,748 INFO: PingTask stopped
+2025-11-26 00:31:44,748 INFO: NetworkTask stopped
+2025-11-26 00:31:44,748 INFO: Disconnected
+2025-11-26 00:31:44,749 INFO: Session stopped
+2025-11-26 00:31:44,809 INFO: Session initialized: Layer 158
+2025-11-26 00:31:44,810 INFO: Device: CPython 3.13.7 - Pyrogram 2.0.106
+2025-11-26 00:31:44,810 INFO: System: Windows 10 (en)
+2025-11-26 00:31:44,811 INFO: Session started
+2025-11-26 00:31:44,824 INFO: PingTask started
+2025-11-26 00:31:45,053 INFO: PingTask stopped
+2025-11-26 00:31:45,054 INFO: NetworkTask stopped
+2025-11-26 00:31:45,054 INFO: Disconnected
+2025-11-26 00:31:45,054 INFO: Session stopped
+2025-11-26 00:31:45,074 INFO: Session initialized: Layer 158
+2025-11-26 00:31:45,074 INFO: Device: CPython 3.13.7 - Pyrogram 2.0.106
+2025-11-26 00:31:45,074 INFO: System: Windows 10 (en)
+2025-11-26 00:31:45,075 INFO: Session started
+2025-11-26 00:31:45,087 INFO: PingTask started
+2025-11-26 00:31:45,279 INFO: PingTask stopped
+2025-11-26 00:31:45,280 INFO: NetworkTask stopped
+2025-11-26 00:31:45,280 INFO: Disconnected
+2025-11-26 00:31:45,282 INFO: Session stopped
+2025-11-26 00:31:45,358 INFO: Done auth key exchange: DhGenOk
+2025-11-26 00:31:45,364 INFO: Disconnected
+2025-11-26 00:31:45,472 INFO: Connecting...
+2025-11-26 00:31:45,552 INFO: Done auth key exchange: DhGenOk
+2025-11-26 00:31:45,553 INFO: Disconnected
+2025-11-26 00:31:45,633 INFO: Connecting...
+2025-11-26 00:31:45,682 INFO: Connected! Production DC2 - IPv4
+2025-11-26 00:31:45,682 INFO: NetworkTask started
+2025-11-26 00:31:45,840 INFO: Connected! Production DC2 - IPv4
+2025-11-26 00:31:45,841 INFO: NetworkTask started
+2025-11-26 00:31:46,729 INFO: Session initialized: Layer 158
+2025-11-26 00:31:46,730 INFO: Device: CPython 3.13.7 - Pyrogram 2.0.106
+2025-11-26 00:31:46,730 INFO: System: Windows 10 (en)
+2025-11-26 00:31:46,730 INFO: Session started
+2025-11-26 00:31:46,741 INFO: PingTask started
+2025-11-26 00:31:46,828 INFO: Session initialized: Layer 158
+2025-11-26 00:31:46,829 INFO: Device: CPython 3.13.7 - Pyrogram 2.0.106
+2025-11-26 00:31:46,829 INFO: System: Windows 10 (en)
+2025-11-26 00:31:46,830 INFO: Session started
+2025-11-26 00:31:46,839 INFO: PingTask started
+2025-11-26 00:31:46,867 INFO: PingTask stopped
+2025-11-26 00:31:46,867 INFO: NetworkTask stopped
+2025-11-26 00:31:46,868 INFO: Disconnected
+2025-11-26 00:31:46,868 INFO: Session stopped
+2025-11-26 00:31:46,965 INFO: PingTask stopped
+2025-11-26 00:31:46,966 INFO: NetworkTask stopped
+2025-11-26 00:31:46,966 INFO: Disconnected
+2025-11-26 00:31:46,967 INFO: Session stopped
+2025-11-26 00:34:06,632 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/user "HTTP/2 403 Forbidden"
+2025-11-26 00:34:55,677 INFO: HTTP Request: POST https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/token?grant_type=password "HTTP/2 200 OK"
+2025-11-26 00:35:17,990 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-11-26 00:35:18,092 INFO: Connecting...
+2025-11-26 00:35:18,305 INFO: Connected! Production DC2 - IPv4
+2025-11-26 00:35:18,306 INFO: NetworkTask started
+2025-11-26 00:35:19,230 INFO: Session initialized: Layer 158
+2025-11-26 00:35:19,230 INFO: Device: CPython 3.13.7 - Pyrogram 2.0.106
+2025-11-26 00:35:19,231 INFO: System: Windows 10 (en)
+2025-11-26 00:35:19,231 INFO: Session started
+2025-11-26 00:35:19,241 INFO: PingTask started
+2025-11-26 00:35:19,382 INFO: PingTask stopped
+2025-11-26 00:35:19,382 INFO: NetworkTask stopped
+2025-11-26 00:35:19,382 INFO: Disconnected
+2025-11-26 00:35:19,383 INFO: Session stopped
+2025-11-26 00:36:00,265 INFO: HTTP Request: GET https://kqgjxxnnhcdcvpkkpvwi.supabase.co/auth/v1/admin/users?page=&per_page= "HTTP/2 200 OK"

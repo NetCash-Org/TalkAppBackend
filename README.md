@@ -90,6 +90,51 @@ Server `http://127.0.0.1:8000` da ishlaydi.
 
 ## 🔑 API Endpointlari
 
+### Umumiy endpointlar
+
+#### Bosh sahifa va monitoring
+```http
+GET /
+```
+**Javob**: HTML sahifa tizim monitoringi bilan (CPU, RAM, disk, tarmoq).
+
+#### Tizim loglarini ko'rish
+```http
+GET /logs
+```
+**Javob**: Oxirgi 50 ta log yozuvi.
+
+#### Tizim statistikasi
+```http
+GET /system_stats
+```
+**Javob**:
+```json
+{
+  "cpu_percent": 45.2,
+  "ram_percent": 67.8,
+  "ram_used": 5.4,
+  "ram_total": 8.0,
+  "disk_percent": 23.1,
+  "disk_used": 45.6,
+  "disk_total": 200.0,
+  "network_sent": 125.5,
+  "network_recv": 89.3
+}
+```
+
+#### Ulanishni tekshirish
+```http
+GET /check
+```
+**Javob**:
+```json
+{
+  "message": "Supabase'ga ulanildi",
+  "status": "success"
+}
+```
+
 ### Autentifikatsiya
 
 #### Login
@@ -102,20 +147,47 @@ Content-Type: application/json
   "password": "password"
 }
 ```
+**Javob**:
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "bearer",
+  "expires_in": 3600,
+  "refresh_token": "refresh_token_here",
+  "user": {
+    "id": "user-id",
+    "email": "user@example.com",
+    "aud": "authenticated",
+    "created_at": "2024-01-01T00:00:00Z",
+    "last_sign_in_at": "2024-01-01T00:00:00Z",
+    "email_confirmed_at": "2024-01-01T00:00:00Z",
+    "phone": null
+  }
+}
+```
 
 #### Joriy foydalanuvchi ma'lumotlari
 ```http
 GET /auth/me
 Authorization: Bearer <token>
 ```
+**Javob**: To'liq foydalanuvchi ma'lumotlari (SupabaseUserRaw modeli).
 
-### Admin endpointlar
+### Foydalanuvchi boshqaruvi
 
-#### Barcha foydalanuvchilarni ko'rish
+#### Barcha foydalanuvchilarni ko'rish (xavfsiz)
+```http
+GET /users
+Authorization: Bearer <admin-token>
+```
+**Javob**: Foydalanuvchilar ro'yxati (id, email, phone, created_at, va h.k.).
+
+#### Barcha foydalanuvchilarni ko'rish (admin)
 ```http
 GET /admin/users
 Authorization: Bearer <admin-token>
 ```
+**Javob**: To'liq foydalanuvchi ma'lumotlari ro'yxati.
 
 #### Foydalanuvchi yaratish
 ```http
@@ -125,15 +197,45 @@ Content-Type: application/json
 
 {
   "email": "newuser@example.com",
-  "password": "password123"
+  "password": "password123",
+  "user_metadata": {"name": "John Doe"},
+  "email_confirm": true
+}
+```
+**Javob**:
+```json
+{
+  "id": "user-id",
+  "email": "newuser@example.com"
 }
 ```
 
-#### Foydalanuvchilarni Telegram akkauntlari bilan ko'rish
+#### Foydalanuvchi ma'lumotlarini yangilash
 ```http
-GET /admin/users-with-telegrams
+PATCH /admin/users/{user_id}
+Authorization: Bearer <admin-token>
+Content-Type: application/json
+
+{
+  "email": "updated@example.com",
+  "password": "newpassword",
+  "user_metadata": {"name": "Jane Doe"}
+}
+```
+**Javob**:
+```json
+{
+  "id": "user-id",
+  "email": "updated@example.com"
+}
+```
+
+#### Foydalanuvchi o'chirish
+```http
+DELETE /admin/users/{user_id}
 Authorization: Bearer <admin-token>
 ```
+**Javob**: 204 No Content
 
 ### Telegram integratsiyasi
 
@@ -145,6 +247,16 @@ Content-Type: application/json
 {
   "phone_number": "+998901234567",
   "user_id": "supabase-user-id"
+}
+```
+**Javob**:
+```json
+{
+  "ok": true,
+  "message": "Kod yuborildi",
+  "phone_code_hash": "hash_here",
+  "session_name": "session_name",
+  "account_index": 0
 }
 ```
 
@@ -159,11 +271,151 @@ Content-Type: application/json
   "code": "12345"
 }
 ```
+**Javob**:
+```json
+{
+  "ok": true,
+  "status": "LOGGED_IN",
+  "session_name": "session_name",
+  "account_index": 0
+}
+```
+
+#### Parolni tasdiqlash (2FA)
+```http
+POST /verify_password
+Content-Type: application/json
+
+{
+  "phone_number": "+998901234567",
+  "user_id": "supabase-user-id",
+  "password": "mypassword"
+}
+```
+**Javob**:
+```json
+{
+  "ok": true,
+  "status": "LOGGED_IN",
+  "message": "2FA orqali login qilindi",
+  "session_name": "session_name",
+  "account_index": 0
+}
+```
+
+#### Foydalanuvchilarni Telegram akkauntlari bilan ko'rish
+```http
+GET /admin/users-with-telegrams
+Authorization: Bearer <admin-token>
+```
+**Javob**:
+```json
+{
+  "ok": true,
+  "users": [
+    {
+      "id": "user-id",
+      "email": "user@example.com",
+      "phone": "+998901234567",
+      "telegram_accounts": [
+        {
+          "session_name": "session_1",
+          "account_index": 0,
+          "phone": "+998901234567",
+          "status": "active"
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### O'z Telegram akkauntlarini ko'rish
+```http
+GET /me/telegrams
+Authorization: Bearer <token>
+```
+**Javob**:
+```json
+{
+  "ok": true,
+  "user_id": "user-id",
+  "email": "user@example.com",
+  "telegram_accounts": [...]
+}
+```
+
+#### Bitta Telegram sessiyasini o'chirish (admin)
+```http
+DELETE /admin/users/{user_id}/telegrams/{index}
+Authorization: Bearer <admin-token>
+```
+**Javob**:
+```json
+{
+  "ok": true,
+  "result": {
+    "status": "logged_out",
+    "session_name": "session_1"
+  }
+}
+```
+
+#### Bitta Telegram sessiyasini o'chirish (foydalanuvchi)
+```http
+DELETE /me/telegrams/{index}
+Authorization: Bearer <token>
+```
+**Javob**:
+```json
+{
+  "ok": true,
+  "result": {
+    "status": "logged_out",
+    "session_name": "session_1"
+  }
+}
+```
+
+#### Barcha Telegram sessiyalarini o'chirish
+```http
+DELETE /me/telegrams
+Authorization: Bearer <token>
+```
+**Javob**:
+```json
+{
+  "ok": true,
+  "results": [
+    {
+      "status": "logged_out",
+      "session_name": "session_1"
+    }
+  ]
+}
+```
 
 #### Shaxsiy chatlar ro'yxati
 ```http
 GET /me/private_chats/{user_id}/{session_index}?dialog_limit=10
 Authorization: Bearer <token>
+```
+**Javob**:
+```json
+{
+  "ok": true,
+  "count": 2,
+  "items": [
+    {
+      "id": 1844592233,
+      "full_name": "Dilshodjon Haydarov",
+      "username": "torex_dev",
+      "last_seen": "2025-09-15T12:30:00",
+      "is_online": true,
+      "photo_url": "/media/avatars/user_id/1/1844592233_big.jpg"
+    }
+  ]
+}
 ```
 
 ## 📊 Monitoring
