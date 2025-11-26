@@ -9,6 +9,7 @@ FastAPI, Pyrogram va Supabase texnologiyalari asosida qurilgan bo'lib, foydalanu
 - 📱 **Telegram integratsiyasi** - Ko'p akkauntli Telegram sessiyalarini boshqarish
 - 👥 **Admin panel** - Foydalanuvchilarni va ularning Telegram akkauntlarini boshqarish
 - 🖼️ **Media boshqaruvi** - Avatar va media fayllarini serverda saqlash
+- 🔍 **Audit logging** - Foydalanuvchi harakatlarini kuzatish va loglash
 - 📊 **Monitoring** - Tizim holatini real vaqtda kuzatish
 - 🌐 **Deploy-ready** - Railway, Heroku va boshqa platformalarda ishga tushirishga tayyor
 
@@ -27,6 +28,9 @@ TalkAppBackend/
 ├── src/
 │   ├── main.py                 # FastAPI asosiy fayl
 │   ├── config.py               # Konfiguratsiya va sozlamalar
+│   ├── middleware/
+│   │   ├── __init__.py
+│   │   └── audit_logging.py   # Audit logging middleware
 │   ├── routers/
 │   │   ├── auth.py            # Autentifikatsiya endpointlari
 │   │   └── telegram.py        # Telegram integratsiyasi
@@ -425,6 +429,16 @@ Server ishga tushganda `/` sahifasida tizim monitoringi mavjud:
 - Disk holati
 - Tarmoq trafigi
 - Real vaqt loglari
+
+## 🔍 Audit Logging
+
+Loyiha foydalanuvchi harakatlarini kuzatish uchun audit logging tizimini qo'llab-quvvatlaydi:
+
+- **Middleware orqali avtomatik loglash**: Har bir API so'rovi uchun foydalanuvchi harakatlari (login, logout, create, update, delete, file_upload) avtomatik ravishda logga yoziladi.
+- **Xotirada saqlash**: Oxirgi 10,000 ta log in-memory saqlanadi.
+- **Ma'lumotlar bazasi**: Audit loglari Supabase ma'lumotlar bazasida doimiy saqlanadi.
+- **Xavfsizlik**: Faqat admin foydalanuvchilar audit loglarini ko'ra oladi.
+- **Qo'shimcha ma'lumotlar**: IP manzil, qurilma ma'lumotlari, vaqt, va boshqa tafsilotlar logga yoziladi.
 
 ## 🚀 Deploy
 
