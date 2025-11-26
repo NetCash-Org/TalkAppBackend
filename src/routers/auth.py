@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from fastapi import APIRouter, HTTPException, Path, Header
+from typing import Optional
 from src.config import supabase, supabase_service
 from src.models.user import (
     LoginIn, LoginOut, UserSafe, UserAdmin, UserCreate, UserOut, UserUpdate, SupabaseUserRaw
@@ -136,6 +137,32 @@ async def admin_update_user(user_id: str = Path(...), payload: UserUpdate = ...)
             raise HTTPException(404, "User topilmadi.")
         raise HTTPException(400, str(e))
 
+@router.post("/admin/users/{user_id}/set-admin")
+async def set_user_admin(user_id: str = Path(...), is_admin: bool = True):
+    """Set or remove admin role for a user"""
+    try:
+        # Get current user metadata
+        user_res = supabase_service.auth.admin.get_user_by_id(user_id)
+        current_user = user_res.user
+        if not current_user:
+            raise HTTPException(404, "User topilmadi.")
+
+        current_meta = getattr(current_user, "app_metadata", {}) or {}
+
+        # Update metadata
+        new_meta = {**current_meta, "role": "admin" if is_admin else "user"}
+
+        res = supabase_service.auth.admin.update_user_by_id(user_id, {"app_metadata": new_meta})
+        user = getattr(res, "user", None) or (getattr(res, "data", {}) or {}).get("user")
+        if not user:
+            raise HTTPException(404, "User yangilanmadi.")
+
+        return {"message": f"User {'admin' if is_admin else 'user'} ga o'zgartirildi.", "user_id": user_id}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(400, str(e))
+
 @router.delete("/admin/users/{user_id}", status_code=204)
 async def admin_delete_user(user_id: str = Path(...)):
     try:
@@ -175,6 +202,77 @@ async def login_email_password(body: LoginIn):
         }
     except Exception as e:
         raise HTTPException(401, str(e))
+
+@router.post("/auth/logout")
+async def logout(authorization: str = Header(..., alias="Authorization")):
+    try:
+        if not authorization.lower().startswith("bearer "):
+            raise HTTPException(400, "Authorization header 'Bearer <token>' bo‘lishi kerak")
+        token = authorization.split(" ", 1)[1].strip()
+        # Sign out the user
+        supabase.auth.sign_out()
+        return {"message": "Logout muvaffaqiyatli"}
+    except Exception as e:
+        raise HTTPException(400, str(e))
+
+@router.get("/admin/audit-logs")
+async def get_audit_logs(
+    authorization: str = Header(..., alias="Authorization"),
+    user_id: Optional[str] = None,
+    action: Optional[str] = None,
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None,
+    limit: int = 100,
+    offset: int = 0
+):
+    try:
+        # Verify admin access
+        if not authorization.lower().startswith("bearer "):
+            raise HTTPException(400, "Authorization header 'Bearer <token>' bo‘lishi kerak")
+        token = authorization.split(" ", 1)[1].strip()
+        res = supabase.auth.get_user(token)
+        user = getattr(res, "user", None) or (getattr(res, "data", {}) or {}).get("user")
+        if not user:
+            raise HTTPException(401, "Noto‘g‘ri token")
+        app_meta = getattr(user, "raw_app_meta_data", None) or getattr(user, "app_metadata", None) or {}
+        is_super_admin = getattr(user, "is_super_admin", False)
+        is_admin = app_meta.get("role") == "admin" or is_super_admin
+        if not is_admin:
+            raise HTTPException(403, "Faqat adminlar uchun")
+
+        # Read from in-memory storage
+        from src.middleware.audit_logging import audit_logs_memory
+
+        # Filter logs
+        filtered_logs = list(audit_logs_memory)
+
+        # Apply filters
+        if user_id:
+            filtered_logs = [log for log in filtered_logs if log.get("user_id") == user_id]
+        if action:
+            filtered_logs = [log for log in filtered_logs if log.get("action") == action]
+        if start_date:
+            filtered_logs = [log for log in filtered_logs if log.get("timestamp", "") >= start_date]
+        if end_date:
+            filtered_logs = [log for log in filtered_logs if log.get("timestamp", "") <= end_date]
+
+        # Sort by timestamp descending
+        filtered_logs.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
+
+        # Apply pagination
+        total = len(filtered_logs)
+        logs = filtered_logs[offset:offset + limit]
+
+        return {
+            "logs": logs,
+            "total": total,
+            "limit": limit,
+            "offset": offset
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(500, str(e))
 
 @router.get("/auth/me", response_model=SupabaseUserRaw)
 async def get_current_user(authorization: str = Header(..., alias="Authorization")):

@@ -9,4 +9,4 @@ REM mkdir %SESS_ROOT%
 REM dir %MEDIA_ROOT%
 
 REM uvicorn src.main:app --port 8002 --proxy-headers --forwarded-allow-ips="*"
-uvicorn src.main:app --host 0.0.0.0 --port 8002 --proxy-headers --forwarded-allow-ips="*" --reload
+uvicorn src.main:app --port 8002 --proxy-headers --forwarded-allow-ips="*" --reload

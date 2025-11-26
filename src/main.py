@@ -4,25 +4,40 @@ from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from src.routers.auth import router as auth_router
 from src.routers.telegram import router as telegram_router
+from src.middleware.audit_logging import AuditLoggingMiddleware
 from starlette.staticfiles import StaticFiles
 from pathlib import Path
 import uvicorn
 import logging
+from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime
 import psutil
 import time
 import sys
 
-# Logging setup
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s %(levelname)s: %(message)s',
-    handlers=[
-        logging.FileHandler('app.log'),
-        logging.StreamHandler()
-    ]
-)
+# Logging setup with rotation
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+# Create formatters
+formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s')
+
+# Timed rotating file handler (daily rotation)
+file_handler = TimedRotatingFileHandler(
+    'app.log',
+    when='midnight',  # Rotate at midnight
+    interval=1,       # Every 1 interval (day)
+    backupCount=30    # Keep 30 days of logs
+)
+file_handler.setFormatter(formatter)
+
+# Stream handler for console
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter)
+
+# Add handlers to logger
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
 
 
 app = FastAPI()
@@ -38,6 +53,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 logger.info("CORS middleware qo'shildi")
+
+# Add audit logging middleware
+app.add_middleware(AuditLoggingMiddleware)
+logger.info("Audit logging middleware qo'shildi")
 
 # --- ROOT PAGE: Minimalistik chiroyli sahifa ---
 @app.get("/", response_class=HTMLResponse)
