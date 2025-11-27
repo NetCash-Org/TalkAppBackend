@@ -230,10 +230,21 @@ async def get_audit_logs(
         if not authorization.lower().startswith("bearer "):
             raise HTTPException(400, "Authorization header 'Bearer <token>' bo‘lishi kerak")
         token = authorization.split(" ", 1)[1].strip()
-        res = supabase.auth.get_user(token)
-        user = getattr(res, "user", None) or (getattr(res, "data", {}) or {}).get("user")
-        if not user:
-            raise HTTPException(401, "Noto‘g‘ri token")
+        try:
+            res = supabase.auth.get_user(token)
+            user = getattr(res, "user", None) or (getattr(res, "data", {}) or {}).get("user")
+            if not user:
+                raise HTTPException(401, "Noto‘g‘ri token")
+        except HTTPException:
+            raise
+        except Exception as e:
+            msg = str(e).lower()
+            if "session from session_id claim in jwt does not exist" in msg:
+                raise HTTPException(400, "Token muddati o'tgan yoki sessiya mavjud emas. Qayta login qiling.")
+            elif "invalid jwt" in msg or "jwt" in msg:
+                raise HTTPException(400, "Token noto'g'ri yoki yaroqsiz.")
+            else:
+                raise HTTPException(400, f"Autentifikatsiya xatosi: {str(e)}")
         app_meta = getattr(user, "raw_app_meta_data", None) or getattr(user, "app_metadata", None) or {}
         is_super_admin = getattr(user, "is_super_admin", False)
         is_admin = app_meta.get("role") == "admin" or is_super_admin
@@ -280,10 +291,19 @@ async def get_current_user(authorization: str = Header(..., alias="Authorization
         if not authorization.lower().startswith("bearer "):
             raise HTTPException(400, "Authorization header 'Bearer <token>' bo‘lishi kerak")
         token = authorization.split(" ", 1)[1].strip()
-        res = supabase.auth.get_user(token)
-        user = getattr(res, "user", None) or (getattr(res, "data", {}) or {}).get("user")
-        if not user:
-            raise HTTPException(401, "Noto‘g‘ri token yoki user topilmadi.")
+        try:
+            res = supabase.auth.get_user(token)
+            user = getattr(res, "user", None) or (getattr(res, "data", {}) or {}).get("user")
+            if not user:
+                raise HTTPException(401, "Noto‘g‘ri token yoki user topilmadi.")
+        except Exception as e:
+            msg = str(e).lower()
+            if "session from session_id claim in jwt does not exist" in msg:
+                raise HTTPException(400, "Token muddati o'tgan yoki sessiya mavjud emas. Qayta login qiling.")
+            elif "invalid jwt" in msg or "jwt" in msg:
+                raise HTTPException(400, "Token noto'g'ri yoki yaroqsiz.")
+            else:
+                raise HTTPException(400, f"Autentifikatsiya xatosi: {str(e)}")
         user_id = str(g(user, "id"))
         app_meta = g(user, "raw_app_meta_data") or g(user, "app_metadata") or {}
         if not app_meta.get("plan"):

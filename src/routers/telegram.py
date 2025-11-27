@@ -18,8 +18,17 @@ router = APIRouter()
 @router.post("/start_login")
 async def start_login(body: StartLoginInNew, authorization: str = Header(..., alias="Authorization")):
     # Get user from token
-    user = get_user_from_token(authorization)
-    user_id = str(getattr(user, "id"))
+    try:
+        user = get_user_from_token(authorization)
+        user_id = str(getattr(user, "id"))
+    except ValueError as e:
+        msg = str(e).lower()
+        if "bearer" in msg:
+            raise HTTPException(400, "Authorization header noto'g'ri formatda. Bearer <token> bo'lishi kerak.")
+        elif "token" in msg:
+            raise HTTPException(400, "Token noto'g'ri yoki muddati o'tgan. Qayta login qiling.")
+        else:
+            raise HTTPException(400, f"Autentifikatsiya xatosi: {str(e)}")
 
     # eski holatni tozalash
     if body.phone_number in login_states:
@@ -40,11 +49,17 @@ async def start_login(body: StartLoginInNew, authorization: str = Header(..., al
     except PhoneNumberInvalid:
         try: await client.disconnect()
         except: pass
-        raise HTTPException(400, "Noto‘g‘ri telefon raqam")
+        raise HTTPException(400, "Noto‘g‘ri telefon raqam formati. Telefon raqam +998... formatida bo‘lishi kerak.")
     except Exception as e:
+        msg = str(e).lower()
         try: await client.disconnect()
         except: pass
-        raise HTTPException(500, str(e))
+        if "flood" in msg:
+            raise HTTPException(429, "Juda ko'p so'rov yuborildi. Bir necha daqiqa kutib turing.")
+        elif "network" in msg:
+            raise HTTPException(500, "Tarmoq xatosi. Internet ulanishini tekshiring.")
+        else:
+            raise HTTPException(500, f"Telegram server xatosi: {str(e)}")
 
     login_states[body.phone_number] = {
         "user_id": user_id,
@@ -67,8 +82,17 @@ async def start_login(body: StartLoginInNew, authorization: str = Header(..., al
 @router.post("/verify_code")
 async def verify_code(body: VerifyCodeInNew, authorization: str = Header(..., alias="Authorization")):
     # Get user from token
-    user = get_user_from_token(authorization)
-    user_id = str(getattr(user, "id"))
+    try:
+        user = get_user_from_token(authorization)
+        user_id = str(getattr(user, "id"))
+    except ValueError as e:
+        msg = str(e).lower()
+        if "bearer" in msg:
+            raise HTTPException(400, "Authorization header noto'g'ri formatda. Bearer <token> bo'lishi kerak.")
+        elif "token" in msg:
+            raise HTTPException(400, "Token noto'g'ri yoki muddati o'tgan. Qayta login qiling.")
+        else:
+            raise HTTPException(400, f"Autentifikatsiya xatosi: {str(e)}")
 
     state = login_states.get(body.phone_number)
     if not state:
@@ -104,13 +128,18 @@ async def verify_code(body: VerifyCodeInNew, authorization: str = Header(..., al
                 "session_name": state["session_name"], "account_index": state["account_index"]}
 
     except PhoneCodeInvalid:
-        raise HTTPException(400, "Noto‘g‘ri kod")
+        raise HTTPException(400, "Noto‘g‘ri kod. Kodni to‘g‘ri kiriting.")
 
     except Exception as e:
-        msg = str(e)
-        if "PHONE_CODE_EXPIRED" in msg or "PHONE_CODE_INVALID" in msg:
-            raise HTTPException(400, "Kod muddati o‘tdi yoki noto‘g‘ri.")
-        raise HTTPException(500, msg)
+        msg = str(e).lower()
+        if "phone_code_expired" in msg or "phone_code_invalid" in msg:
+            raise HTTPException(400, "Kod muddati o‘tdi. Yangi kod so‘rang.")
+        elif "flood" in msg:
+            raise HTTPException(429, "Juda ko'p urinish. Bir necha daqiqa kutib turing.")
+        elif "network" in msg:
+            raise HTTPException(500, "Tarmoq xatosi. Internet ulanishini tekshiring.")
+        else:
+            raise HTTPException(500, f"Telegram server xatosi: {str(e)}")
 
     finally:
         st = login_states.get(body.phone_number)
@@ -122,8 +151,17 @@ async def verify_code(body: VerifyCodeInNew, authorization: str = Header(..., al
 @router.post("/verify_password")
 async def verify_password(body: VerifyPasswordInNew, authorization: str = Header(..., alias="Authorization")):
     # Get user from token
-    user = get_user_from_token(authorization)
-    user_id = str(getattr(user, "id"))
+    try:
+        user = get_user_from_token(authorization)
+        user_id = str(getattr(user, "id"))
+    except ValueError as e:
+        msg = str(e).lower()
+        if "bearer" in msg:
+            raise HTTPException(400, "Authorization header noto'g'ri formatda. Bearer <token> bo'lishi kerak.")
+        elif "token" in msg:
+            raise HTTPException(400, "Token noto'g'ri yoki muddati o'tgan. Qayta login qiling.")
+        else:
+            raise HTTPException(400, f"Autentifikatsiya xatosi: {str(e)}")
 
     state = login_states.get(body.phone_number)
     if not state:
@@ -146,7 +184,15 @@ async def verify_password(body: VerifyPasswordInNew, authorization: str = Header
         return {"ok": True, "status": "LOGGED_IN", "message": "2FA orqali login qilindi",
                 "session_name": session_name, "account_index": acc_idx}
     except Exception as e:
-        raise HTTPException(400, f"Invalid password: {e}")
+        msg = str(e).lower()
+        if "password" in msg and ("invalid" in msg or "wrong" in msg):
+            raise HTTPException(400, "Noto‘g‘ri parol. Parolni to‘g‘ri kiriting.")
+        elif "flood" in msg:
+            raise HTTPException(429, "Juda ko'p urinish. Bir necha daqiqa kutib turing.")
+        elif "network" in msg:
+            raise HTTPException(500, "Tarmoq xatosi. Internet ulanishini tekshiring.")
+        else:
+            raise HTTPException(400, f"Parol tekshirishda xatolik: {str(e)}")
     finally:
         st = login_states.get(body.phone_number)
         if not st or not st.get("requires_password"):

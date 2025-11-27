@@ -23,11 +23,20 @@ def get_user_from_token(authorization: str):
     if not authorization.lower().startswith("bearer "):
         raise ValueError("Bearer token kerak")
     token = authorization.split(" ", 1)[1].strip()
-    res = supabase.auth.get_user(token)
-    user = getattr(res, "user", None) or (getattr(res, "data", {}) or {}).get("user")
-    if not user:
-        raise ValueError("Token noto‘g‘ri")
-    return user
+    try:
+        res = supabase.auth.get_user(token)
+        user = getattr(res, "user", None) or (getattr(res, "data", {}) or {}).get("user")
+        if not user:
+            raise ValueError("Token noto‘g‘ri")
+        return user
+    except Exception as e:
+        msg = str(e).lower()
+        if "session from session_id claim in jwt does not exist" in msg:
+            raise ValueError("Token muddati o'tgan yoki sessiya mavjud emas. Qayta login qiling.")
+        elif "invalid jwt" in msg or "jwt" in msg:
+            raise ValueError("Token noto'g'ri yoki yaroqsiz.")
+        else:
+            raise ValueError(f"Autentifikatsiya xatosi: {str(e)}")
 
 
 def get_user_by_token(token: str):
