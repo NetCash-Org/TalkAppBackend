@@ -41,6 +41,7 @@ SUPABASE_SERVICE_KEY = os.environ.get("SUPABASE_SERVICE_KEY")
 
 API_ID = int(os.environ["API_ID"])
 API_HASH = os.environ["API_HASH"]
+BASE_URL = os.environ.get("BASE_URL", "https://talkapp.up.railway.app")
 
 SESS_ROOT = Path("sessions")
 SESS_ROOT.mkdir(parents=True, exist_ok=True)

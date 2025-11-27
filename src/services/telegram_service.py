@@ -6,7 +6,7 @@ import asyncio
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, List, Dict, Any
-from src.config import API_ID, API_HASH, SESS_ROOT, PENDING_FILE
+from src.config import API_ID, API_HASH, SESS_ROOT, PENDING_FILE, BASE_URL
 from pyrogram import Client, enums
 import inspect
 from pyrogram.enums import ChatType, UserStatus
@@ -66,18 +66,40 @@ def build_client(user_id: str, account_index: int | None):
 
 
 # ---- profil o‘qish ----
-async def profile_from_session(sess_dir: Path, session_name: str) -> dict:
+async def profile_from_session(user_id: str, account_index: int) -> dict:
+    sess_dir = SESS_ROOT / user_id
+    session_name = str(account_index)
     client = Client(session_name, api_id=API_ID, api_hash=API_HASH, workdir=str(sess_dir))
     try:
         await client.connect()
         me = await client.get_me()
         full_name = " ".join(filter(None, [me.first_name, me.last_name])) or None
+
+        # Get profile picture
+        photo_url = None
+        try:
+            if getattr(me, "photo", None):
+                file_id = me.photo.big_file_id
+                dest = _avatar_file(user_id, account_index, me.id)
+                if not dest.exists():
+                    data = await client.download_media(file_id, in_memory=True)
+                    if data:
+                        dest.parent.mkdir(parents=True, exist_ok=True)
+                        with open(dest, 'wb') as f:
+                            f.write(data.getvalue())
+                if dest.exists():
+                    photo_url = f"/media/avatars/{user_id}/{account_index}/{me.id}.jpg"
+        except Exception:
+            pass
+
         return {
             "index": session_name,
             "full_name": full_name,
             "username": me.username,
             "phone_number": me.phone_number,
             "telegram_id": me.id,
+            "profile_picture": photo_url,
+            "profile_url": f"https://t.me/{me.username}" if me.username else None,
         }
     except Exception:
         return {
@@ -87,6 +109,8 @@ async def profile_from_session(sess_dir: Path, session_name: str) -> dict:
             "phone_number": None,
             "telegram_id": None,
             "invalid": True,
+            "profile_picture": None,
+            "profile_url": None,
         }
     finally:
         try:
@@ -99,7 +123,15 @@ async def list_user_telegram_profiles(user_id: str) -> list[dict]:
     if not sess_dir.exists():
         return []
     session_names = [p.stem for p in sorted(sess_dir.glob("*.session"), key=lambda x: int(x.stem))]
-    return await asyncio.gather(*[profile_from_session(sess_dir, name) for name in session_names])
+
+    # Limit concurrent connections to avoid overwhelming Telegram
+    semaphore = asyncio.Semaphore(4)
+
+    async def process_session(name):
+        async with semaphore:
+            return await profile_from_session(user_id, int(name))
+
+    return await asyncio.gather(*[process_session(name) for name in session_names])
 
 # ---- logout helpers ----
 async def logout_one(user_id: str, session_name: str) -> dict:
