@@ -1,433 +1,465 @@
-2025-11-27 13:18:24,355 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:18:24,358 INFO: CORS middleware qo'shildi
-2025-11-27 13:18:24,359 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:18:24,360 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:18:24,373 INFO: Auth router qo'shildi
-2025-11-27 13:18:24,383 INFO: Telegram router qo'shildi
-2025-11-27 13:21:23,944 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:21:23,945 INFO: CORS middleware qo'shildi
-2025-11-27 13:21:23,946 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:21:23,948 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:21:24,001 INFO: Auth router qo'shildi
-2025-11-27 13:21:24,008 INFO: Telegram router qo'shildi
-2025-11-27 13:21:28,116 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:21:28,119 INFO: CORS middleware qo'shildi
-2025-11-27 13:21:28,119 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:21:28,121 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:21:28,135 INFO: Auth router qo'shildi
-2025-11-27 13:21:28,143 INFO: Telegram router qo'shildi
-2025-11-27 13:21:38,202 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:21:38,203 INFO: CORS middleware qo'shildi
-2025-11-27 13:21:38,203 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:21:38,205 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:21:38,221 INFO: Auth router qo'shildi
-2025-11-27 13:21:38,228 INFO: Telegram router qo'shildi
-2025-11-27 13:21:43,148 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:21:43,152 INFO: CORS middleware qo'shildi
-2025-11-27 13:21:43,156 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:21:43,158 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:21:43,257 INFO: Auth router qo'shildi
-2025-11-27 13:21:43,293 INFO: Telegram router qo'shildi
-2025-11-27 13:22:22,593 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:22:22,594 INFO: CORS middleware qo'shildi
-2025-11-27 13:22:22,594 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:22:22,595 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:22:22,617 INFO: Auth router qo'shildi
-2025-11-27 13:22:22,625 INFO: Telegram router qo'shildi
-2025-11-27 13:22:41,957 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:22:41,979 INFO: CORS middleware qo'shildi
-2025-11-27 13:22:42,005 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:22:42,042 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:22:42,106 INFO: Auth router qo'shildi
-2025-11-27 13:22:42,135 INFO: Telegram router qo'shildi
-2025-11-27 13:22:48,126 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:22:48,130 INFO: CORS middleware qo'shildi
-2025-11-27 13:22:48,130 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:22:48,132 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:22:48,147 INFO: Auth router qo'shildi
-2025-11-27 13:22:48,180 INFO: Telegram router qo'shildi
-2025-11-27 13:22:55,565 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:22:55,565 INFO: CORS middleware qo'shildi
-2025-11-27 13:22:55,566 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:22:55,567 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:22:55,582 INFO: Auth router qo'shildi
-2025-11-27 13:22:55,608 INFO: Telegram router qo'shildi
-2025-11-27 13:23:06,756 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:23:06,757 INFO: CORS middleware qo'shildi
-2025-11-27 13:23:06,757 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:23:06,762 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:23:06,793 INFO: Auth router qo'shildi
-2025-11-27 13:23:06,807 INFO: Telegram router qo'shildi
-2025-11-27 13:23:12,227 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:23:12,228 INFO: CORS middleware qo'shildi
-2025-11-27 13:23:12,228 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:23:12,229 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:23:12,250 INFO: Auth router qo'shildi
-2025-11-27 13:23:12,269 INFO: Telegram router qo'shildi
-2025-11-27 13:25:25,900 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:25:25,900 INFO: CORS middleware qo'shildi
-2025-11-27 13:25:25,900 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:25:25,901 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:25:25,931 INFO: Auth router qo'shildi
-2025-11-27 13:25:25,944 INFO: Telegram router qo'shildi
-2025-11-27 13:26:59,303 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:26:59,303 INFO: CORS middleware qo'shildi
-2025-11-27 13:26:59,304 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:26:59,305 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:26:59,318 INFO: Auth router qo'shildi
-2025-11-27 13:26:59,352 INFO: Telegram router qo'shildi
-2025-11-27 13:47:14,560 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:47:14,560 INFO: Selective CORS middleware qo'shildi
-2025-11-27 13:47:14,561 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:47:14,562 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:47:14,588 INFO: Auth router qo'shildi
-2025-11-27 13:47:14,597 INFO: Telegram router qo'shildi
-2025-11-27 13:49:33,502 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:49:49,017 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:49:49,021 INFO: CORS middleware qo'shildi
-2025-11-27 13:49:49,022 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:49:49,023 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:49:49,037 INFO: Auth router qo'shildi
-2025-11-27 13:49:49,046 INFO: Telegram router qo'shildi
-2025-11-27 13:49:57,916 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:49:57,916 INFO: CORS middleware qo'shildi
-2025-11-27 13:49:57,917 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:49:57,918 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:49:57,932 INFO: Auth router qo'shildi
-2025-11-27 13:49:57,939 INFO: Telegram router qo'shildi
-2025-11-27 13:50:18,917 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:50:18,918 INFO: CORS middleware qo'shildi
-2025-11-27 13:50:18,919 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:50:18,920 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:50:18,934 INFO: Auth router qo'shildi
-2025-11-27 13:50:18,940 INFO: Telegram router qo'shildi
-2025-11-27 13:52:02,838 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:52:02,838 INFO: CORS middleware qo'shildi
-2025-11-27 13:52:02,839 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:52:02,840 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:52:02,853 INFO: Auth router qo'shildi
-2025-11-27 13:52:02,865 INFO: Telegram router qo'shildi
-2025-11-27 13:52:13,944 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:52:13,959 INFO: CORS middleware qo'shildi
-2025-11-27 13:52:13,974 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:52:13,976 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:52:14,093 INFO: Auth router qo'shildi
-2025-11-27 13:52:14,150 INFO: Telegram router qo'shildi
-2025-11-27 13:52:35,579 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:52:35,580 INFO: CORS middleware qo'shildi
-2025-11-27 13:52:35,580 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:52:35,582 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:52:35,610 INFO: Auth router qo'shildi
-2025-11-27 13:52:35,667 INFO: Telegram router qo'shildi
-2025-11-27 13:53:51,101 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:53:51,101 INFO: CORS middleware qo'shildi
-2025-11-27 13:53:51,101 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:53:51,102 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:53:51,115 INFO: Auth router qo'shildi
-2025-11-27 13:53:51,135 INFO: Telegram router qo'shildi
-2025-11-27 13:54:20,947 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:54:20,947 INFO: CORS middleware qo'shildi
-2025-11-27 13:54:20,947 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:54:20,948 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:54:20,963 INFO: Auth router qo'shildi
-2025-11-27 13:54:21,056 INFO: Telegram router qo'shildi
-2025-11-27 13:55:50,865 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 13:55:50,872 INFO: CORS middleware qo'shildi
-2025-11-27 13:55:50,874 INFO: Audit logging middleware qo'shildi
-2025-11-27 13:55:50,878 INFO: Statik fayllar /media ga ulandi
-2025-11-27 13:55:50,908 INFO: Auth router qo'shildi
-2025-11-27 13:55:50,982 INFO: Telegram router qo'shildi
-2025-11-27 14:03:32,796 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 14:03:32,796 INFO: CORS middleware qo'shildi
-2025-11-27 14:03:32,797 INFO: Audit logging middleware qo'shildi
-2025-11-27 14:03:32,798 INFO: Statik fayllar /media ga ulandi
-2025-11-27 14:03:32,810 INFO: Auth router qo'shildi
-2025-11-27 14:03:32,816 INFO: Telegram router qo'shildi
-2025-11-27 14:18:23,629 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 14:18:23,630 INFO: CORS middleware qo'shildi
-2025-11-27 14:18:23,630 INFO: Audit logging middleware qo'shildi
-2025-11-27 14:18:23,632 INFO: Statik fayllar /media ga ulandi
-2025-11-27 14:18:23,652 INFO: Auth router qo'shildi
-2025-11-27 14:18:23,690 INFO: Telegram router qo'shildi
-2025-11-27 14:21:19,079 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 14:21:19,084 INFO: CORS middleware qo'shildi
-2025-11-27 14:21:19,085 INFO: Audit logging middleware qo'shildi
-2025-11-27 14:21:19,087 INFO: Statik fayllar /media ga ulandi
-2025-11-27 14:21:19,234 INFO: Auth router qo'shildi
-2025-11-27 14:21:19,258 INFO: Telegram router qo'shildi
-2025-11-27 14:25:23,594 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 14:25:23,595 INFO: CORS middleware qo'shildi
-2025-11-27 14:25:23,595 INFO: Audit logging middleware qo'shildi
-2025-11-27 14:25:23,596 INFO: Statik fayllar /media ga ulandi
-2025-11-27 14:25:23,611 INFO: Auth router qo'shildi
-2025-11-27 14:25:23,657 INFO: Telegram router qo'shildi
-2025-11-27 14:25:33,871 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 14:25:33,872 INFO: CORS middleware qo'shildi
-2025-11-27 14:25:33,872 INFO: Audit logging middleware qo'shildi
-2025-11-27 14:25:33,874 INFO: Statik fayllar /media ga ulandi
-2025-11-27 14:25:33,889 INFO: Auth router qo'shildi
-2025-11-27 14:25:33,896 INFO: Telegram router qo'shildi
-2025-11-27 15:46:25,893 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 15:46:25,894 INFO: CORS middleware qo'shildi
-2025-11-27 15:46:25,894 INFO: Audit logging middleware qo'shildi
-2025-11-27 15:46:25,895 INFO: Statik fayllar /media ga ulandi
-2025-11-27 15:46:25,908 INFO: Auth router qo'shildi
-2025-11-27 15:46:25,913 INFO: Telegram router qo'shildi
-2025-11-27 15:48:47,359 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 15:48:47,360 INFO: CORS middleware qo'shildi
-2025-11-27 15:48:47,361 INFO: Audit logging middleware qo'shildi
-2025-11-27 15:48:47,362 INFO: Statik fayllar /media ga ulandi
-2025-11-27 15:48:47,395 INFO: Auth router qo'shildi
-2025-11-27 15:48:47,513 INFO: Telegram router qo'shildi
-2025-11-27 15:48:56,916 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 15:48:56,916 INFO: CORS middleware qo'shildi
-2025-11-27 15:48:56,917 INFO: Audit logging middleware qo'shildi
-2025-11-27 15:48:56,918 INFO: Statik fayllar /media ga ulandi
-2025-11-27 15:48:56,934 INFO: Auth router qo'shildi
-2025-11-27 15:48:56,942 INFO: Telegram router qo'shildi
-2025-11-27 15:51:03,759 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 15:51:03,789 INFO: CORS middleware qo'shildi
-2025-11-27 15:51:03,799 INFO: Audit logging middleware qo'shildi
-2025-11-27 15:51:03,801 INFO: Statik fayllar /media ga ulandi
-2025-11-27 15:51:03,943 INFO: Auth router qo'shildi
-2025-11-27 15:51:03,951 INFO: Telegram router qo'shildi
-2025-11-27 15:51:09,605 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 15:51:09,606 INFO: CORS middleware qo'shildi
-2025-11-27 15:51:09,612 INFO: Audit logging middleware qo'shildi
-2025-11-27 15:51:09,614 INFO: Statik fayllar /media ga ulandi
-2025-11-27 15:51:09,692 INFO: Auth router qo'shildi
-2025-11-27 15:51:09,722 INFO: Telegram router qo'shildi
-2025-11-27 15:52:05,224 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 15:52:05,224 INFO: CORS middleware qo'shildi
-2025-11-27 15:52:05,225 INFO: Audit logging middleware qo'shildi
-2025-11-27 15:52:05,226 INFO: Statik fayllar /media ga ulandi
-2025-11-27 15:52:05,240 INFO: Auth router qo'shildi
-2025-11-27 15:52:05,247 INFO: Telegram router qo'shildi
-2025-11-27 15:53:41,706 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 15:53:41,708 INFO: CORS middleware qo'shildi
-2025-11-27 15:53:41,709 INFO: Audit logging middleware qo'shildi
-2025-11-27 15:53:41,711 INFO: Statik fayllar /media ga ulandi
-2025-11-27 15:53:41,738 INFO: Auth router qo'shildi
-2025-11-27 15:53:41,857 INFO: Telegram router qo'shildi
-2025-11-27 15:56:02,379 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 15:56:02,379 INFO: CORS middleware qo'shildi
-2025-11-27 15:56:02,380 INFO: Audit logging middleware qo'shildi
-2025-11-27 15:56:02,381 INFO: Statik fayllar /media ga ulandi
-2025-11-27 15:56:02,396 INFO: Auth router qo'shildi
-2025-11-27 15:56:02,403 INFO: Telegram router qo'shildi
-2025-11-27 15:59:44,279 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 15:59:44,279 INFO: CORS middleware qo'shildi
-2025-11-27 15:59:44,279 INFO: Audit logging middleware qo'shildi
-2025-11-27 15:59:44,281 INFO: Statik fayllar /media ga ulandi
-2025-11-27 15:59:44,294 INFO: Auth router qo'shildi
-2025-11-27 15:59:44,306 INFO: Telegram router qo'shildi
-2025-11-27 16:04:57,836 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:04:57,837 INFO: CORS middleware qo'shildi
-2025-11-27 16:04:57,837 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:04:57,839 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:04:57,856 INFO: Auth router qo'shildi
-2025-11-27 16:04:57,894 INFO: Telegram router qo'shildi
-2025-11-27 16:06:14,387 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:06:14,387 INFO: CORS middleware qo'shildi
-2025-11-27 16:06:14,387 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:06:14,389 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:06:14,442 INFO: Auth router qo'shildi
-2025-11-27 16:06:14,456 INFO: Telegram router qo'shildi
-2025-11-27 16:06:41,081 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:06:41,081 INFO: CORS middleware qo'shildi
-2025-11-27 16:06:41,082 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:06:41,083 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:06:41,096 INFO: Auth router qo'shildi
-2025-11-27 16:06:41,117 INFO: Telegram router qo'shildi
-2025-11-27 16:07:43,794 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:07:43,795 INFO: CORS middleware qo'shildi
-2025-11-27 16:07:43,796 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:07:43,797 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:07:43,812 INFO: Auth router qo'shildi
-2025-11-27 16:07:43,850 INFO: Telegram router qo'shildi
-2025-11-27 16:08:56,587 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:08:56,587 INFO: CORS middleware qo'shildi
-2025-11-27 16:08:56,588 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:08:56,589 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:08:56,610 INFO: Auth router qo'shildi
-2025-11-27 16:08:56,641 INFO: Telegram router qo'shildi
-2025-11-27 16:09:43,740 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:09:43,740 INFO: CORS middleware qo'shildi
-2025-11-27 16:09:43,740 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:09:43,741 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:09:43,756 INFO: Auth router qo'shildi
-2025-11-27 16:09:43,764 INFO: Telegram router qo'shildi
-2025-11-27 16:13:24,825 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:13:24,827 INFO: CORS middleware qo'shildi
-2025-11-27 16:13:24,828 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:13:24,830 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:13:24,872 INFO: Auth router qo'shildi
-2025-11-27 16:13:24,908 INFO: Telegram router qo'shildi
-2025-11-27 16:13:31,230 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:13:31,231 INFO: CORS middleware qo'shildi
-2025-11-27 16:13:31,231 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:13:31,232 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:13:31,251 INFO: Auth router qo'shildi
-2025-11-27 16:13:31,270 INFO: Telegram router qo'shildi
-2025-11-27 16:14:25,073 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:14:25,073 INFO: CORS middleware qo'shildi
-2025-11-27 16:14:25,074 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:14:25,075 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:14:25,089 INFO: Auth router qo'shildi
-2025-11-27 16:14:25,095 INFO: Telegram router qo'shildi
-2025-11-27 16:16:21,335 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:16:21,336 INFO: CORS middleware qo'shildi
-2025-11-27 16:16:21,336 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:16:21,338 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:16:21,355 INFO: Auth router qo'shildi
-2025-11-27 16:16:21,381 INFO: Telegram router qo'shildi
-2025-11-27 16:17:37,436 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:17:37,436 INFO: CORS middleware qo'shildi
-2025-11-27 16:17:37,436 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:17:37,437 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:17:37,452 INFO: Auth router qo'shildi
-2025-11-27 16:17:37,474 INFO: Telegram router qo'shildi
-2025-11-27 16:18:43,947 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:18:43,947 INFO: CORS middleware qo'shildi
-2025-11-27 16:18:43,948 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:18:43,949 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:18:44,000 INFO: Auth router qo'shildi
-2025-11-27 16:18:44,043 INFO: Telegram router qo'shildi
-2025-11-27 16:20:48,505 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:20:48,505 INFO: CORS middleware qo'shildi
-2025-11-27 16:20:48,506 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:20:48,507 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:20:48,546 INFO: Auth router qo'shildi
-2025-11-27 16:20:48,557 INFO: Telegram router qo'shildi
-2025-11-27 16:21:33,456 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:21:33,457 INFO: CORS middleware qo'shildi
-2025-11-27 16:21:33,457 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:21:33,459 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:21:33,483 INFO: Auth router qo'shildi
-2025-11-27 16:21:33,499 INFO: Telegram router qo'shildi
-2025-11-27 16:24:04,699 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:24:04,700 INFO: CORS middleware qo'shildi
-2025-11-27 16:24:04,700 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:24:04,701 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:24:04,718 INFO: Auth router qo'shildi
-2025-11-27 16:24:04,744 INFO: Telegram router qo'shildi
-2025-11-27 16:25:44,684 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:25:44,685 INFO: CORS middleware qo'shildi
-2025-11-27 16:25:44,685 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:25:44,686 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:25:44,699 INFO: Auth router qo'shildi
-2025-11-27 16:25:44,727 INFO: Telegram router qo'shildi
-2025-11-27 16:28:42,016 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:28:42,017 INFO: CORS middleware qo'shildi
-2025-11-27 16:28:42,017 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:28:42,018 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:28:42,032 INFO: Auth router qo'shildi
-2025-11-27 16:28:42,039 INFO: Telegram router qo'shildi
-2025-11-27 16:29:02,244 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:29:02,245 INFO: CORS middleware qo'shildi
-2025-11-27 16:29:02,245 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:29:02,246 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:29:02,262 INFO: Auth router qo'shildi
-2025-11-27 16:29:02,283 INFO: Telegram router qo'shildi
-2025-11-27 16:30:36,560 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:30:36,560 INFO: CORS middleware qo'shildi
-2025-11-27 16:30:36,561 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:30:36,562 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:30:36,578 INFO: Auth router qo'shildi
-2025-11-27 16:30:36,611 INFO: Telegram router qo'shildi
-2025-11-27 16:30:45,878 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:30:45,879 INFO: CORS middleware qo'shildi
-2025-11-27 16:30:45,879 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:30:45,880 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:30:45,895 INFO: Auth router qo'shildi
-2025-11-27 16:30:45,903 INFO: Telegram router qo'shildi
-2025-11-27 16:31:01,230 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:31:01,230 INFO: CORS middleware qo'shildi
-2025-11-27 16:31:01,230 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:31:01,231 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:31:01,249 INFO: Auth router qo'shildi
-2025-11-27 16:31:01,258 INFO: Telegram router qo'shildi
-2025-11-27 16:32:58,238 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:32:58,239 INFO: CORS middleware qo'shildi
-2025-11-27 16:32:58,239 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:32:58,240 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:32:58,254 INFO: Auth router qo'shildi
-2025-11-27 16:32:58,265 INFO: Telegram router qo'shildi
-2025-11-27 16:33:05,268 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:33:05,271 INFO: CORS middleware qo'shildi
-2025-11-27 16:33:05,272 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:33:05,273 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:33:05,289 INFO: Auth router qo'shildi
-2025-11-27 16:33:05,296 INFO: Telegram router qo'shildi
-2025-11-27 16:34:17,072 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:34:17,072 INFO: CORS middleware qo'shildi
-2025-11-27 16:34:17,073 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:34:17,074 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:34:17,086 INFO: Auth router qo'shildi
-2025-11-27 16:34:17,099 INFO: Telegram router qo'shildi
-2025-11-27 16:35:38,773 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:35:38,773 INFO: CORS middleware qo'shildi
-2025-11-27 16:35:38,774 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:35:38,775 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:35:38,788 INFO: Auth router qo'shildi
-2025-11-27 16:35:38,812 INFO: Telegram router qo'shildi
-2025-11-27 16:36:35,764 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:36:35,765 INFO: CORS middleware qo'shildi
-2025-11-27 16:36:35,765 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:36:35,766 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:36:35,781 INFO: Auth router qo'shildi
-2025-11-27 16:36:35,804 INFO: Telegram router qo'shildi
-2025-11-27 16:37:29,234 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:37:29,234 INFO: CORS middleware qo'shildi
-2025-11-27 16:37:29,235 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:37:29,236 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:37:29,267 INFO: Auth router qo'shildi
-2025-11-27 16:37:29,273 INFO: Telegram router qo'shildi
-2025-11-27 16:41:01,796 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:41:01,797 INFO: CORS middleware qo'shildi
-2025-11-27 16:41:01,797 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:41:01,798 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:41:01,812 INFO: Auth router qo'shildi
-2025-11-27 16:41:01,818 INFO: Telegram router qo'shildi
-2025-11-27 16:43:29,936 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:43:29,936 INFO: CORS middleware qo'shildi
-2025-11-27 16:43:29,937 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:43:29,938 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:43:29,952 INFO: Auth router qo'shildi
-2025-11-27 16:43:29,960 INFO: Telegram router qo'shildi
-2025-11-27 16:47:32,567 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:47:32,568 INFO: CORS middleware qo'shildi
-2025-11-27 16:47:32,568 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:47:32,569 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:47:32,582 INFO: Auth router qo'shildi
-2025-11-27 16:47:32,599 INFO: Telegram router qo'shildi
-2025-11-27 16:50:46,348 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:50:46,349 INFO: CORS middleware qo'shildi
-2025-11-27 16:50:46,349 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:50:46,350 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:50:46,364 INFO: Auth router qo'shildi
-2025-11-27 16:50:46,376 INFO: Telegram router qo'shildi
-2025-11-27 16:51:33,082 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 16:51:33,097 INFO: CORS middleware qo'shildi
-2025-11-27 16:51:33,098 INFO: Audit logging middleware qo'shildi
-2025-11-27 16:51:33,174 INFO: Statik fayllar /media ga ulandi
-2025-11-27 16:51:33,376 INFO: Auth router qo'shildi
-2025-11-27 16:51:33,426 INFO: Telegram router qo'shildi
-2025-11-27 17:02:47,213 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 17:02:47,213 INFO: CORS middleware qo'shildi
-2025-11-27 17:02:47,214 INFO: Audit logging middleware qo'shildi
-2025-11-27 17:02:47,215 INFO: Statik fayllar /media ga ulandi
-2025-11-27 17:02:47,227 INFO: Auth router qo'shildi
-2025-11-27 17:02:47,234 INFO: Telegram router qo'shildi
-2025-11-27 17:03:22,288 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 17:03:22,288 INFO: CORS middleware qo'shildi
-2025-11-27 17:03:22,288 INFO: Audit logging middleware qo'shildi
-2025-11-27 17:03:22,289 INFO: Statik fayllar /media ga ulandi
-2025-11-27 17:03:22,303 INFO: Auth router qo'shildi
-2025-11-27 17:03:22,315 INFO: Telegram router qo'shildi
-2025-11-27 17:05:32,175 INFO: TalkApp Backend ishga tushmoqda...
-2025-11-27 17:05:32,175 INFO: CORS middleware qo'shildi
-2025-11-27 17:05:32,176 INFO: Audit logging middleware qo'shildi
-2025-11-27 17:05:32,177 INFO: Statik fayllar /media ga ulandi
-2025-11-27 17:05:32,190 INFO: Auth router qo'shildi
-2025-11-27 17:05:32,196 INFO: Telegram router qo'shildi
+2025-11-28 00:03:56,380 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:03:56,383 INFO: CORS middleware qo'shildi
+2025-11-28 00:03:56,384 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:03:56,385 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:03:56,393 INFO: Auth router qo'shildi
+2025-11-28 00:03:56,398 INFO: Telegram router qo'shildi
+2025-11-28 00:03:56,403 INFO: Payment router qo'shildi
+2025-11-28 00:09:53,337 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:09:53,337 INFO: CORS middleware qo'shildi
+2025-11-28 00:09:53,337 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:09:53,338 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:09:53,346 INFO: Auth router qo'shildi
+2025-11-28 00:09:53,351 INFO: Telegram router qo'shildi
+2025-11-28 00:09:53,381 INFO: Payment router qo'shildi
+2025-11-28 00:10:52,031 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:10:52,031 INFO: CORS middleware qo'shildi
+2025-11-28 00:10:52,032 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:10:52,033 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:10:52,041 INFO: Auth router qo'shildi
+2025-11-28 00:10:52,046 INFO: Telegram router qo'shildi
+2025-11-28 00:10:52,057 INFO: Payment router qo'shildi
+2025-11-28 00:11:23,945 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:11:23,945 INFO: CORS middleware qo'shildi
+2025-11-28 00:11:23,945 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:11:23,947 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:11:23,969 INFO: Auth router qo'shildi
+2025-11-28 00:11:24,007 INFO: Telegram router qo'shildi
+2025-11-28 00:11:24,009 INFO: Payment router qo'shildi
+2025-11-28 00:12:56,204 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:12:56,204 INFO: CORS middleware qo'shildi
+2025-11-28 00:12:56,204 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:12:56,205 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:12:56,217 INFO: Auth router qo'shildi
+2025-11-28 00:12:56,270 INFO: Telegram router qo'shildi
+2025-11-28 00:12:56,272 INFO: Payment router qo'shildi
+2025-11-28 00:18:31,726 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:18:31,727 INFO: CORS middleware qo'shildi
+2025-11-28 00:18:31,728 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:18:31,729 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:18:31,741 INFO: Auth router qo'shildi
+2025-11-28 00:18:31,764 INFO: Telegram router qo'shildi
+2025-11-28 00:18:31,769 INFO: Payment router qo'shildi
+2025-11-28 00:18:46,787 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:18:46,787 INFO: CORS middleware qo'shildi
+2025-11-28 00:18:46,788 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:18:46,788 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:18:46,798 INFO: Auth router qo'shildi
+2025-11-28 00:18:46,802 INFO: Telegram router qo'shildi
+2025-11-28 00:18:46,804 INFO: Payment router qo'shildi
+2025-11-28 00:28:56,728 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:28:56,733 INFO: CORS middleware qo'shildi
+2025-11-28 00:28:56,733 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:28:56,738 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:28:56,794 INFO: Auth router qo'shildi
+2025-11-28 00:28:56,806 INFO: Telegram router qo'shildi
+2025-11-28 00:28:56,808 INFO: Payment router qo'shildi
+2025-11-28 00:29:11,937 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:29:11,937 INFO: CORS middleware qo'shildi
+2025-11-28 00:29:11,937 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:29:11,938 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:29:11,951 INFO: Auth router qo'shildi
+2025-11-28 00:29:11,961 INFO: Telegram router qo'shildi
+2025-11-28 00:29:11,964 INFO: Payment router qo'shildi
+2025-11-28 00:34:08,492 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:34:08,492 INFO: CORS middleware qo'shildi
+2025-11-28 00:34:08,492 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:34:08,494 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:34:08,503 INFO: Auth router qo'shildi
+2025-11-28 00:34:08,509 INFO: Telegram router qo'shildi
+2025-11-28 00:34:08,529 INFO: Payment router qo'shildi
+2025-11-28 00:34:28,004 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:34:28,004 INFO: CORS middleware qo'shildi
+2025-11-28 00:34:28,005 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:34:28,006 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:34:28,014 INFO: Auth router qo'shildi
+2025-11-28 00:34:28,019 INFO: Telegram router qo'shildi
+2025-11-28 00:34:28,027 INFO: Payment router qo'shildi
+2025-11-28 00:34:45,700 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:34:45,700 INFO: CORS middleware qo'shildi
+2025-11-28 00:34:45,701 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:34:45,702 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:34:45,711 INFO: Auth router qo'shildi
+2025-11-28 00:34:45,735 INFO: Telegram router qo'shildi
+2025-11-28 00:34:45,738 INFO: Payment router qo'shildi
+2025-11-28 00:35:00,842 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:35:00,842 INFO: CORS middleware qo'shildi
+2025-11-28 00:35:00,842 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:35:00,844 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:35:00,862 INFO: Auth router qo'shildi
+2025-11-28 00:35:00,869 INFO: Telegram router qo'shildi
+2025-11-28 00:35:00,872 INFO: Payment router qo'shildi
+2025-11-28 00:39:46,079 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:39:46,079 INFO: CORS middleware qo'shildi
+2025-11-28 00:39:46,079 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:39:46,080 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:39:46,088 INFO: Auth router qo'shildi
+2025-11-28 00:39:46,093 INFO: Telegram router qo'shildi
+2025-11-28 00:39:46,107 INFO: Payment router qo'shildi
+2025-11-28 00:40:10,950 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:40:10,951 INFO: CORS middleware qo'shildi
+2025-11-28 00:40:10,951 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:40:10,952 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:40:10,960 INFO: Auth router qo'shildi
+2025-11-28 00:40:10,972 INFO: Telegram router qo'shildi
+2025-11-28 00:40:10,987 INFO: Payment router qo'shildi
+2025-11-28 00:40:31,531 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:40:31,532 INFO: CORS middleware qo'shildi
+2025-11-28 00:40:31,532 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:40:31,533 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:40:31,562 INFO: Auth router qo'shildi
+2025-11-28 00:40:31,568 INFO: Telegram router qo'shildi
+2025-11-28 00:40:31,590 INFO: Payment router qo'shildi
+2025-11-28 00:41:10,185 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:41:10,185 INFO: CORS middleware qo'shildi
+2025-11-28 00:41:10,185 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:41:10,186 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:41:10,195 INFO: Auth router qo'shildi
+2025-11-28 00:41:10,199 INFO: Telegram router qo'shildi
+2025-11-28 00:41:10,201 INFO: Payment router qo'shildi
+2025-11-28 00:45:00,767 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:45:00,767 INFO: CORS middleware qo'shildi
+2025-11-28 00:45:00,767 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:45:00,768 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:45:00,777 INFO: Auth router qo'shildi
+2025-11-28 00:45:00,782 INFO: Telegram router qo'shildi
+2025-11-28 00:45:00,784 INFO: Payment router qo'shildi
+2025-11-28 00:45:17,999 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:45:17,999 INFO: CORS middleware qo'shildi
+2025-11-28 00:45:17,999 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:45:18,000 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:45:18,009 INFO: Auth router qo'shildi
+2025-11-28 00:45:18,027 INFO: Telegram router qo'shildi
+2025-11-28 00:45:18,037 INFO: Payment router qo'shildi
+2025-11-28 00:45:34,192 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:45:34,193 INFO: CORS middleware qo'shildi
+2025-11-28 00:45:34,193 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:45:34,194 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:45:34,203 INFO: Auth router qo'shildi
+2025-11-28 00:45:34,209 INFO: Telegram router qo'shildi
+2025-11-28 00:45:34,211 INFO: Payment router qo'shildi
+2025-11-28 00:53:52,681 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:53:52,681 INFO: CORS middleware qo'shildi
+2025-11-28 00:53:52,681 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:53:52,682 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:53:52,690 INFO: Auth router qo'shildi
+2025-11-28 00:53:52,696 INFO: Telegram router qo'shildi
+2025-11-28 00:53:52,721 INFO: Payment router qo'shildi
+2025-11-28 00:54:08,614 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:54:08,614 INFO: CORS middleware qo'shildi
+2025-11-28 00:54:08,622 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:54:08,623 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:54:08,639 INFO: Auth router qo'shildi
+2025-11-28 00:54:08,650 INFO: Telegram router qo'shildi
+2025-11-28 00:54:08,654 INFO: Payment router qo'shildi
+2025-11-28 00:56:08,853 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 00:56:08,854 INFO: CORS middleware qo'shildi
+2025-11-28 00:56:08,854 INFO: Audit logging middleware qo'shildi
+2025-11-28 00:56:08,855 INFO: Statik fayllar /media ga ulandi
+2025-11-28 00:56:08,864 INFO: Auth router qo'shildi
+2025-11-28 00:56:08,869 INFO: Telegram router qo'shildi
+2025-11-28 00:56:08,892 INFO: Payment router qo'shildi
+2025-11-28 01:39:13,412 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:39:13,412 INFO: CORS middleware qo'shildi
+2025-11-28 01:39:13,413 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:39:13,414 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:39:13,444 INFO: Auth router qo'shildi
+2025-11-28 01:39:13,452 INFO: Telegram router qo'shildi
+2025-11-28 01:41:01,419 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:41:01,419 INFO: CORS middleware qo'shildi
+2025-11-28 01:41:01,420 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:41:01,422 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:41:01,430 INFO: Auth router qo'shildi
+2025-11-28 01:41:01,445 INFO: Telegram router qo'shildi
+2025-11-28 01:41:28,277 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:41:28,280 INFO: CORS middleware qo'shildi
+2025-11-28 01:41:28,280 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:41:28,281 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:41:28,290 INFO: Auth router qo'shildi
+2025-11-28 01:41:28,297 INFO: Telegram router qo'shildi
+2025-11-28 01:41:49,550 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:41:49,551 INFO: CORS middleware qo'shildi
+2025-11-28 01:41:49,551 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:41:49,552 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:41:49,561 INFO: Auth router qo'shildi
+2025-11-28 01:41:49,573 INFO: Telegram router qo'shildi
+2025-11-28 01:45:23,054 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:45:23,054 INFO: CORS middleware qo'shildi
+2025-11-28 01:45:23,055 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:45:23,056 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:45:23,065 INFO: Auth router qo'shildi
+2025-11-28 01:45:23,070 INFO: Telegram router qo'shildi
+2025-11-28 01:45:23,074 INFO: Payment router qo'shildi
+2025-11-28 01:45:49,640 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:45:49,641 INFO: CORS middleware qo'shildi
+2025-11-28 01:45:49,641 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:45:49,643 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:45:49,653 INFO: Auth router qo'shildi
+2025-11-28 01:45:49,660 INFO: Telegram router qo'shildi
+2025-11-28 01:45:49,664 INFO: Payment router qo'shildi
+2025-11-28 01:45:57,935 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:45:57,936 INFO: CORS middleware qo'shildi
+2025-11-28 01:45:57,936 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:45:57,937 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:45:57,946 INFO: Auth router qo'shildi
+2025-11-28 01:45:57,951 INFO: Telegram router qo'shildi
+2025-11-28 01:45:57,969 INFO: Payment router qo'shildi
+2025-11-28 01:46:09,411 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:46:09,411 INFO: CORS middleware qo'shildi
+2025-11-28 01:46:09,411 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:46:09,412 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:46:09,420 INFO: Auth router qo'shildi
+2025-11-28 01:46:09,434 INFO: Telegram router qo'shildi
+2025-11-28 01:46:09,442 INFO: Payment router qo'shildi
+2025-11-28 01:46:42,709 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:46:42,710 INFO: CORS middleware qo'shildi
+2025-11-28 01:46:42,710 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:46:42,711 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:46:42,723 INFO: Auth router qo'shildi
+2025-11-28 01:46:42,786 INFO: Telegram router qo'shildi
+2025-11-28 01:46:42,794 INFO: Payment router qo'shildi
+2025-11-28 01:51:04,906 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:51:04,906 INFO: CORS middleware qo'shildi
+2025-11-28 01:51:04,906 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:51:04,907 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:51:04,916 INFO: Auth router qo'shildi
+2025-11-28 01:51:04,922 INFO: Telegram router qo'shildi
+2025-11-28 01:51:04,944 INFO: Payment router qo'shildi
+2025-11-28 01:52:20,249 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:52:20,249 INFO: CORS middleware qo'shildi
+2025-11-28 01:52:20,250 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:52:20,251 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:52:20,258 INFO: Auth router qo'shildi
+2025-11-28 01:52:20,269 INFO: Telegram router qo'shildi
+2025-11-28 01:52:20,282 INFO: Payment router qo'shildi
+2025-11-28 01:52:27,799 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:52:27,799 INFO: CORS middleware qo'shildi
+2025-11-28 01:52:27,800 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:52:27,801 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:52:27,808 INFO: Auth router qo'shildi
+2025-11-28 01:52:27,826 INFO: Telegram router qo'shildi
+2025-11-28 01:52:27,835 INFO: Payment router qo'shildi
+2025-11-28 01:54:25,386 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:54:25,387 INFO: CORS middleware qo'shildi
+2025-11-28 01:54:25,387 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:54:25,388 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:54:25,399 INFO: Auth router qo'shildi
+2025-11-28 01:54:25,421 INFO: Telegram router qo'shildi
+2025-11-28 01:54:25,429 INFO: Payment router qo'shildi
+2025-11-28 01:54:36,307 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:54:36,308 INFO: CORS middleware qo'shildi
+2025-11-28 01:54:36,308 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:54:36,310 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:54:36,322 INFO: Auth router qo'shildi
+2025-11-28 01:54:36,327 INFO: Telegram router qo'shildi
+2025-11-28 01:54:36,332 INFO: Payment router qo'shildi
+2025-11-28 01:58:57,773 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:58:57,778 INFO: CORS middleware qo'shildi
+2025-11-28 01:58:57,787 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:58:57,789 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:58:57,841 INFO: Auth router qo'shildi
+2025-11-28 01:58:57,869 INFO: Telegram router qo'shildi
+2025-11-28 01:58:57,896 INFO: Payment router qo'shildi
+2025-11-28 01:59:03,071 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 01:59:03,072 INFO: CORS middleware qo'shildi
+2025-11-28 01:59:03,072 INFO: Audit logging middleware qo'shildi
+2025-11-28 01:59:03,073 INFO: Statik fayllar /media ga ulandi
+2025-11-28 01:59:03,103 INFO: Auth router qo'shildi
+2025-11-28 01:59:03,110 INFO: Telegram router qo'shildi
+2025-11-28 01:59:03,115 INFO: Payment router qo'shildi
+2025-11-28 02:01:15,329 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:01:15,331 INFO: CORS middleware qo'shildi
+2025-11-28 02:01:15,331 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:01:15,332 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:01:15,340 INFO: Auth router qo'shildi
+2025-11-28 02:01:15,360 INFO: Telegram router qo'shildi
+2025-11-28 02:01:15,364 INFO: Payment router qo'shildi
+2025-11-28 02:01:26,699 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:01:26,699 INFO: CORS middleware qo'shildi
+2025-11-28 02:01:26,700 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:01:26,701 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:01:26,709 INFO: Auth router qo'shildi
+2025-11-28 02:01:26,733 INFO: Telegram router qo'shildi
+2025-11-28 02:01:26,760 INFO: Payment router qo'shildi
+2025-11-28 02:01:34,457 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:01:34,457 INFO: CORS middleware qo'shildi
+2025-11-28 02:01:34,457 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:01:34,458 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:01:34,466 INFO: Auth router qo'shildi
+2025-11-28 02:01:34,489 INFO: Telegram router qo'shildi
+2025-11-28 02:01:34,492 INFO: Payment router qo'shildi
+2025-11-28 02:02:17,500 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:02:17,501 INFO: CORS middleware qo'shildi
+2025-11-28 02:02:17,501 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:02:17,502 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:02:17,511 INFO: Auth router qo'shildi
+2025-11-28 02:02:17,527 INFO: Telegram router qo'shildi
+2025-11-28 02:02:17,537 INFO: Payment router qo'shildi
+2025-11-28 02:02:28,922 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:02:28,923 INFO: CORS middleware qo'shildi
+2025-11-28 02:02:28,923 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:02:28,924 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:02:28,938 INFO: Auth router qo'shildi
+2025-11-28 02:02:28,955 INFO: Telegram router qo'shildi
+2025-11-28 02:02:28,958 INFO: Payment router qo'shildi
+2025-11-28 02:04:07,713 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:04:07,713 INFO: CORS middleware qo'shildi
+2025-11-28 02:04:07,713 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:04:07,714 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:04:07,724 INFO: Auth router qo'shildi
+2025-11-28 02:04:07,730 INFO: Telegram router qo'shildi
+2025-11-28 02:04:07,764 INFO: Payment router qo'shildi
+2025-11-28 02:13:51,935 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:13:51,935 INFO: CORS middleware qo'shildi
+2025-11-28 02:13:51,935 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:13:51,936 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:13:51,945 INFO: Auth router qo'shildi
+2025-11-28 02:13:51,966 INFO: Telegram router qo'shildi
+2025-11-28 02:13:51,970 INFO: Payment router qo'shildi
+2025-11-28 02:14:21,018 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:14:21,018 INFO: CORS middleware qo'shildi
+2025-11-28 02:14:21,018 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:14:21,020 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:14:21,034 INFO: Auth router qo'shildi
+2025-11-28 02:14:21,042 INFO: Telegram router qo'shildi
+2025-11-28 02:14:21,069 INFO: Payment router qo'shildi
+2025-11-28 02:15:23,765 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:15:23,766 INFO: CORS middleware qo'shildi
+2025-11-28 02:15:23,766 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:15:23,767 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:15:23,775 INFO: Auth router qo'shildi
+2025-11-28 02:15:23,786 INFO: Telegram router qo'shildi
+2025-11-28 02:15:23,801 INFO: Payment router qo'shildi
+2025-11-28 02:16:15,138 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:16:15,138 INFO: CORS middleware qo'shildi
+2025-11-28 02:16:15,139 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:16:15,140 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:16:15,148 INFO: Auth router qo'shildi
+2025-11-28 02:16:15,166 INFO: Telegram router qo'shildi
+2025-11-28 02:16:15,169 INFO: Payment router qo'shildi
+2025-11-28 02:17:24,619 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:17:24,619 INFO: CORS middleware qo'shildi
+2025-11-28 02:17:24,619 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:17:24,621 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:17:24,628 INFO: Auth router qo'shildi
+2025-11-28 02:17:24,633 INFO: Telegram router qo'shildi
+2025-11-28 02:17:24,647 INFO: Payment router qo'shildi
+2025-11-28 02:18:14,350 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:18:14,351 INFO: CORS middleware qo'shildi
+2025-11-28 02:18:14,351 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:18:14,352 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:18:14,360 INFO: Auth router qo'shildi
+2025-11-28 02:18:14,366 INFO: Telegram router qo'shildi
+2025-11-28 02:18:14,373 INFO: Payment router qo'shildi
+2025-11-28 02:24:35,488 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:24:35,490 INFO: CORS middleware qo'shildi
+2025-11-28 02:24:35,491 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:24:35,492 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:24:35,500 INFO: Auth router qo'shildi
+2025-11-28 02:24:35,505 INFO: Telegram router qo'shildi
+2025-11-28 02:24:35,525 INFO: Payment router qo'shildi
+2025-11-28 02:24:44,905 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:24:44,906 INFO: CORS middleware qo'shildi
+2025-11-28 02:24:44,906 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:24:44,908 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:24:44,918 INFO: Auth router qo'shildi
+2025-11-28 02:24:44,924 INFO: Telegram router qo'shildi
+2025-11-28 02:24:44,927 INFO: Payment router qo'shildi
+2025-11-28 02:25:42,067 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:25:42,068 INFO: CORS middleware qo'shildi
+2025-11-28 02:25:42,068 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:25:42,069 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:25:42,080 INFO: Auth router qo'shildi
+2025-11-28 02:25:42,139 INFO: Telegram router qo'shildi
+2025-11-28 02:25:42,198 INFO: Payment router qo'shildi
+2025-11-28 02:25:46,201 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:25:46,201 INFO: CORS middleware qo'shildi
+2025-11-28 02:25:46,202 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:25:46,203 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:25:46,211 INFO: Auth router qo'shildi
+2025-11-28 02:25:46,222 INFO: Telegram router qo'shildi
+2025-11-28 02:25:46,236 INFO: Payment router qo'shildi
+2025-11-28 02:26:31,622 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:26:31,622 INFO: CORS middleware qo'shildi
+2025-11-28 02:26:31,623 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:26:31,624 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:26:31,633 INFO: Auth router qo'shildi
+2025-11-28 02:26:31,638 INFO: Telegram router qo'shildi
+2025-11-28 02:26:31,640 INFO: Payment router qo'shildi
+2025-11-28 02:26:36,152 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:26:36,153 INFO: CORS middleware qo'shildi
+2025-11-28 02:26:36,153 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:26:36,154 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:26:36,165 INFO: Auth router qo'shildi
+2025-11-28 02:26:36,185 INFO: Telegram router qo'shildi
+2025-11-28 02:26:36,193 INFO: Payment router qo'shildi
+2025-11-28 02:32:31,195 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:32:31,195 INFO: CORS middleware qo'shildi
+2025-11-28 02:32:31,196 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:32:31,197 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:32:31,209 INFO: Auth router qo'shildi
+2025-11-28 02:32:31,225 INFO: Telegram router qo'shildi
+2025-11-28 02:32:31,227 INFO: Payment router qo'shildi
+2025-11-28 02:33:16,803 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:33:16,804 INFO: CORS middleware qo'shildi
+2025-11-28 02:33:16,804 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:33:16,805 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:33:16,824 INFO: Auth router qo'shildi
+2025-11-28 02:33:16,834 INFO: Telegram router qo'shildi
+2025-11-28 02:33:16,837 INFO: Payment router qo'shildi
+2025-11-28 02:35:35,765 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:35:35,765 INFO: CORS middleware qo'shildi
+2025-11-28 02:35:35,765 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:35:35,766 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:35:35,829 INFO: Auth router qo'shildi
+2025-11-28 02:35:35,896 INFO: Telegram router qo'shildi
+2025-11-28 02:35:35,900 INFO: Payment router qo'shildi
+2025-11-28 02:36:55,244 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:36:55,244 INFO: CORS middleware qo'shildi
+2025-11-28 02:36:55,244 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:36:55,246 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:36:55,253 INFO: Auth router qo'shildi
+2025-11-28 02:36:55,273 INFO: Telegram router qo'shildi
+2025-11-28 02:36:55,276 INFO: Payment router qo'shildi
+2025-11-28 02:43:05,627 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:43:05,627 INFO: CORS middleware qo'shildi
+2025-11-28 02:43:05,628 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:43:05,629 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:43:05,647 INFO: Auth router qo'shildi
+2025-11-28 02:43:05,660 INFO: Telegram router qo'shildi
+2025-11-28 02:43:05,663 INFO: Payment router qo'shildi
+2025-11-28 02:45:30,964 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:45:30,964 INFO: CORS middleware qo'shildi
+2025-11-28 02:45:30,964 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:45:30,965 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:45:30,974 INFO: Auth router qo'shildi
+2025-11-28 02:45:30,991 INFO: Telegram router qo'shildi
+2025-11-28 02:45:30,996 INFO: Payment router qo'shildi
+2025-11-28 02:45:47,502 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:45:47,505 INFO: CORS middleware qo'shildi
+2025-11-28 02:45:47,506 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:45:47,513 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:45:47,551 INFO: Auth router qo'shildi
+2025-11-28 02:45:47,559 INFO: Telegram router qo'shildi
+2025-11-28 02:45:47,585 INFO: Payment router qo'shildi
+2025-11-28 02:46:59,638 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:46:59,638 INFO: CORS middleware qo'shildi
+2025-11-28 02:46:59,638 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:46:59,639 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:46:59,647 INFO: Auth router qo'shildi
+2025-11-28 02:46:59,667 INFO: Telegram router qo'shildi
+2025-11-28 02:46:59,670 INFO: Payment router qo'shildi
+2025-11-28 02:47:22,952 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 02:47:22,952 INFO: CORS middleware qo'shildi
+2025-11-28 02:47:22,952 INFO: Audit logging middleware qo'shildi
+2025-11-28 02:47:22,953 INFO: Statik fayllar /media ga ulandi
+2025-11-28 02:47:22,966 INFO: Auth router qo'shildi
+2025-11-28 02:47:22,981 INFO: Telegram router qo'shildi
+2025-11-28 02:47:22,984 INFO: Payment router qo'shildi
+2025-11-28 03:07:16,424 INFO: TalkApp Backend ishga tushmoqda...
+2025-11-28 03:07:16,424 INFO: CORS middleware qo'shildi
+2025-11-28 03:07:16,425 INFO: Audit logging middleware qo'shildi
+2025-11-28 03:07:16,426 INFO: Statik fayllar /media ga ulandi
+2025-11-28 03:07:16,433 INFO: Auth router qo'shildi
+2025-11-28 03:07:16,438 INFO: Telegram router qo'shildi
+2025-11-28 03:07:16,445 INFO: Payment router qo'shildi

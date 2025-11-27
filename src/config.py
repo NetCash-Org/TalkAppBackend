@@ -43,6 +43,10 @@ API_ID = int(os.environ["API_ID"])
 API_HASH = os.environ["API_HASH"]
 BASE_URL = os.environ.get("BASE_URL", "https://talkapp.up.railway.app")
 
+# Polar payment configuration
+POLAR_ACCESS_TOKEN = os.environ.get("POLAR_ACCESS_TOKEN")
+POLAR_SUCCESS_URL = os.environ.get("POLAR_SUCCESS_URL")
+
 SESS_ROOT = Path("sessions")
 SESS_ROOT.mkdir(parents=True, exist_ok=True)
 

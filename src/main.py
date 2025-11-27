@@ -4,6 +4,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from src.routers.auth import router as auth_router
 from src.routers.telegram import router as telegram_router
+from src.routers.payment import router as payment_router
 from src.middleware.audit_logging import AuditLoggingMiddleware
 from starlette.staticfiles import StaticFiles
 from pathlib import Path
@@ -578,4 +579,7 @@ logger.info("Auth router qo'shildi")
 
 app.include_router(telegram_router)
 logger.info("Telegram router qo'shildi")
+
+app.include_router(payment_router)
+logger.info("Payment router qo'shildi")
 
