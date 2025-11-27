@@ -1,7 +1,7 @@
 import asyncio
 from fastapi import APIRouter, HTTPException, Header, Query, Path
 from pyrogram.errors import SessionPasswordNeeded, PhoneCodeInvalid, PhoneNumberInvalid
-from src.models.user import StartLoginIn, VerifyCodeIn, VerifyPasswordIn
+from src.models.user import StartLoginIn, StartLoginInNew, VerifyCodeIn, VerifyCodeInNew, VerifyPasswordIn, VerifyPasswordInNew
 from src.services.telegram_service import (
     login_states, build_client, list_user_telegram_profiles,
     logout_one, logout_all, ensure_user_avatar_downloaded, list_private_chats_minimal
@@ -16,7 +16,11 @@ router = APIRouter()
 
 # 1) START LOGIN
 @router.post("/start_login")
-async def start_login(body: StartLoginIn):
+async def start_login(body: StartLoginInNew, authorization: str = Header(..., alias="Authorization")):
+    # Get user from token
+    user = get_user_from_token(authorization)
+    user_id = str(getattr(user, "id"))
+
     # eski holatni tozalash
     if body.phone_number in login_states:
         try:
@@ -28,7 +32,7 @@ async def start_login(body: StartLoginIn):
             login_states.pop(body.phone_number, None)
 
     # AUTOINDEX: backend hisoblaydi (body.account_index e'tiborga olinmaydi)
-    client, acc_idx, session_name = build_client(body.user_id, None)
+    client, acc_idx, session_name = build_client(user_id, None)
 
     try:
         await client.connect()
@@ -43,7 +47,7 @@ async def start_login(body: StartLoginIn):
         raise HTTPException(500, str(e))
 
     login_states[body.phone_number] = {
-        "user_id": body.user_id,
+        "user_id": user_id,
         "phone_code_hash": sent.phone_code_hash,
         "session_name": session_name,
         "account_index": acc_idx,
@@ -61,11 +65,15 @@ async def start_login(body: StartLoginIn):
 
 # 2) VERIFY CODE
 @router.post("/verify_code")
-async def verify_code(body: VerifyCodeIn):
+async def verify_code(body: VerifyCodeInNew, authorization: str = Header(..., alias="Authorization")):
+    # Get user from token
+    user = get_user_from_token(authorization)
+    user_id = str(getattr(user, "id"))
+
     state = login_states.get(body.phone_number)
     if not state:
         raise HTTPException(404, "Login session topilmadi")
-    if state["user_id"] != body.user_id:
+    if state["user_id"] != user_id:
         raise HTTPException(400, "Session user mos emas")
 
     client = state["client"]
@@ -112,11 +120,15 @@ async def verify_code(body: VerifyCodeIn):
 
 # 3) VERIFY PASSWORD (2FA)
 @router.post("/verify_password")
-async def verify_password(body: VerifyPasswordIn):
+async def verify_password(body: VerifyPasswordInNew, authorization: str = Header(..., alias="Authorization")):
+    # Get user from token
+    user = get_user_from_token(authorization)
+    user_id = str(getattr(user, "id"))
+
     state = login_states.get(body.phone_number)
     if not state:
         raise HTTPException(404, "Login session topilmadi")
-    if state["user_id"] != body.user_id:
+    if state["user_id"] != user_id:
         raise HTTPException(400, "Session user mos emas")
 
     client = state["client"]

@@ -185,12 +185,23 @@ class StartLoginIn(BaseModel):
     user_id: str
     phone_number: str
 
+class StartLoginInNew(BaseModel):
+    phone_number: str
+
 class VerifyCodeIn(BaseModel):
     user_id: str
     phone_number: str
     code: str
 
+class VerifyCodeInNew(BaseModel):
+    phone_number: str
+    code: str
+
 class VerifyPasswordIn(BaseModel):
     user_id: str
+    phone_number: str
+    password: str
+
+class VerifyPasswordInNew(BaseModel):
     phone_number: str
     password: str
