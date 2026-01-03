@@ -307,7 +307,7 @@ async def list_private_chats_minimal(user_id: str, account_index: int, limit: in
     out: List[Dict[str, Any]] = []
     try:
         async for dialog in client.get_dialogs(limit=limit):
-            chat = dialog.chat
+            chat = await client.get_chat(dialog.chat.id)
             if not chat or chat.type != ChatType.PRIVATE:
                 continue
 
@@ -328,13 +328,17 @@ async def list_private_chats_minimal(user_id: str, account_index: int, limit: in
             has_photo = bool(getattr(chat, "photo", None))
             if has_photo:
                 try:
-                    photo_url = await ensure_user_avatar_downloaded(
-                        user_id=user_id,
-                        account_index=account_index,
-                        chat_id=chat.id,
-                        force=False,
-                        prefer_small=True,
-                    )
+                    dest = _avatar_file(user_id, account_index, chat.id)
+                    if not dest.exists():
+                        file_id = getattr(chat.photo, "small_file_id", None) or getattr(chat.photo, "big_file_id", None)
+                        if file_id:
+                            data = await client.download_media(file_id, in_memory=True)
+                            if data:
+                                dest.parent.mkdir(parents=True, exist_ok=True)
+                                with open(dest, 'wb') as f:
+                                    f.write(data.getvalue())
+                    if dest.exists():
+                        photo_url = f"/media/avatars/{user_id}/{account_index}/{chat.id}.jpg"
                 except Exception:
                     photo_url = None
 
@@ -347,6 +351,56 @@ async def list_private_chats_minimal(user_id: str, account_index: int, limit: in
                 "username": username,
                 "last_seen": last_seen_disp,   # endi enum label yoki isoformat string
                 "is_online": is_online,
+                "has_photo": has_photo,
+                "photo_url": photo_url,
+            })
+        return out
+    finally:
+        try:
+            await client.disconnect()
+        except Exception:
+            pass
+
+
+async def list_groups_minimal(user_id: str, account_index: int, limit: int = 10) -> List[Dict[str, Any]]:
+    client = build_client_for(user_id, account_index)
+    await client.connect()
+    out: List[Dict[str, Any]] = []
+    try:
+        async for dialog in client.get_dialogs(limit=limit):
+            chat = await client.get_chat(dialog.chat.id)
+            if not chat or chat.type not in (ChatType.GROUP, ChatType.SUPERGROUP):
+                continue
+
+            title = chat.title
+            username = chat.username
+
+            # avatar
+            photo_url = None
+            has_photo = bool(getattr(chat, "photo", None))
+            if has_photo:
+                try:
+                    dest = _avatar_file(user_id, account_index, chat.id)
+                    if not dest.exists():
+                        file_id = getattr(chat.photo, "small_file_id", None) or getattr(chat.photo, "big_file_id", None)
+                        if file_id:
+                            data = await client.download_media(file_id, in_memory=True)
+                            if data:
+                                dest.parent.mkdir(parents=True, exist_ok=True)
+                                with open(dest, 'wb') as f:
+                                    f.write(data.getvalue())
+                    if dest.exists():
+                        photo_url = f"/media/avatars/{user_id}/{account_index}/{chat.id}.jpg"
+                except Exception:
+                    photo_url = None
+
+            if not photo_url:
+                photo_url = DEFAULT_AVATAR_URL
+
+            out.append({
+                "id": chat.id,
+                "title": title,
+                "username": username,
                 "has_photo": has_photo,
                 "photo_url": photo_url,
             })
