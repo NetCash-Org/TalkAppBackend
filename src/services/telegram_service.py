@@ -375,6 +375,23 @@ async def list_groups_minimal(user_id: str, account_index: int, limit: int = 10)
             title = chat.title
             username = chat.username
 
+            # Get member count and online count
+            member_count = 0
+            online_count = 0
+            try:
+                member_count = await client.get_chat_members_count(chat.id)
+                # Get online count by checking up to 50 members
+                count = 0
+                async for member in client.get_chat_members(chat.id):
+                    if member.user and member.user.status == UserStatus.ONLINE:
+                        online_count += 1
+                    count += 1
+                    if count >= 50:  # Limit to 50 to avoid performance issues
+                        break
+            except Exception:
+                member_count = 0
+                online_count = 0
+
             # avatar
             photo_url = None
             has_photo = bool(getattr(chat, "photo", None))
@@ -401,6 +418,8 @@ async def list_groups_minimal(user_id: str, account_index: int, limit: int = 10)
                 "id": chat.id,
                 "title": title,
                 "username": username,
+                "member_count": member_count,
+                "online_count": online_count,
                 "has_photo": has_photo,
                 "photo_url": photo_url,
             })
@@ -412,57 +431,97 @@ async def list_groups_minimal(user_id: str, account_index: int, limit: int = 10)
             pass
 
 
-async def get_chat_messages(
-    user_id: str,
-    account_index: int,
-    chat_id: int,
-    limit: int = 10,
-    offset: int = 0,
-) -> List[Dict[str, Any]]:
-
+async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit: int = 10,offset: int = 0) -> List[Dict[str, Any]]:
+    """
+    Chatdan xabarlarni olish va har bir xabarning o'qilganligini aniqlash.
+    
+    Args:
+        user_id: Foydalanuvchi ID
+        account_index: Telegram akkaunti index
+        chat_id: Chat ID
+        limit: Nechta xabar olish
+        offset: Qayerdan boshlash
+        
+    Returns:
+        Xabarlar ro'yxati
+    """
     client = build_client_for(user_id, account_index)
     await client.start()
 
     try:
-        # -------------------------------------------------
-        # 1️⃣ Faqat dialoglarda mavjud chatlarni ruxsat beramiz
-        # -------------------------------------------------
-        dialogs = {}
+        # Dialogni topish
+        dialog_obj = None
         async for d in client.get_dialogs():
-            dialogs[d.chat.id] = d.chat
+            if d.chat.id == chat_id:
+                dialog_obj = d
+                break
 
-        if chat_id not in dialogs:
+        if not dialog_obj:
             raise ValueError(
-                "Noto‘g‘ri chat_id. "
-                "Chat ushbu akkaunt dialoglarida mavjud emas yoki "
-                "frontend user_id yuboryapti."
+                "Chat topilmadi yoki ushbu akkaunt uchun mavjud emas. "
+                "Ehtimol, noto'g'ri sessiya tanlangan."
             )
 
-        chat = dialogs[chat_id]
+        chat = dialog_obj.chat
+        
+        # O'qilgan xabarlarning maksimal ID lari
+        read_inbox_max_id = getattr(dialog_obj, 'read_inbox_max_id', 0)
+        read_outbox_max_id = getattr(dialog_obj, 'read_outbox_max_id', 0)
 
-        # -------------------------------------------------
-        # 2️⃣ Xabarlarni olish (offset + limit)
-        # -------------------------------------------------
+        # Xabarlarni olish
         messages: List[Dict[str, Any]] = []
         need = limit + offset
         skipped = 0
 
         async for msg in client.get_chat_history(chat.id, limit=need):
-
+            # Offset qo'llash
             if skipped < offset:
                 skipped += 1
                 continue
 
+            # isRead mantiq: 
+            # - outgoing xabar bo'lsa: karshi tomon o'qiganmi?
+            # - incoming xabar bo'lsa: biz o'qiganmizmi?
+            if msg.outgoing:
+                is_read = msg.id <= read_outbox_max_id
+            else:
+                is_read = msg.id <= read_inbox_max_id
+
+            # from_user uchun avatar yuklab olish
+            photo_url = None
+            if msg.from_user and getattr(msg.from_user, "photo", None):
+                dest = _avatar_file(user_id, account_index, msg.from_user.id)
+                if not dest.exists():
+                    file_id = getattr(msg.from_user.photo, "small_file_id", None) or getattr(msg.from_user.photo, "big_file_id", None)
+                    if file_id:
+                        try:
+                            data = await client.download_media(file_id, in_memory=True)
+                            if data:
+                                dest.parent.mkdir(parents=True, exist_ok=True)
+                                with open(dest, 'wb') as f:
+                                    f.write(data.getvalue())
+                        except Exception:
+                            pass
+                if dest.exists():
+                    photo_url = f"/media/avatars/{user_id}/{account_index}/{msg.from_user.id}.jpg"
+
+            # Asosiy xabar ma'lumotlari
             item = {
                 "id": msg.id,
                 "date": msg.date.isoformat() if msg.date else None,
                 "chat_id": chat.id,
-                "chat_type": chat.type,
+                "chat_type": chat.type.value if hasattr(chat.type, 'value') else str(chat.type),
+                "is_read": is_read,
+                "is_outgoing": msg.outgoing,
                 "from_user": {
                     "id": msg.from_user.id,
                     "first_name": msg.from_user.first_name,
                     "last_name": msg.from_user.last_name,
                     "username": msg.from_user.username,
+                    "phone_number": getattr(msg.from_user, 'phone_number', None),
+                    "photo_url": photo_url,
+                    "status": str(msg.from_user.status) if msg.from_user.status else None,
+                    "bio": getattr(msg.from_user, 'bio', None),
                 } if msg.from_user else None,
                 "text": msg.text,
                 "caption": msg.caption,
@@ -472,6 +531,7 @@ async def get_chat_messages(
                 "mime_type": None,
             }
 
+            # Media turlarini aniqlash
             if msg.photo:
                 item["media_type"] = "photo"
                 item["file_id"] = msg.photo.file_id
@@ -499,8 +559,21 @@ async def get_chat_messages(
                 item["file_id"] = msg.voice.file_id
                 item["mime_type"] = msg.voice.mime_type
 
+            elif msg.sticker:
+                item["media_type"] = "sticker"
+                item["file_id"] = msg.sticker.file_id
+
+            elif msg.animation:
+                item["media_type"] = "animation"
+                item["file_id"] = msg.animation.file_id
+
+            elif msg.video_note:
+                item["media_type"] = "video_note"
+                item["file_id"] = msg.video_note.file_id
+
             messages.append(item)
 
+            # Limit yetganda to'xtatish
             if len(messages) >= limit:
                 break
 
@@ -509,15 +582,14 @@ async def get_chat_messages(
     except PeerIdInvalid:
         raise ValueError(
             "Telegram ushbu chatni tanimaydi. "
-            "Chat ID noto‘g‘ri yoki sessiya mos emas."
+            "Chat ID noto'g'ri yoki sessiya mos emas."
         )
 
-    except Exception:
-        raise
+    except Exception as e:
+        raise Exception(f"Xabarlarni olishda xatolik: {str(e)}")
 
     finally:
         try:
             await client.stop()
         except Exception:
             pass
-
