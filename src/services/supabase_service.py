@@ -1,6 +1,7 @@
+import jwt
 from datetime import datetime, timezone
 from typing import Any
-from src.config import supabase, supabase_service
+from src.config import supabase, supabase_service, SUPABASE_JWT_SECRET, SUPABASE_ANON_KEY
 
 def g(obj: Any, name: str, default=None):
     return getattr(obj, name, default) if not isinstance(obj, dict) else obj.get(name, default)
@@ -32,7 +33,24 @@ def get_user_from_token(authorization: str):
     except Exception as e:
         msg = str(e).lower()
         if "session from session_id claim in jwt does not exist" in msg:
-            raise ValueError("Token muddati o'tgan yoki sessiya mavjud emas. Qayta login qiling.")
+            # Try JWT decoding
+            try:
+                secret = SUPABASE_JWT_SECRET or SUPABASE_ANON_KEY
+                payload = jwt.decode(token, secret, algorithms=["HS256"])
+                user_id = payload.get('sub')
+                if not user_id:
+                    raise ValueError("Token noto'g'ri")
+                # Return a simple user object
+                class SimpleUser:
+                    def __init__(self, id):
+                        self.id = id
+                return SimpleUser(user_id)
+            except jwt.ExpiredSignatureError:
+                raise ValueError("Token muddati o'tgan. Qayta login qiling.")
+            except jwt.InvalidTokenError:
+                raise ValueError("Token noto'g'ri yoki yaroqsiz.")
+            except Exception:
+                raise ValueError("Token muddati o'tgan yoki sessiya mavjud emas. Qayta login qiling.")
         elif "invalid jwt" in msg or "jwt" in msg:
             raise ValueError("Token noto'g'ri yoki yaroqsiz.")
         else:

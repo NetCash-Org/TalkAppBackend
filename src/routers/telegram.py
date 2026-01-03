@@ -4,7 +4,7 @@ from pyrogram.errors import SessionPasswordNeeded, PhoneCodeInvalid, PhoneNumber
 from src.models.user import StartLoginIn, StartLoginInNew, VerifyCodeIn, VerifyCodeInNew, VerifyPasswordIn, VerifyPasswordInNew
 from src.services.telegram_service import (
     login_states, build_client, list_user_telegram_profiles,
-    logout_one, logout_all, ensure_user_avatar_downloaded, list_private_chats_minimal, list_groups_minimal
+    logout_one, logout_all, ensure_user_avatar_downloaded, list_private_chats_minimal, list_groups_minimal, get_chat_messages
 )
 from src.services.supabase_service import get_user_from_token, get_user_by_token
 from src.config import supabase
@@ -321,3 +321,38 @@ async def list_groups(
         limit=dialog_limit
     )
     return {"ok": True, "count": len(items), "items": items}
+
+
+# ---- chat xabarlari ----
+@router.get("/me/chats/{chat_id}/messages")
+async def get_messages(
+    chat_id: int = Path(...),
+    session_index: int = Query(..., ge=1),
+    authorization: str = Header(..., alias="Authorization"),
+    limit: int = Query(10, ge=1, le=100),
+    offset: int = Query(0, ge=0),
+):
+    try:
+        user = get_user_from_token(authorization)
+        user_id = str(getattr(user, "id"))
+    except ValueError as e:
+        raise HTTPException(401, str(e))
+
+    try:
+        messages = await get_chat_messages(
+            user_id=user_id,
+            account_index=session_index,
+            chat_id=chat_id,
+            limit=limit,
+            offset=offset
+        )
+        return {"ok": True, "count": len(messages), "messages": messages}
+    except ValueError as e:
+        # Our custom errors
+        raise HTTPException(400, {"ok": False, "error": str(e)})
+    except Exception as e:
+        msg = str(e).lower()
+        if "peer_id_invalid" in msg or "peer id" in msg:
+            raise HTTPException(400, {"ok": False, "error": f"Chat topilmadi yoki mavjud emas. Chat ID noto'g'ri. Xatolik: {str(e)}"})
+        else:
+            raise HTTPException(500, {"ok": False, "error": f"Xatolik: {str(e)}"})

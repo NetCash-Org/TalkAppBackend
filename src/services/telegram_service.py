@@ -10,7 +10,7 @@ from src.config import API_ID, API_HASH, SESS_ROOT, PENDING_FILE, BASE_URL
 from pyrogram import Client, enums
 import inspect
 from pyrogram.enums import ChatType, UserStatus
-from pyrogram.errors import RPCError
+from pyrogram.errors import RPCError,PeerIdInvalid
 from src.config import API_ID, API_HASH, SESS_ROOT
 from .json_utils import _to_jsonable
 
@@ -412,8 +412,112 @@ async def list_groups_minimal(user_id: str, account_index: int, limit: int = 10)
             pass
 
 
+async def get_chat_messages(
+    user_id: str,
+    account_index: int,
+    chat_id: int,
+    limit: int = 10,
+    offset: int = 0,
+) -> List[Dict[str, Any]]:
 
+    client = build_client_for(user_id, account_index)
+    await client.start()
 
+    try:
+        # -------------------------------------------------
+        # 1️⃣ Faqat dialoglarda mavjud chatlarni ruxsat beramiz
+        # -------------------------------------------------
+        dialogs = {}
+        async for d in client.get_dialogs():
+            dialogs[d.chat.id] = d.chat
 
+        if chat_id not in dialogs:
+            raise ValueError(
+                "Noto‘g‘ri chat_id. "
+                "Chat ushbu akkaunt dialoglarida mavjud emas yoki "
+                "frontend user_id yuboryapti."
+            )
 
+        chat = dialogs[chat_id]
+
+        # -------------------------------------------------
+        # 2️⃣ Xabarlarni olish (offset + limit)
+        # -------------------------------------------------
+        messages: List[Dict[str, Any]] = []
+        need = limit + offset
+        skipped = 0
+
+        async for msg in client.get_chat_history(chat.id, limit=need):
+
+            if skipped < offset:
+                skipped += 1
+                continue
+
+            item = {
+                "id": msg.id,
+                "date": msg.date.isoformat() if msg.date else None,
+                "chat_id": chat.id,
+                "chat_type": chat.type,
+                "from_user": {
+                    "id": msg.from_user.id,
+                    "first_name": msg.from_user.first_name,
+                    "last_name": msg.from_user.last_name,
+                    "username": msg.from_user.username,
+                } if msg.from_user else None,
+                "text": msg.text,
+                "caption": msg.caption,
+                "media_type": None,
+                "file_id": None,
+                "file_name": None,
+                "mime_type": None,
+            }
+
+            if msg.photo:
+                item["media_type"] = "photo"
+                item["file_id"] = msg.photo.file_id
+
+            elif msg.video:
+                item["media_type"] = "video"
+                item["file_id"] = msg.video.file_id
+                item["file_name"] = msg.video.file_name
+                item["mime_type"] = msg.video.mime_type
+
+            elif msg.audio:
+                item["media_type"] = "audio"
+                item["file_id"] = msg.audio.file_id
+                item["file_name"] = msg.audio.file_name
+                item["mime_type"] = msg.audio.mime_type
+
+            elif msg.document:
+                item["media_type"] = "document"
+                item["file_id"] = msg.document.file_id
+                item["file_name"] = msg.document.file_name
+                item["mime_type"] = msg.document.mime_type
+
+            elif msg.voice:
+                item["media_type"] = "voice"
+                item["file_id"] = msg.voice.file_id
+                item["mime_type"] = msg.voice.mime_type
+
+            messages.append(item)
+
+            if len(messages) >= limit:
+                break
+
+        return messages
+
+    except PeerIdInvalid:
+        raise ValueError(
+            "Telegram ushbu chatni tanimaydi. "
+            "Chat ID noto‘g‘ri yoki sessiya mos emas."
+        )
+
+    except Exception:
+        raise
+
+    finally:
+        try:
+            await client.stop()
+        except Exception:
+            pass
 
