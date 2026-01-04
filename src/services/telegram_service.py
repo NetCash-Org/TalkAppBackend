@@ -1,8 +1,9 @@
 
-from __future__ import annotations 
+from __future__ import annotations
 
 import json
 import asyncio
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, List, Dict, Any
@@ -161,6 +162,14 @@ async def logout_one(user_id: str, session_name: str) -> dict:
         sess_file.unlink(missing_ok=True)
     except Exception:
         pass
+
+    # Delete associated avatar directory
+    avatar_dir = AVATAR_DIR / user_id / session_name
+    if avatar_dir.exists():
+        try:
+            shutil.rmtree(avatar_dir)
+        except Exception:
+            pass
 
     return {"index": session_name, "status": "logged_out" if server_logged_out else "file_removed_only"}
 

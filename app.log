@@ -75,3 +75,38 @@
 2026-01-04 01:21:57,749 INFO: Auth router qo'shildi
 2026-01-04 01:21:57,755 INFO: Telegram router qo'shildi
 2026-01-04 01:21:57,768 INFO: Payment router qo'shildi
+2026-01-04 13:08:33,770 INFO: TalkApp Backend ishga tushmoqda...
+2026-01-04 13:08:33,770 INFO: CORS middleware qo'shildi
+2026-01-04 13:08:33,770 INFO: Audit logging middleware qo'shildi
+2026-01-04 13:08:33,771 INFO: Statik fayllar /media ga ulandi
+2026-01-04 13:08:33,779 INFO: Auth router qo'shildi
+2026-01-04 13:08:33,788 INFO: Telegram router qo'shildi
+2026-01-04 13:08:33,792 INFO: Payment router qo'shildi
+2026-01-04 13:12:25,705 INFO: TalkApp Backend ishga tushmoqda...
+2026-01-04 13:12:25,709 INFO: CORS middleware qo'shildi
+2026-01-04 13:12:25,709 INFO: Audit logging middleware qo'shildi
+2026-01-04 13:12:25,710 INFO: Statik fayllar /media ga ulandi
+2026-01-04 13:12:25,754 INFO: Auth router qo'shildi
+2026-01-04 13:12:25,786 INFO: Telegram router qo'shildi
+2026-01-04 13:12:25,839 INFO: Payment router qo'shildi
+2026-01-04 16:16:54,398 INFO: TalkApp Backend ishga tushmoqda...
+2026-01-04 16:16:54,398 INFO: CORS middleware qo'shildi
+2026-01-04 16:16:54,398 INFO: Audit logging middleware qo'shildi
+2026-01-04 16:16:54,399 INFO: Statik fayllar /media ga ulandi
+2026-01-04 16:16:54,409 INFO: Auth router qo'shildi
+2026-01-04 16:16:54,426 INFO: Telegram router qo'shildi
+2026-01-04 16:16:54,428 INFO: Payment router qo'shildi
+2026-01-04 16:22:14,534 INFO: TalkApp Backend ishga tushmoqda...
+2026-01-04 16:22:14,534 INFO: CORS middleware qo'shildi
+2026-01-04 16:22:14,534 INFO: Audit logging middleware qo'shildi
+2026-01-04 16:22:14,535 INFO: Statik fayllar /media ga ulandi
+2026-01-04 16:22:14,543 INFO: Auth router qo'shildi
+2026-01-04 16:22:14,549 INFO: Telegram router qo'shildi
+2026-01-04 16:22:14,553 INFO: Payment router qo'shildi
+2026-01-04 16:22:40,412 INFO: TalkApp Backend ishga tushmoqda...
+2026-01-04 16:22:40,412 INFO: CORS middleware qo'shildi
+2026-01-04 16:22:40,412 INFO: Audit logging middleware qo'shildi
+2026-01-04 16:22:40,413 INFO: Statik fayllar /media ga ulandi
+2026-01-04 16:22:40,422 INFO: Auth router qo'shildi
+2026-01-04 16:22:40,441 INFO: Telegram router qo'shildi
+2026-01-04 16:22:40,444 INFO: Payment router qo'shildi
