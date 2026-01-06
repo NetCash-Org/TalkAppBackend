@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import asyncio
 import shutil
+import logging
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, List, Dict, Any
@@ -15,9 +16,14 @@ from pyrogram.errors import RPCError,PeerIdInvalid
 from src.config import API_ID, API_HASH, SESS_ROOT
 from .json_utils import _to_jsonable
 
+logger = logging.getLogger(__name__)
+
 
 # xotiradagi holat: phone_number -> state
 login_states: dict[str, dict] = {}
+
+# Download locks to prevent concurrent access to same session
+download_locks: dict[str, asyncio.Lock] = {}
 
 # ---- fayl helperlar ----
 def user_dir(user_id: str) -> Path:
@@ -276,6 +282,49 @@ def _avatar_file(user_id: str, account_index: int, chat_id: int) -> Path:
     d.mkdir(parents=True, exist_ok=True)
     return d / f"{chat_id}.jpg"
 
+def _message_file(user_id: str, account_index: int, message_id: int, ext: str) -> Path:
+    d = MEDIA_ROOT / "messages" / user_id / str(account_index)
+    d.mkdir(parents=True, exist_ok=True)
+    return d / f"{message_id}.{ext}"
+
+def get_media_ext(media_type: str, msg) -> str:
+    if media_type == "photo":
+        return "jpg"
+    elif media_type == "video":
+        return "mp4"
+    elif media_type == "audio":
+        return "mp3"
+    elif media_type == "document":
+        if hasattr(msg, 'document') and msg.document.file_name:
+            parts = msg.document.file_name.split('.')
+            return parts[-1] if len(parts) > 1 else 'file'
+        return 'file'
+    elif media_type == "voice":
+        return "ogg"
+    elif media_type == "sticker":
+        return "webp"
+    elif media_type == "animation":
+        return "gif"
+    elif media_type == "video_note":
+        return "mp4"
+    else:
+        return "file"
+
+async def download_message_media(user_id: str, account_index: int, file_id: str, dest: Path):
+    key = f"{user_id}_{account_index}"
+    lock = download_locks.setdefault(key, asyncio.Lock())
+    async with lock:
+        logger.info(f"Starting download for user {user_id} account {account_index} file {file_id} to {dest}")
+        client = build_client_for(user_id, account_index)
+        await client.start()
+        try:
+            await client.download_media(file_id, file_name=str(dest))
+            logger.info(f"Download completed for {file_id} to {dest}")
+        except Exception as e:
+            logger.error(f"Download failed for {file_id}: {e}")
+        finally:
+            await client.stop()
+
 def _status_to_last_seen_and_online(status_obj) -> tuple[Optional[str], bool]:
     """
     Pyrogram 2.x da User.status ko‘pincha enum (UserStatus.*). was_online hamma joyda bo‘lmasligi mumkin.
@@ -443,19 +492,21 @@ async def list_groups_minimal(user_id: str, account_index: int, limit: int = 10)
 async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit: int = 10,offset: int = 0) -> List[Dict[str, Any]]:
     """
     Chatdan xabarlarni olish va har bir xabarning o'qilganligini aniqlash.
-    
+
     Args:
         user_id: Foydalanuvchi ID
         account_index: Telegram akkaunti index
         chat_id: Chat ID
         limit: Nechta xabar olish
         offset: Qayerdan boshlash
-        
+
     Returns:
         Xabarlar ro'yxati
     """
     client = build_client_for(user_id, account_index)
     await client.start()
+
+    download_list = []
 
     try:
         # Dialogni topish
@@ -472,7 +523,7 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
             )
 
         chat = dialog_obj.chat
-        
+
         # O'qilgan xabarlarning maksimal ID lari
         read_inbox_max_id = getattr(dialog_obj, 'read_inbox_max_id', 0)
         read_outbox_max_id = getattr(dialog_obj, 'read_outbox_max_id', 0)
@@ -488,7 +539,7 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
                 skipped += 1
                 continue
 
-            # isRead mantiq: 
+            # isRead mantiq:
             # - outgoing xabar bo'lsa: karshi tomon o'qiganmi?
             # - incoming xabar bo'lsa: biz o'qiganmizmi?
             if msg.outgoing:
@@ -535,7 +586,7 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
                 "text": msg.text,
                 "caption": msg.caption,
                 "media_type": None,
-                "file_id": None,
+                "file_url": None,
                 "file_name": None,
                 "mime_type": None,
             }
@@ -543,48 +594,107 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
             # Media turlarini aniqlash
             if msg.photo:
                 item["media_type"] = "photo"
-                item["file_id"] = msg.photo.file_id
+                ext = get_media_ext("photo", msg)
+                dest = _message_file(user_id, account_index, msg.id, ext)
+                item["file_url"] = f"/media/messages/{user_id}/{account_index}/{msg.id}.{ext}"
+                logger.info(f"Message {msg.id} has photo, file_url: {item['file_url']}")
+                if not dest.exists():
+                    download_list.append((dest, msg.photo))
+                    logger.info(f"Added to download list: {dest}")
+                else:
+                    logger.info(f"File already exists: {dest}")
 
             elif msg.video:
                 item["media_type"] = "video"
-                item["file_id"] = msg.video.file_id
+                ext = get_media_ext("video", msg)
+                dest = _message_file(user_id, account_index, msg.id, ext)
+                item["file_url"] = f"/media/messages/{user_id}/{account_index}/{msg.id}.{ext}"
                 item["file_name"] = msg.video.file_name
                 item["mime_type"] = msg.video.mime_type
+                if not dest.exists():
+                    download_list.append((dest, msg.video))
 
             elif msg.audio:
                 item["media_type"] = "audio"
-                item["file_id"] = msg.audio.file_id
+                ext = get_media_ext("audio", msg)
+                dest = _message_file(user_id, account_index, msg.id, ext)
+                item["file_url"] = f"/media/messages/{user_id}/{account_index}/{msg.id}.{ext}"
                 item["file_name"] = msg.audio.file_name
                 item["mime_type"] = msg.audio.mime_type
+                if not dest.exists():
+                    download_list.append((dest, msg.audio))
 
             elif msg.document:
                 item["media_type"] = "document"
-                item["file_id"] = msg.document.file_id
+                ext = get_media_ext("document", msg)
+                dest = _message_file(user_id, account_index, msg.id, ext)
+                item["file_url"] = f"/media/messages/{user_id}/{account_index}/{msg.id}.{ext}"
                 item["file_name"] = msg.document.file_name
                 item["mime_type"] = msg.document.mime_type
+                if not dest.exists():
+                    download_list.append((dest, msg.document))
 
             elif msg.voice:
                 item["media_type"] = "voice"
-                item["file_id"] = msg.voice.file_id
+                ext = get_media_ext("voice", msg)
+                dest = _message_file(user_id, account_index, msg.id, ext)
+                item["file_url"] = f"/media/messages/{user_id}/{account_index}/{msg.id}.{ext}"
                 item["mime_type"] = msg.voice.mime_type
+                if not dest.exists():
+                    download_list.append((dest, msg.voice))
 
             elif msg.sticker:
                 item["media_type"] = "sticker"
-                item["file_id"] = msg.sticker.file_id
+                ext = get_media_ext("sticker", msg)
+                dest = _message_file(user_id, account_index, msg.id, ext)
+                item["file_url"] = f"/media/messages/{user_id}/{account_index}/{msg.id}.{ext}"
+                if not dest.exists():
+                    download_list.append((dest, msg.sticker))
 
             elif msg.animation:
                 item["media_type"] = "animation"
-                item["file_id"] = msg.animation.file_id
+                ext = get_media_ext("animation", msg)
+                dest = _message_file(user_id, account_index, msg.id, ext)
+                item["file_url"] = f"/media/messages/{user_id}/{account_index}/{msg.id}.{ext}"
+                if not dest.exists():
+                    download_list.append((dest, msg.animation))
 
             elif msg.video_note:
                 item["media_type"] = "video_note"
-                item["file_id"] = msg.video_note.file_id
+                ext = get_media_ext("video_note", msg)
+                dest = _message_file(user_id, account_index, msg.id, ext)
+                item["file_url"] = f"/media/messages/{user_id}/{account_index}/{msg.id}.{ext}"
+                if not dest.exists():
+                    download_list.append((dest, msg.video_note))
+
+            elif msg.location:
+                item["media_type"] = "location"
+
+            elif msg.contact:
+                item["media_type"] = "contact"
+
+            elif msg.poll:
+                item["media_type"] = "poll"
+
+            elif msg.venue:
+                item["media_type"] = "venue"
+
+            elif msg.game:
+                item["media_type"] = "game"
 
             messages.append(item)
 
             # Limit yetganda to'xtatish
             if len(messages) >= limit:
                 break
+
+        # Download media files
+        for dest, file_id in download_list:
+            try:
+                await client.download_media(file_id, file_name=str(dest))
+                logger.info(f"Downloaded media to {dest}")
+            except Exception as e:
+                logger.error(f"Failed to download {file_id} to {dest}: {e}")
 
         return messages
 
