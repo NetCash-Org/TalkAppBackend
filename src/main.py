@@ -55,6 +55,7 @@ app.add_middleware(
 )
 logger.info("CORS middleware qo'shildi")
 
+
 # Add audit logging middleware
 app.add_middleware(AuditLoggingMiddleware)
 logger.info("Audit logging middleware qo'shildi")
@@ -569,6 +570,7 @@ async def get_system_stats():
 
 MEDIA_ROOT = Path("media")
 (MEDIA_ROOT / "avatars").mkdir(parents=True, exist_ok=True)
+(MEDIA_ROOT / "downloads").mkdir(parents=True, exist_ok=True)
 
 # /media/... orqali statik fayllarni berish
 app.mount("/media", StaticFiles(directory=str(MEDIA_ROOT)), name="media")

@@ -4,11 +4,14 @@ from pyrogram.errors import SessionPasswordNeeded, PhoneCodeInvalid, PhoneNumber
 from src.models.user import StartLoginIn, StartLoginInNew, VerifyCodeIn, VerifyCodeInNew, VerifyPasswordIn, VerifyPasswordInNew
 from src.services.telegram_service import (
     login_states, build_client, list_user_telegram_profiles,
-    logout_one, logout_all, ensure_user_avatar_downloaded, list_private_chats_minimal, list_groups_minimal, get_chat_messages
+    logout_one, logout_all, ensure_user_avatar_downloaded, list_private_chats_minimal, list_groups_minimal, get_chat_messages, build_client_for
 )
 from src.services.supabase_service import get_user_from_token, get_user_by_token
 from src.config import supabase
 from typing import Optional
+from pathlib import Path as PathLib
+
+MEDIA_ROOT = PathLib("media")
 
 
 
@@ -294,6 +297,14 @@ async def list_private_chats(
     except ValueError as e:
         raise HTTPException(401, str(e))
 
+    # Validate account_index
+    accounts = await list_user_telegram_profiles(user_id)
+    account = next((acc for acc in accounts if acc.get("index") == str(account_index)), None)
+    if not account:
+        raise HTTPException(400, "Account index topilmadi")
+    if account.get("invalid"):
+        raise HTTPException(400, "Account faol emas yoki noto'g'ri")
+
     items = await list_private_chats_minimal(
         user_id=user_id,
         account_index=session_index,
@@ -356,6 +367,73 @@ async def get_messages(
             raise HTTPException(400, {"ok": False, "error": f"Chat topilmadi yoki mavjud emas. Chat ID noto'g'ri. Xatolik: {str(e)}"})
         else:
             raise HTTPException(500, {"ok": False, "error": f"Xatolik: {str(e)}"})
+
+
+# ---- download media ----
+@router.post("/me/download_media")
+async def download_media(
+    account_index: int = Query(..., ge=1),
+    file_id: str = Query(...),
+    media_type: str = Query(..., regex=r"^(photo|video|audio|document|voice|sticker|animation|video_note)$"),
+    authorization: str = Header(..., alias="Authorization"),
+):
+    try:
+        user = get_user_from_token(authorization)
+        user_id = str(getattr(user, "id"))
+    except ValueError as e:
+        raise HTTPException(401, str(e))
+
+    # Determine extension
+    if media_type == "photo":
+        ext = "jpg"
+    elif media_type == "video":
+        ext = "mp4"
+    elif media_type == "audio":
+        ext = "mp3"
+    elif media_type == "document":
+        ext = "file"
+    elif media_type == "voice":
+        ext = "ogg"
+    elif media_type == "sticker":
+        ext = "webp"
+    elif media_type == "animation":
+        ext = "gif"
+    elif media_type == "video_note":
+        ext = "mp4"
+    else:
+        ext = "file"
+
+    dest = MEDIA_ROOT / "downloads" / f"{file_id}.{ext}"
+    if dest.exists():
+        size = dest.stat().st_size
+        return {"ok": True, "url": f"/media/downloads/{file_id}.{ext}", "size": size}
+
+    # Download
+    client = build_client_for(user_id, account_index)
+    await client.start()
+    try:
+        data = await client.download_media(file_id, in_memory=True)
+        if data:
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            with open(dest, 'wb') as f:
+                f.write(data.getvalue())
+            size = dest.stat().st_size
+            return {"ok": True, "url": f"/media/downloads/{file_id}.{ext}", "size": size}
+        else:
+            raise HTTPException(500, "Fayl yuklab olinmadi")
+    except Exception as e:
+        msg = str(e).lower()
+        if "file_id_invalid" in msg or "file" in msg:
+            raise HTTPException(400, "Noto'g'ri file_id yoki fayl mavjud emas.")
+        elif "auth" in msg or "unauthorized" in msg:
+            raise HTTPException(401, "Autentifikatsiya xatosi. Qayta login qiling.")
+        else:
+            raise HTTPException(500, f"Fayl yuklab olishda xatolik: {str(e)}")
+    finally:
+        try:
+            await client.stop()
+        except Exception:
+            pass
 
 
 
