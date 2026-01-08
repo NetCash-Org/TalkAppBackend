@@ -4,7 +4,7 @@ from pyrogram.errors import SessionPasswordNeeded, PhoneCodeInvalid, PhoneNumber
 from src.models.user import StartLoginIn, StartLoginInNew, VerifyCodeIn, VerifyCodeInNew, VerifyPasswordIn, VerifyPasswordInNew
 from src.services.telegram_service import (
     login_states, build_client, list_user_telegram_profiles,
-    logout_one, logout_all, ensure_user_avatar_downloaded, list_private_chats_minimal, list_groups_minimal, get_chat_messages, build_client_for
+    logout_one, logout_all, ensure_user_avatar_downloaded, list_private_chats_minimal, list_groups_minimal, get_chat_messages, build_client_for, get_client
 )
 from src.services.supabase_service import get_user_from_token, get_user_by_token
 from src.config import supabase
@@ -299,18 +299,22 @@ async def list_private_chats(
 
     # Validate account_index
     accounts = await list_user_telegram_profiles(user_id)
-    account = next((acc for acc in accounts if acc.get("index") == str(account_index)), None)
+    account = next((acc for acc in accounts if acc.get("index") == str(session_index)), None)
     if not account:
         raise HTTPException(400, "Account index topilmadi")
     if account.get("invalid"):
         raise HTTPException(400, "Account faol emas yoki noto'g'ri")
 
-    items = await list_private_chats_minimal(
-        user_id=user_id,
-        account_index=session_index,
-        limit=dialog_limit
-    )
-    return {"ok": True, "count": len(items), "items": items}
+    try:
+        items = await list_private_chats_minimal(
+            user_id=user_id,
+            account_index=session_index,
+            limit=dialog_limit
+        )
+        return {"ok": True, "count": len(items), "items": items}
+    except Exception as e:
+        print(f"Error in list_private_chats: {e}")
+        raise HTTPException(500, f"Error: {str(e)}")
 
 
 # ---- guruhlar ro‘yxati ----
@@ -343,11 +347,24 @@ async def get_messages(
     limit: int = Query(10, ge=1, le=100),
     offset: int = Query(0, ge=0),
 ):
+    print(f"get_messages called with chat_id={chat_id}, session_index={session_index}, limit={limit}, offset={offset}")
     try:
         user = get_user_from_token(authorization)
         user_id = str(getattr(user, "id"))
+        print(f"User authenticated: {user_id}")
     except ValueError as e:
+        print(f"Authentication error: {e}")
         raise HTTPException(401, str(e))
+
+    # Validate account_index
+    accounts = await list_user_telegram_profiles(user_id)
+    account = next((acc for acc in accounts if acc.get("index") == str(session_index)), None)
+    if not account:
+        print(f"Account index {session_index} not found")
+        raise HTTPException(400, "Account index topilmadi")
+    if account.get("invalid"):
+        print(f"Account index {session_index} is invalid")
+        raise HTTPException(400, "Account faol emas yoki noto'g'ri")
 
     try:
         messages = await get_chat_messages(
@@ -357,12 +374,15 @@ async def get_messages(
             limit=limit,
             offset=offset
         )
+        print(f"Messages fetched successfully: {len(messages)} messages")
         return {"ok": True, "count": len(messages), "messages": messages}
     except ValueError as e:
         # Our custom errors
+        print(f"ValueError in get_messages: {e}")
         raise HTTPException(400, {"ok": False, "error": str(e)})
     except Exception as e:
         msg = str(e).lower()
+        print(f"Exception in get_messages: {e}")
         if "peer_id_invalid" in msg or "peer id" in msg:
             raise HTTPException(400, {"ok": False, "error": f"Chat topilmadi yoki mavjud emas. Chat ID noto'g'ri. Xatolik: {str(e)}"})
         else:
@@ -370,7 +390,7 @@ async def get_messages(
 
 
 # ---- download media ----
-@router.post("/me/download_media")
+@router.get("/me/download_media")
 async def download_media(
     account_index: int = Query(..., ge=1),
     file_id: str = Query(...),
@@ -409,8 +429,7 @@ async def download_media(
         return {"ok": True, "url": f"/media/downloads/{file_id}.{ext}", "size": size}
 
     # Download
-    client = build_client_for(user_id, account_index)
-    await client.start()
+    client = await get_client(user_id, account_index)
     try:
         data = await client.download_media(file_id, in_memory=True)
         if data:
@@ -429,11 +448,6 @@ async def download_media(
             raise HTTPException(401, "Autentifikatsiya xatosi. Qayta login qiling.")
         else:
             raise HTTPException(500, f"Fayl yuklab olishda xatolik: {str(e)}")
-    finally:
-        try:
-            await client.stop()
-        except Exception:
-            pass
 
 
 

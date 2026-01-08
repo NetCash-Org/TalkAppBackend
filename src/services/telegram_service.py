@@ -12,7 +12,7 @@ from src.config import API_ID, API_HASH, SESS_ROOT, PENDING_FILE, BASE_URL
 from pyrogram import Client, enums
 import inspect
 from pyrogram.enums import ChatType, UserStatus
-from pyrogram.errors import RPCError,PeerIdInvalid
+from pyrogram.errors import RPCError, PeerIdInvalid, AuthKeyInvalid, SessionRevoked, SessionExpired
 from src.config import API_ID, API_HASH, SESS_ROOT
 from .json_utils import _to_jsonable
 
@@ -24,6 +24,9 @@ login_states: dict[str, dict] = {}
 
 # Download locks to prevent concurrent access to same session
 download_locks: dict[str, asyncio.Lock] = {}
+
+# Client pool for persistent clients
+client_pool: dict[str, dict[int, Client]] = {}
 
 # ---- fayl helperlar ----
 def user_dir(user_id: str) -> Path:
@@ -74,11 +77,9 @@ def build_client(user_id: str, account_index: int | None):
 
 # ---- profil o‘qish ----
 async def profile_from_session(user_id: str, account_index: int) -> dict:
-    sess_dir = SESS_ROOT / user_id
     session_name = str(account_index)
-    client = Client(session_name, api_id=API_ID, api_hash=API_HASH, workdir=str(sess_dir))
     try:
-        await client.connect()
+        client = await get_client(user_id, account_index)
         me = await client.get_me()
         full_name = " ".join(filter(None, [me.first_name, me.last_name])) or None
 
@@ -108,7 +109,7 @@ async def profile_from_session(user_id: str, account_index: int) -> dict:
             "profile_picture": photo_url,
             "profile_url": f"https://t.me/{me.username}" if me.username else None,
         }
-    except Exception:
+    except (AuthKeyInvalid, SessionRevoked, SessionExpired):
         return {
             "index": session_name,
             "full_name": None,
@@ -119,11 +120,18 @@ async def profile_from_session(user_id: str, account_index: int) -> dict:
             "profile_picture": None,
             "profile_url": None,
         }
-    finally:
-        try:
-            await client.disconnect()
-        except Exception:
-            pass
+    except Exception:
+        # Temporary errors, don't mark as invalid
+        return {
+            "index": session_name,
+            "full_name": None,
+            "username": None,
+            "phone_number": None,
+            "telegram_id": None,
+            "invalid": False,
+            "profile_picture": None,
+            "profile_url": None,
+        }
 
 async def list_user_telegram_profiles(user_id: str) -> list[dict]:
     sess_dir = SESS_ROOT / user_id
@@ -138,7 +146,24 @@ async def list_user_telegram_profiles(user_id: str) -> list[dict]:
         async with semaphore:
             return await profile_from_session(user_id, int(name))
 
-    return await asyncio.gather(*[process_session(name) for name in session_names])
+    profiles = await asyncio.gather(*[process_session(name) for name in session_names])
+
+    # Delete invalid sessions
+    for profile in profiles:
+        if profile.get("invalid"):
+            index = profile.get("index")
+            if index:
+                try:
+                    sess_file = user_dir(user_id) / f"{index}.session"
+                    if sess_file.exists():
+                        sess_file.unlink()
+                        logger.info(f"Deleted invalid session file: {sess_file}")
+                except Exception as e:
+                    logger.error(f"Failed to delete invalid session {index}: {e}")
+
+    # Filter out invalid or failed profiles from the result
+    valid_profiles = [p for p in profiles if p.get("telegram_id") is not None]
+    return valid_profiles
 
 # ---- logout helpers ----
 async def logout_one(user_id: str, session_name: str) -> dict:
@@ -146,6 +171,15 @@ async def logout_one(user_id: str, session_name: str) -> dict:
     sess_file = sess_dir / f"{session_name}.session"
     if not sess_file.exists():
         return {"index": session_name, "status": "not_found"}
+
+    # Stop and remove from pool if exists
+    if user_id in client_pool and int(session_name) in client_pool[user_id]:
+        client = client_pool[user_id][int(session_name)]
+        try:
+            await client.stop()
+        except Exception:
+            pass
+        client_pool[user_id].pop(int(session_name), None)
 
     client = Client(session_name, api_id=API_ID, api_hash=API_HASH, workdir=str(sess_dir))
     server_logged_out = False
@@ -193,7 +227,7 @@ async def logout_all(user_id: str) -> list[dict]:
 # ---- shaxsiy chatlar ro‘yxati ----
 
 
-MEDIA_ROOT = Path("media")
+MEDIA_ROOT = Path(__file__).parent.parent.parent / "media"
 AVATAR_DIR = MEDIA_ROOT / "avatars"
 DEFAULT_AVATAR_URL = "/media/avatars/default.jpg"
 
@@ -267,7 +301,7 @@ async def ensure_user_avatar_downloaded(
         return None
     finally:
         try:
-            await client.disconnect()
+            await client.stop()
         except Exception:
             pass
 
@@ -276,6 +310,19 @@ def build_client_for(user_id: str, account_index: int) -> Client:
     sess_dir.mkdir(parents=True, exist_ok=True)
     session_name = str(account_index)
     return Client(session_name, api_id=API_ID, api_hash=API_HASH, workdir=str(sess_dir))
+
+async def get_client(user_id: str, account_index: int) -> Client:
+    if user_id not in client_pool:
+        client_pool[user_id] = {}
+    if account_index not in client_pool[user_id]:
+        client = build_client_for(user_id, account_index)
+        try:
+            await client.start()
+            client_pool[user_id][account_index] = client
+        except Exception as e:
+            logger.error(f"Failed to start client for {user_id} {account_index}: {e}")
+            raise
+    return client_pool[user_id][account_index]
 
 def _avatar_file(user_id: str, account_index: int, chat_id: int) -> Path:
     d = AVATAR_DIR / user_id / str(account_index)
@@ -360,11 +407,9 @@ def _status_to_last_seen_and_online(status_obj) -> tuple[Optional[str], bool]:
 
 
 async def list_private_chats_minimal(user_id: str, account_index: int, limit: int = 10) -> List[Dict[str, Any]]:
-    client = build_client_for(user_id, account_index)
-    await client.start()
+    client = await get_client(user_id, account_index)
     out: List[Dict[str, Any]] = []
-    try:
-        async for dialog in client.get_dialogs(limit=limit):
+    async for dialog in client.get_dialogs(limit=limit):
             chat = await client.get_chat(dialog.chat.id)
             if not chat or chat.type != ChatType.PRIVATE:
                 continue
@@ -380,6 +425,30 @@ async def list_private_chats_minimal(user_id: str, account_index: int, limit: in
             username = chat.username
 
             last_seen_disp, is_online = status_display(getattr(user_obj, "status", None) or getattr(chat, "status", None))
+
+            is_premium = getattr(user_obj, 'is_premium', False) if user_obj else False
+
+            # emoji_status uchun emoji yuklab olish
+            emoji_url = None
+            if user_obj and getattr(user_obj, "emoji_status", None):
+                custom_emoji_id = getattr(user_obj.emoji_status, 'custom_emoji_id', None)
+                if custom_emoji_id:
+                    dest = AVATAR_DIR / user_id / str(account_index) / f"{user_obj.id}_emoji.webp"
+                    if not dest.exists():
+                        try:
+                            stickers = await client.get_custom_emoji_stickers([custom_emoji_id])
+                            if stickers and stickers[0]:
+                                sticker = stickers[0]
+                                file_id = sticker.file_id
+                                data = await client.download_media(file_id, in_memory=True)
+                                if data:
+                                    dest.parent.mkdir(parents=True, exist_ok=True)
+                                    with open(dest, 'wb') as f:
+                                        f.write(data.getvalue())
+                        except Exception:
+                            pass
+                    if dest.exists():
+                        emoji_url = f"/media/avatars/{user_id}/{account_index}/{user_obj.id}_emoji.webp"
 
             # avatar
             photo_url = None
@@ -411,13 +480,10 @@ async def list_private_chats_minimal(user_id: str, account_index: int, limit: in
                 "is_online": is_online,
                 "has_photo": has_photo,
                 "photo_url": photo_url,
+                "is_premium": is_premium,
+                "emoji_url": emoji_url,
             })
-        return out
-    finally:
-        try:
-            await client.stop()
-        except Exception:
-            pass
+    return out
 
 
 async def list_groups_minimal(user_id: str, account_index: int, limit: int = 10) -> List[Dict[str, Any]]:
@@ -503,8 +569,7 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
     Returns:
         Xabarlar ro'yxati
     """
-    client = build_client_for(user_id, account_index)
-    await client.start()
+    client = await get_client(user_id, account_index)
 
     try:
         # Dialogni topish
@@ -526,16 +591,24 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
         read_inbox_max_id = getattr(dialog_obj, 'read_inbox_max_id', 0)
         read_outbox_max_id = getattr(dialog_obj, 'read_outbox_max_id', 0)
 
+        # Get account user id for bio fetching
+        me = await client.get_me()
+        account_user_id = me.id
+
         # Xabarlarni olish
         messages: List[Dict[str, Any]] = []
         need = limit + offset
         skipped = 0
+        user_ids_to_fetch = set()
 
         async for msg in client.get_chat_history(chat.id, limit=need):
             # Offset qo'llash
             if skipped < offset:
                 skipped += 1
                 continue
+
+            if msg.from_user:
+                user_ids_to_fetch.add(msg.from_user.id)
 
             # isRead mantiq:
             # - outgoing xabar bo'lsa: karshi tomon o'qiganmi?
@@ -563,6 +636,28 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
                 if dest.exists():
                     photo_url = f"/media/avatars/{user_id}/{account_index}/{msg.from_user.id}.jpg"
 
+            # emoji_status uchun emoji yuklab olish
+            emoji_url = None
+            if msg.from_user and getattr(msg.from_user, "emoji_status", None):
+                custom_emoji_id = getattr(msg.from_user.emoji_status, 'custom_emoji_id', None)
+                if custom_emoji_id:
+                    dest = AVATAR_DIR / user_id / str(account_index) / f"{msg.from_user.id}_emoji.webp"
+                    if not dest.exists():
+                        try:
+                            stickers = await client.get_custom_emoji_stickers([custom_emoji_id])
+                            if stickers and stickers[0]:
+                                sticker = stickers[0]
+                                file_id = sticker.file_id
+                                data = await client.download_media(file_id, in_memory=True)
+                                if data:
+                                    dest.parent.mkdir(parents=True, exist_ok=True)
+                                    with open(dest, 'wb') as f:
+                                        f.write(data.getvalue())
+                        except Exception:
+                            pass
+                    if dest.exists():
+                        emoji_url = f"/media/avatars/{user_id}/{account_index}/{msg.from_user.id}_emoji.webp"
+
             # Asosiy xabar ma'lumotlari
             item = {
                 "id": msg.id,
@@ -579,7 +674,8 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
                     "phone_number": getattr(msg.from_user, 'phone_number', None),
                     "photo_url": photo_url,
                     "status": str(msg.from_user.status) if msg.from_user.status else None,
-                    "bio": getattr(msg.from_user, 'bio', None),
+                    "is_premium": getattr(msg.from_user, 'is_premium', False),
+                    "emoji_url": emoji_url,
                 } if msg.from_user else None,
                 "text": msg.text,
                 "caption": msg.caption,
@@ -644,11 +740,22 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
             elif msg.game:
                 item["media_type"] = "game"
 
+            # Check if file is downloaded
+            item["file_url"] = None
+            if item["file_id"]:
+                downloads_dir = MEDIA_ROOT / "downloads"
+                import os
+                for filename in os.listdir(str(downloads_dir)):
+                    if filename.startswith(item["file_id"] + "."):
+                        item["file_url"] = f"/media/downloads/{filename}"
+                        break
+
             messages.append(item)
 
             # Limit yetganda to'xtatish
             if len(messages) >= limit:
                 break
+
 
         return messages
 
@@ -660,9 +767,3 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
 
     except Exception as e:
         raise Exception(f"Xabarlarni olishda xatolik: {str(e)}")
-
-    finally:
-        try:
-            await client.disconnect()
-        except Exception:
-            pass
