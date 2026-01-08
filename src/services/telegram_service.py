@@ -227,7 +227,7 @@ async def logout_all(user_id: str) -> list[dict]:
 # ---- shaxsiy chatlar ro‘yxati ----
 
 
-MEDIA_ROOT = Path(__file__).parent.parent.parent / "media"
+MEDIA_ROOT = Path("media")
 AVATAR_DIR = MEDIA_ROOT / "avatars"
 DEFAULT_AVATAR_URL = "/media/avatars/default.jpg"
 
@@ -333,6 +333,32 @@ def _message_file(user_id: str, account_index: int, message_id: int, ext: str) -
     d = MEDIA_ROOT / "messages" / user_id / str(account_index)
     d.mkdir(parents=True, exist_ok=True)
     return d / f"{message_id}.{ext}"
+
+def _thumb_file(user_id: str, account_index: int, message_id: int) -> Path:
+    d = MEDIA_ROOT / "thumbs" / user_id / str(account_index)
+    d.mkdir(parents=True, exist_ok=True)
+    return d / f"{message_id}.jpg"
+
+async def download_thumb(client, thumb, dest: Path):
+    try:
+        data = await client.download_media(thumb.file_id, in_memory=True)
+        if data:
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            with open(dest, 'wb') as f:
+                f.write(data.getvalue())
+    except Exception:
+        pass
+
+async def get_thumb_url(msg, media_type: str, user_id: str, account_index: int, message_id: int, client) -> Optional[str]:
+    media = getattr(msg, media_type, None)
+    if media and hasattr(media, 'thumbs') and media.thumbs:
+        thumb = min(media.thumbs, key=lambda t: t.file_size)
+        dest = _thumb_file(user_id, account_index, message_id)
+        if not dest.exists():
+            await download_thumb(client, thumb, dest)
+        if dest.exists():
+            return f"/media/thumbs/{user_id}/{account_index}/{message_id}.jpg"
+    return None
 
 def get_media_ext(media_type: str, msg) -> str:
     if media_type == "photo":
@@ -683,6 +709,7 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
                 "file_id": None,
                 "file_name": None,
                 "mime_type": None,
+                "thumb_url": None,
             }
 
             # Media turlarini aniqlash
@@ -740,15 +767,20 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
             elif msg.game:
                 item["media_type"] = "game"
 
+            # Get thumbnail if available
+            thumb_url = await get_thumb_url(msg, item["media_type"], user_id, account_index, msg.id, client) if item["media_type"] in ["photo", "video", "document", "animation", "sticker", "video_note"] else None
+            item["thumb_url"] = thumb_url
+
             # Check if file is downloaded
             item["file_url"] = None
             if item["file_id"]:
                 downloads_dir = MEDIA_ROOT / "downloads"
-                import os
-                for filename in os.listdir(str(downloads_dir)):
-                    if filename.startswith(item["file_id"] + "."):
-                        item["file_url"] = f"/media/downloads/{filename}"
-                        break
+                if downloads_dir.exists():
+                    import os
+                    for filename in os.listdir(str(downloads_dir)):
+                        if filename.startswith(item["file_id"] + "."):
+                            item["file_url"] = f"/media/downloads/{filename}"
+                            break
 
             messages.append(item)
 
