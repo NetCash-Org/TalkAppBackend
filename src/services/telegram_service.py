@@ -774,12 +774,12 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
             # Check if file is downloaded
             item["file_url"] = None
             if item["file_id"]:
-                downloads_dir = MEDIA_ROOT / "downloads"
+                downloads_dir = MEDIA_ROOT / "downloads" / user_id / str(account_index)
                 if downloads_dir.exists():
                     import os
                     for filename in os.listdir(str(downloads_dir)):
                         if filename.startswith(item["file_id"] + "."):
-                            item["file_url"] = f"/media/downloads/{filename}"
+                            item["file_url"] = f"/media/downloads/{user_id}/{account_index}/{filename}"
                             break
 
             messages.append(item)

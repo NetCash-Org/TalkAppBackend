@@ -423,10 +423,10 @@ async def download_media(
     else:
         ext = "file"
 
-    dest = MEDIA_ROOT / "downloads" / f"{file_id}.{ext}"
+    dest = MEDIA_ROOT / "downloads" / user_id / str(account_index) / f"{file_id}.{ext}"
     if dest.exists():
         size = dest.stat().st_size
-        return {"ok": True, "url": f"/media/downloads/{file_id}.{ext}", "size": size}
+        return {"ok": True, "url": f"/media/downloads/{user_id}/{account_index}/{file_id}.{ext}", "size": size}
 
     # Download
     client = await get_client(user_id, account_index)
@@ -437,7 +437,7 @@ async def download_media(
             with open(dest, 'wb') as f:
                 f.write(data.getvalue())
             size = dest.stat().st_size
-            return {"ok": True, "url": f"/media/downloads/{file_id}.{ext}", "size": size}
+            return {"ok": True, "url": f"/media/downloads/{user_id}/{account_index}/{file_id}.{ext}", "size": size}
         else:
             raise HTTPException(500, "Fayl yuklab olinmadi")
     except Exception as e:

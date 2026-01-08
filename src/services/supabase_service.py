@@ -1,7 +1,10 @@
 import jwt
+import time
 from datetime import datetime, timezone
 from typing import Any
 from src.config import supabase, supabase_service, SUPABASE_JWT_SECRET, SUPABASE_ANON_KEY
+
+user_cache = {}
 
 def g(obj: Any, name: str, default=None):
     return getattr(obj, name, default) if not isinstance(obj, dict) else obj.get(name, default)
@@ -24,11 +27,18 @@ def get_user_from_token(authorization: str):
     if not authorization.lower().startswith("bearer "):
         raise ValueError("Bearer token kerak")
     token = authorization.split(" ", 1)[1].strip()
+
+    if token in user_cache:
+        cached = user_cache[token]
+        if time.time() - cached['time'] < 300:  # 5 min cache
+            return cached['user']
+
     try:
         res = supabase.auth.get_user(token)
         user = getattr(res, "user", None) or (getattr(res, "data", {}) or {}).get("user")
         if not user:
             raise ValueError("Token noto‘g‘ri")
+        user_cache[token] = {'user': user, 'time': time.time()}
         return user
     except Exception as e:
         msg = str(e).lower()
@@ -44,7 +54,9 @@ def get_user_from_token(authorization: str):
                 class SimpleUser:
                     def __init__(self, id):
                         self.id = id
-                return SimpleUser(user_id)
+                user = SimpleUser(user_id)
+                user_cache[token] = {'user': user, 'time': time.time()}
+                return user
             except jwt.ExpiredSignatureError:
                 raise ValueError("Token muddati o'tgan. Qayta login qiling.")
             except jwt.InvalidTokenError:
