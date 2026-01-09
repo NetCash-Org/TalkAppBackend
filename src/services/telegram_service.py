@@ -780,6 +780,8 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
 
             elif msg.location:
                 item["media_type"] = "location"
+                item["latitude"] = msg.location.latitude
+                item["longitude"] = msg.location.longitude
 
             elif msg.contact:
                 item["media_type"] = "contact"
