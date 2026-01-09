@@ -18,6 +18,15 @@ from .json_utils import _to_jsonable
 
 logger = logging.getLogger(__name__)
 
+def format_file_size(size_bytes: int) -> str:
+    if size_bytes == 0:
+        return "0 B"
+    for unit in ['B', 'KB', 'MB', 'GB']:
+        if size_bytes < 1024.0:
+            return f"{size_bytes:.1f} {unit}"
+        size_bytes /= 1024.0
+    return f"{size_bytes:.1f} TB"
+
 
 # xotiradagi holat: phone_number -> state
 login_states: dict[str, dict] = {}
@@ -716,41 +725,58 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
             if msg.photo:
                 item["media_type"] = "photo"
                 item["file_id"] = msg.photo.file_id
+                item["file_size"] = format_file_size(msg.photo.file_size)
 
             elif msg.video:
                 item["media_type"] = "video"
                 item["file_name"] = msg.video.file_name
                 item["mime_type"] = msg.video.mime_type
                 item["file_id"] = msg.video.file_id
+                item["file_size"] = format_file_size(msg.video.file_size)
 
             elif msg.audio:
                 item["media_type"] = "audio"
                 item["file_name"] = msg.audio.file_name
                 item["mime_type"] = msg.audio.mime_type
                 item["file_id"] = msg.audio.file_id
+                item["file_size"] = format_file_size(msg.audio.file_size)
 
             elif msg.document:
                 item["media_type"] = "document"
                 item["file_name"] = msg.document.file_name
                 item["mime_type"] = msg.document.mime_type
                 item["file_id"] = msg.document.file_id
+                item["file_size"] = format_file_size(msg.document.file_size)
 
             elif msg.voice:
                 item["media_type"] = "voice"
                 item["mime_type"] = msg.voice.mime_type
                 item["file_id"] = msg.voice.file_id
+                item["file_size"] = format_file_size(msg.voice.file_size)
+                item["duration_seconds"] = msg.voice.duration
+                minutes = msg.voice.duration // 60
+                seconds = msg.voice.duration % 60
+                item["duration_formatted"] = f"{minutes}:{seconds:02d}"
+                item["waveform"] = list(msg.voice.waveform)
 
             elif msg.sticker:
                 item["media_type"] = "sticker"
                 item["file_id"] = msg.sticker.file_id
+                item["file_size"] = format_file_size(msg.sticker.file_size)
 
             elif msg.animation:
                 item["media_type"] = "animation"
                 item["file_id"] = msg.animation.file_id
+                item["file_size"] = format_file_size(msg.animation.file_size)
 
             elif msg.video_note:
                 item["media_type"] = "video_note"
                 item["file_id"] = msg.video_note.file_id
+                item["file_size"] = format_file_size(msg.video_note.file_size)
+                item["duration_seconds"] = msg.video_note.duration
+                minutes = msg.video_note.duration // 60
+                seconds = msg.video_note.duration % 60
+                item["duration_formatted"] = f"{minutes}:{seconds:02d}"
 
             elif msg.location:
                 item["media_type"] = "location"
