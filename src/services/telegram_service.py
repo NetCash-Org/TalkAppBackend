@@ -34,6 +34,9 @@ login_states: dict[str, dict] = {}
 # Download locks to prevent concurrent access to same session
 download_locks: dict[str, asyncio.Lock] = {}
 
+# Session locks to prevent concurrent access to same session file
+session_locks: dict[str, asyncio.Lock] = {}
+
 # Client pool for persistent clients
 client_pool: dict[str, dict[int, Client]] = {}
 
@@ -287,32 +290,36 @@ async def ensure_user_avatar_downloaded(
     if dest.exists() and not force:
         return f"/media/avatars/{user_id}/{account_index}/{chat_id}.jpg"
 
-    client = build_client_for(user_id, account_index)
-    await client.connect()
-    try:
-        chat = await client.get_chat(chat_id)
-        if not chat or chat.type != ChatType.PRIVATE or not getattr(chat, "photo", None):
-            return None
-
-        # Tezlik uchun avval small, bo‘lmasa big
-        file_id = None
-        if prefer_small:
-            file_id = getattr(chat.photo, "small_file_id", None) or getattr(chat.photo, "big_file_id", None)
-        else:
-            file_id = getattr(chat.photo, "big_file_id", None) or getattr(chat.photo, "small_file_id", None)
-        if not file_id:
-            return None
-
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        await client.download_media(file_id, file_name=str(dest))
-        return f"/media/avatars/{user_id}/{account_index}/{chat_id}.jpg" if dest.exists() else None
-    except RPCError:
-        return None
-    finally:
+    key = f"{user_id}_{account_index}"
+    lock = session_locks.setdefault(key, asyncio.Lock())
+    
+    async with lock:
+        client = build_client_for(user_id, account_index)
+        await client.connect()
         try:
-            await client.stop()
-        except Exception:
-            pass
+            chat = await client.get_chat(chat_id)
+            if not chat or chat.type != ChatType.PRIVATE or not getattr(chat, "photo", None):
+                return None
+
+            # Tezlik uchun avval small, bo'lsa big
+            file_id = None
+            if prefer_small:
+                file_id = getattr(chat.photo, "small_file_id", None) or getattr(chat.photo, "big_file_id", None)
+            else:
+                file_id = getattr(chat.photo, "big_file_id", None) or getattr(chat.photo, "small_file_id", None)
+            if not file_id:
+                return None
+
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            await client.download_media(file_id, file_name=str(dest))
+            return f"/media/avatars/{user_id}/{account_index}/{chat_id}.jpg" if dest.exists() else None
+        except RPCError:
+            return None
+        finally:
+            try:
+                await client.stop()
+            except Exception:
+                pass
 
 def build_client_for(user_id: str, account_index: int) -> Client:
     sess_dir = Path(SESS_ROOT) / user_id
@@ -442,9 +449,13 @@ def _status_to_last_seen_and_online(status_obj) -> tuple[Optional[str], bool]:
 
 
 async def list_private_chats_minimal(user_id: str, account_index: int, limit: int = 10) -> List[Dict[str, Any]]:
-    client = await get_client(user_id, account_index)
-    out: List[Dict[str, Any]] = []
-    async for dialog in client.get_dialogs(limit=limit):
+    key = f"{user_id}_{account_index}"
+    lock = session_locks.setdefault(key, asyncio.Lock())
+    
+    async with lock:
+        client = await get_client(user_id, account_index)
+        out: List[Dict[str, Any]] = []
+        async for dialog in client.get_dialogs(limit=limit):
             chat = await client.get_chat(dialog.chat.id)
             if not chat or chat.type != ChatType.PRIVATE:
                 continue
@@ -518,76 +529,80 @@ async def list_private_chats_minimal(user_id: str, account_index: int, limit: in
                 "is_premium": is_premium,
                 "emoji_url": emoji_url,
             })
-    return out
+        return out
 
 
 async def list_groups_minimal(user_id: str, account_index: int, limit: int = 10) -> List[Dict[str, Any]]:
-    client = build_client_for(user_id, account_index)
-    await client.connect()
-    out: List[Dict[str, Any]] = []
-    try:
-        async for dialog in client.get_dialogs(limit=limit):
-            chat = await client.get_chat(dialog.chat.id)
-            if not chat or chat.type not in (ChatType.GROUP, ChatType.SUPERGROUP):
-                continue
+    key = f"{user_id}_{account_index}"
+    lock = session_locks.setdefault(key, asyncio.Lock())
+    
+    async with lock:
+        client = build_client_for(user_id, account_index)
+        await client.connect()
+        out: List[Dict[str, Any]] = []
+        try:
+            async for dialog in client.get_dialogs(limit=limit):
+                chat = await client.get_chat(dialog.chat.id)
+                if not chat or chat.type not in (ChatType.GROUP, ChatType.SUPERGROUP):
+                    continue
 
-            title = chat.title
-            username = chat.username
+                title = chat.title
+                username = chat.username
 
-            # Get member count and online count
-            member_count = 0
-            online_count = 0
-            try:
-                member_count = await client.get_chat_members_count(chat.id)
-                # Get online count by checking up to 50 members
-                count = 0
-                async for member in client.get_chat_members(chat.id):
-                    if member.user and member.user.status == UserStatus.ONLINE:
-                        online_count += 1
-                    count += 1
-                    if count >= 50:  # Limit to 50 to avoid performance issues
-                        break
-            except Exception:
+                # Get member count and online count
                 member_count = 0
                 online_count = 0
-
-            # avatar
-            photo_url = None
-            has_photo = bool(getattr(chat, "photo", None))
-            if has_photo:
                 try:
-                    dest = _avatar_file(user_id, account_index, chat.id)
-                    if not dest.exists():
-                        file_id = getattr(chat.photo, "small_file_id", None) or getattr(chat.photo, "big_file_id", None)
-                        if file_id:
-                            data = await client.download_media(file_id, in_memory=True)
-                            if data:
-                                dest.parent.mkdir(parents=True, exist_ok=True)
-                                with open(dest, 'wb') as f:
-                                    f.write(data.getvalue())
-                    if dest.exists():
-                        photo_url = f"/media/avatars/{user_id}/{account_index}/{chat.id}.jpg"
+                    member_count = await client.get_chat_members_count(chat.id)
+                    # Get online count by checking up to 50 members
+                    count = 0
+                    async for member in client.get_chat_members(chat.id):
+                        if member.user and member.user.status == UserStatus.ONLINE:
+                            online_count += 1
+                        count += 1
+                        if count >= 50:  # Limit to 50 to avoid performance issues
+                            break
                 except Exception:
-                    photo_url = None
+                    member_count = 0
+                    online_count = 0
 
-            if not photo_url:
-                photo_url = DEFAULT_AVATAR_URL
+                # avatar
+                photo_url = None
+                has_photo = bool(getattr(chat, "photo", None))
+                if has_photo:
+                    try:
+                        dest = _avatar_file(user_id, account_index, chat.id)
+                        if not dest.exists():
+                            file_id = getattr(chat.photo, "small_file_id", None) or getattr(chat.photo, "big_file_id", None)
+                            if file_id:
+                                data = await client.download_media(file_id, in_memory=True)
+                                if data:
+                                    dest.parent.mkdir(parents=True, exist_ok=True)
+                                    with open(dest, 'wb') as f:
+                                        f.write(data.getvalue())
+                        if dest.exists():
+                            photo_url = f"/media/avatars/{user_id}/{account_index}/{chat.id}.jpg"
+                    except Exception:
+                        photo_url = None
 
-            out.append({
-                "id": chat.id,
-                "title": title,
-                "username": username,
-                "member_count": member_count,
-                "online_count": online_count,
-                "has_photo": has_photo,
-                "photo_url": photo_url,
-            })
-        return out
-    finally:
-        try:
-            await client.disconnect()
-        except Exception:
-            pass
+                if not photo_url:
+                    photo_url = DEFAULT_AVATAR_URL
+
+                out.append({
+                    "id": chat.id,
+                    "title": title,
+                    "username": username,
+                    "member_count": member_count,
+                    "online_count": online_count,
+                    "has_photo": has_photo,
+                    "photo_url": photo_url,
+                })
+            return out
+        finally:
+            try:
+                await client.disconnect()
+            except Exception:
+                pass
 
 
 async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit: int = 10,offset: int = 0) -> List[Dict[str, Any]]:
@@ -827,3 +842,125 @@ async def get_chat_messages(user_id: str, account_index: int, chat_id: int,limit
 
     except Exception as e:
         raise Exception(f"Xabarlarni olishda xatolik: {str(e)}")
+
+
+async def export_chat_messages(user_id: str, account_index: int, chat_id: int) -> Dict[str, Any]:
+    """
+    Chatdan barcha xabarlarni eksport qilish (boshidan oxirigacha).
+
+    Args:
+        user_id: Foydalanuvchi ID
+        account_index: Telegram akkaunti index
+        chat_id: Chat ID
+
+    Returns:
+        Eksport ma'lumotlari va soddalashtirilgan xabarlar ro'yxati JSON formatida:
+        [
+          { "from": "Ali", "text": "Salom", "type": "text" },
+          { "from": "me", "text": "Salom 👋", "type": "text" }
+        ]
+    """
+    client = await get_client(user_id, account_index)
+
+    try:
+        # Dialogni topish
+        dialog_obj = None
+        async for d in client.get_dialogs():
+            if d.chat.id == chat_id:
+                dialog_obj = d
+                break
+
+        if not dialog_obj:
+            raise ValueError(
+                "Chat topilmadi yoki ushbu akkaunt uchun mavjud emas. "
+                "Ehtimol, noto'g'ri sessiya tanlangan."
+            )
+
+        chat = dialog_obj.chat
+
+        # Get account user id
+        me = await client.get_me()
+        account_user_id = me.id
+
+        # Xabarlarni olish (barchasi, limit yo'q)
+        messages: List[Dict[str, str]] = []
+
+        async for msg in client.get_chat_history(chat.id, limit=None):
+            # Xabar matnini olish (text yoki caption)
+            message_text = msg.text or msg.caption or ""
+            
+            # Xabar turini aniqlash
+            message_type = "text"
+            if msg.photo:
+                message_type = "photo"
+            elif msg.video:
+                message_type = "video"
+            elif msg.audio:
+                message_type = "audio"
+            elif msg.voice:
+                message_type = "voice"
+            elif msg.document:
+                message_type = "document"
+            elif msg.sticker:
+                message_type = "sticker"
+            elif msg.animation:
+                message_type = "animation"
+            elif msg.video_note:
+                message_type = "video_note"
+            elif msg.location:
+                message_type = "location"
+            elif msg.contact:
+                message_type = "contact"
+            elif msg.poll:
+                message_type = "poll"
+            elif msg.venue:
+                message_type = "venue"
+            elif msg.game:
+                message_type = "game"
+            
+            # Xabarni kim yozganini aniqlash
+            if msg.outgoing:
+                from_name = "me"
+            elif msg.from_user:
+                from_name = " ".join(filter(None, [msg.from_user.first_name, msg.from_user.last_name])) or msg.from_user.username or "Unknown"
+            else:
+                from_name = "Unknown"
+            
+            # Soddalashtirilgan format
+            messages.append({
+                "from": from_name,
+                "text": message_text,
+                "type": message_type
+            })
+
+        # Export qilingan ma'lumotlarni diskka saqlash
+        export_dir = MEDIA_ROOT / "exports" / user_id / str(account_index)
+        export_dir.mkdir(parents=True, exist_ok=True)
+        
+        # JSON faylni diskka saqlash
+        import time
+        timestamp = int(time.time())
+        filename = f"chat_{chat_id}_{timestamp}.json"
+        filepath = export_dir / filename
+        
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(messages, f, ensure_ascii=False, indent=2)
+        
+        # Fayl URLini va soddalashtirilgan xabarlarni qaytarish
+        return {
+            "ok": True,
+            "file_url": f"/media/exports/{user_id}/{account_index}/{filename}",
+            "file_path": str(filepath),
+            "total_messages": len(messages),
+            "filename": filename,
+            "messages": messages
+        }
+
+    except PeerIdInvalid:
+        raise ValueError(
+            "Telegram ushbu chatni tanimaydi. "
+            "Chat ID noto'g'ri yoki sessiya mos emas."
+        )
+
+    except Exception as e:
+        raise Exception(f"Chat eksport qilishda xatolik: {str(e)}")

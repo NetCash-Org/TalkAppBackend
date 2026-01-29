@@ -4,7 +4,7 @@ from pyrogram.errors import SessionPasswordNeeded, PhoneCodeInvalid, PhoneNumber
 from src.models.user import StartLoginIn, StartLoginInNew, VerifyCodeIn, VerifyCodeInNew, VerifyPasswordIn, VerifyPasswordInNew
 from src.services.telegram_service import (
     login_states, build_client, list_user_telegram_profiles,
-    logout_one, logout_all, ensure_user_avatar_downloaded, list_private_chats_minimal, list_groups_minimal, get_chat_messages, build_client_for, get_client
+    logout_one, logout_all, ensure_user_avatar_downloaded, list_private_chats_minimal, list_groups_minimal, get_chat_messages, build_client_for, get_client, export_chat_messages
 )
 from src.services.supabase_service import get_user_from_token, get_user_by_token
 from src.config import supabase
@@ -387,6 +387,40 @@ async def get_messages(
             raise HTTPException(400, {"ok": False, "error": f"Chat topilmadi yoki mavjud emas. Chat ID noto'g'ri. Xatolik: {str(e)}"})
         else:
             raise HTTPException(500, {"ok": False, "error": f"Xatolik: {str(e)}"})
+
+
+# ---- export chat ----
+@router.get("/me/chats/{chat_id}/export")
+async def export_chat(
+    chat_id: int = Path(...),
+    session_index: int = Query(..., ge=1),
+    authorization: str = Header(..., alias="Authorization"),
+):
+    try:
+        user = get_user_from_token(authorization)
+        user_id = str(getattr(user, "id"))
+    except ValueError as e:
+        raise HTTPException(401, str(e))
+
+    # Validate account_index
+    accounts = await list_user_telegram_profiles(user_id)
+    account = next((acc for acc in accounts if acc.get("index") == str(session_index)), None)
+    if not account:
+        raise HTTPException(400, "Account index topilmadi")
+    if account.get("invalid"):
+        raise HTTPException(400, "Account faol emas yoki noto'g'ri")
+
+    try:
+        export_result = await export_chat_messages(
+            user_id=user_id,
+            account_index=session_index,
+            chat_id=chat_id
+        )
+        return export_result
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    except Exception as e:
+        raise HTTPException(500, f"Xatolik: {str(e)}")
 
 
 # ---- download media ----
